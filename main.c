@@ -6,13 +6,22 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/03/27 18:37:48 by anonymous     ########   odam.nl         */
+/*   Updated: 2026/03/30 14:12:08 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
+
+void	print_list(t_list *stack)
+{
+	while (stack)
+	{
+		printf("%p contains:\ncontent>%s\nnext>%p\n\n", stack, (char *)(stack->content), stack->next);
+		stack = stack->next;
+	}
+}
 
 void	swap_topA(t_list *stackA)
 {
@@ -78,12 +87,44 @@ void	shift_upA(t_list **stackA)
 	second_last = *stackA;
 	while (second_last->next != last)
 		second_last = second_last->next;
-	second_last->next = (*stackA)->next;
+	last->next = (*stackA)->next;
 	(*stackA)->next = NULL;
 	second_last->next = *stackA;
 	*stackA = last;
 	ft_putendl_fd("ra", 1);
 }
+
+void	shift_upB(t_list **stackB)
+{
+	t_list *last;
+	t_list *second_last;
+	t_list *tmp;
+
+	if ((*stackB)->next == NULL)
+		return ;
+	if ((*stackB)->next->next == NULL)
+	{
+		swap_topB(*stackB);
+		ft_putendl_fd("rb", 1);
+		return ;
+	}
+	last = ft_lstlast(*stackB);
+	second_last = *stackB;
+	while (second_last->next != last)
+		second_last = second_last->next;
+	last->next = (*stackB)->next;
+	(*stackB)->next = NULL;
+	second_last->next = *stackB;
+	*stackB = last;
+	ft_putendl_fd("rb", 1);
+}
+
+void	shift_upAB(t_list **stackA, t_list **stackB)
+{
+	shift_upB(stackB);
+	shift_upA(stackA);
+}
+
 
 void	sort(t_list **stackA)
 {
@@ -95,10 +136,15 @@ void	sort(t_list **stackA)
 	pushB(stackA, &stackB);
 	pushA(stackA, &stackB);
 	shift_upA(stackA);
+	pushB(stackA, &stackB);
+	//pushB(stackA, &stackB);
+	shift_upB(&stackB);
+	//swap_topB(stackB);
+	//print_list(stackB);
 	printf("STACK B:\n");
 	while (stackB)
 	{
-		printf("%s\n", stackB->content);
+		printf("%s\n", (char *)(stackB->content));
 		stackB = stackB->next;
 	}
 }
@@ -111,15 +157,17 @@ int	main(int argcount, char **args)
 
 	index = 1;
 	mode = 0;
+	if (argcount < 2)
+		return (0);
 	if (args[1][0] < '0' || args[1][0] > '9' )
 		index++;
-	if (strncmp(args[1], "--simple", 9) == 0)
+	if (ft_strncmp(args[1], "--simple", 9) == 0)
 		mode = 1;
-	if (strncmp(args[1], "--medium", 9) == 0)
+	if (ft_strncmp(args[1], "--medium", 9) == 0)
 		mode = 2;
-	if (strncmp(args[1], "--complex", 9) == 0)
+	if (ft_strncmp(args[1], "--complex", 9) == 0)
 		mode = 3;
-	if (strncmp(args[1], "--adaptive", 9) == 0)
+	if (ft_strncmp(args[1], "--adaptive", 9) == 0)
 		mode = 4;
 	if (index == 2 && mode == 0 || argcount == 2)
 		return (write(1, "invalid input", 14), 0);
@@ -131,7 +179,7 @@ int	main(int argcount, char **args)
 	printf("STACK A:\n");
 	while (stackA)
 	{
-		printf("%s\n", stackA->content);
+		printf("%s\n", (char *)(stackA->content));
 		stackA = stackA->next;
 	}
 	//printf("%s\n", stackA->content);
