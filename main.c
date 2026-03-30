@@ -53,9 +53,36 @@ void	pushB(t_list **stackA, t_list **stackB)
 	*stackA = (*stackA)->next;
 	(*stackB)->next = next;
 	ft_putendl_fd("pb", 1);
-	//ft_lstadd_front(stackB, *stackA);
-	//*stackA = (*stackA)->next;
-	//(*stackB)->next = NULL;
+}
+
+void	pushA(t_list **stackA, t_list **stackB)
+{
+	t_list *next;
+
+	if (*stackA)
+		next = *stackA;
+	else
+		next = NULL;
+	*stackA = *stackB;
+	*stackB = (*stackB)->next;
+	(*stackA)->next = next;
+	ft_putendl_fd("pb", 1);
+}
+
+void	shift_upA(t_list **stackA)
+{
+	t_list *last;
+	t_list *second_last;
+
+	last = ft_lstlast(*stackA);
+	second_last = *stackA;
+	while (second_last->next != last)
+		second_last = second_last->next;
+	second_last->next = (*stackA)->next;
+	(*stackA)->next = NULL;
+	second_last->next = *stackA;
+	*stackA = last;
+	ft_putendl_fd("ra", 1);
 }
 
 void	sort(t_list **stackA)
@@ -66,6 +93,8 @@ void	sort(t_list **stackA)
 	stackB = NULL;
 	pushB(stackA, &stackB);
 	pushB(stackA, &stackB);
+	pushA(stackA, &stackB);
+	shift_upA(stackA);
 	printf("STACK B:\n");
 	while (stackB)
 	{
