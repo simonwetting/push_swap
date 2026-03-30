@@ -78,11 +78,19 @@ void	pushA(t_list **stackA, t_list **stackB)
 	ft_putendl_fd("pb", 1);
 }
 
-void	shift_upA(t_list **stackA)
+void	shift_downA(t_list **stackA)
 {
 	t_list *last;
 	t_list *second_last;
 
+	if ((*stackA)->next == NULL)
+		return ;
+	if ((*stackA)->next->next == NULL)
+	{
+		swap_topB(*stackA);
+		ft_putendl_fd("rra", 1);
+		return ;
+	}
 	last = ft_lstlast(*stackA);
 	second_last = *stackA;
 	while (second_last->next != last)
@@ -91,10 +99,10 @@ void	shift_upA(t_list **stackA)
 	(*stackA)->next = NULL;
 	second_last->next = *stackA;
 	*stackA = last;
-	ft_putendl_fd("ra", 1);
+	ft_putendl_fd("rra", 1);
 }
 
-void	shift_upB(t_list **stackB)
+void	shift_downB(t_list **stackB)
 {
 	t_list *last;
 	t_list *second_last;
@@ -105,7 +113,7 @@ void	shift_upB(t_list **stackB)
 	if ((*stackB)->next->next == NULL)
 	{
 		swap_topB(*stackB);
-		ft_putendl_fd("rb", 1);
+		ft_putendl_fd("rrb", 1);
 		return ;
 	}
 	last = ft_lstlast(*stackB);
@@ -116,15 +124,43 @@ void	shift_upB(t_list **stackB)
 	(*stackB)->next = NULL;
 	second_last->next = *stackB;
 	*stackB = last;
+	ft_putendl_fd("rrb", 1);
+}
+
+void	shift_downAB(t_list **stackA, t_list **stackB)
+{
+	shift_downB(stackB);
+	shift_downA(stackA);
+}
+
+void	shift_up(t_list **stack)
+{
+	t_list		*second;
+
+	ft_lstlast(*stack)->next = *stack;
+	second = (*stack)->next;
+	(*stack)->next = NULL;
+	*stack = second;
+}
+
+void	shift_upA(t_list **stack)
+{
+	shift_up(stack);
+	ft_putendl_fd("ra", 1);
+}
+
+void	shift_upB(t_list **stack)
+{
+	shift_up(stack);
 	ft_putendl_fd("rb", 1);
 }
 
 void	shift_upAB(t_list **stackA, t_list **stackB)
 {
-	shift_upB(stackB);
-	shift_upA(stackA);
+	shift_up(stackA);
+	shift_up(stackB);
+	ft_putendl_fd("rr", 1);
 }
-
 
 void	sort(t_list **stackA)
 {
@@ -135,10 +171,12 @@ void	sort(t_list **stackA)
 	pushB(stackA, &stackB);
 	pushB(stackA, &stackB);
 	pushA(stackA, &stackB);
-	shift_upA(stackA);
+	shift_downA(stackA);
 	pushB(stackA, &stackB);
 	//pushB(stackA, &stackB);
-	shift_upB(&stackB);
+	shift_downB(&stackB);
+	shift_upA(stackA);
+	// shift_downA(stackA);
 	//swap_topB(stackB);
 	//print_list(stackB);
 	printf("STACK B:\n");
