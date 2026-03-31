@@ -23,6 +23,32 @@ void	print_list(t_list *stack)
 	}
 }
 
+void	print_stacks(t_list *stackA, t_list *stackB)
+{
+	printf("STACK A:\n");
+	while (stackA)
+	{
+		printf("%s\n", (char *)(stackA->content));
+		stackA = stackA->next;
+	}
+	printf("STACK B:\n");
+	while (stackB)
+	{
+		printf("%s\n", (char *)(stackB->content));
+		stackB = stackB->next;
+	}
+}
+
+void	print_stack(t_list *stack, char c)
+{
+	printf("STACK %c:\n", c);
+	while (stack)
+	{
+		printf("%s\n", (char *)(stack->content));
+		stack = stack->next;
+	}
+}
+
 void	swap_topA(t_list *stackA)
 {
 	t_list	*tmp;
@@ -30,7 +56,7 @@ void	swap_topA(t_list *stackA)
 	tmp = stackA->next->content;
 	stackA->next->content =  stackA->content;
 	stackA->content = tmp;
-	ft_putendl_fd("sa", 1);
+	// ft_putendl_fd("sa", 1);
 }
 
 void	swap_topB(t_list *stackB)
@@ -40,14 +66,14 @@ void	swap_topB(t_list *stackB)
 	tmp = stackB->next->content;
 	stackB->next->content =  stackB->content;
 	stackB->content = tmp;
-	ft_putendl_fd("sb", 1);
+	// ft_putendl_fd("sb", 1);
 }
 
 void	swap_topAB(t_list *stackA, t_list *stackB)
 {
 	swap_topA(stackA);
 	swap_topB(stackB);
-	ft_putendl_fd("ss", 1);
+	// ft_putendl_fd("ss", 1);
 }
 
 void	pushB(t_list **stackA, t_list **stackB)
@@ -61,7 +87,7 @@ void	pushB(t_list **stackA, t_list **stackB)
 	*stackB = *stackA;
 	*stackA = (*stackA)->next;
 	(*stackB)->next = next;
-	ft_putendl_fd("pb", 1);
+	// ft_putendl_fd("pb", 1);
 }
 
 void	pushA(t_list **stackA, t_list **stackB)
@@ -75,62 +101,17 @@ void	pushA(t_list **stackA, t_list **stackB)
 	*stackA = *stackB;
 	*stackB = (*stackB)->next;
 	(*stackA)->next = next;
-	ft_putendl_fd("pb", 1);
+	// ft_putendl_fd("pa", 1);
 }
 
-void	shift_downA(t_list **stackA)
+void	shift_down(t_list **stack)
 {
-	t_list *last;
-	t_list *second_last;
+	t_list	*second_last;
 
-	if ((*stackA)->next == NULL)
-		return ;
-	if ((*stackA)->next->next == NULL)
-	{
-		swap_topB(*stackA);
-		ft_putendl_fd("rra", 1);
-		return ;
-	}
-	last = ft_lstlast(*stackA);
-	second_last = *stackA;
-	while (second_last->next != last)
-		second_last = second_last->next;
-	last->next = (*stackA)->next;
-	(*stackA)->next = NULL;
-	second_last->next = *stackA;
-	*stackA = last;
-	ft_putendl_fd("rra", 1);
-}
-
-void	shift_downB(t_list **stackB)
-{
-	t_list *last;
-	t_list *second_last;
-	t_list *tmp;
-
-	if ((*stackB)->next == NULL)
-		return ;
-	if ((*stackB)->next->next == NULL)
-	{
-		swap_topB(*stackB);
-		ft_putendl_fd("rrb", 1);
-		return ;
-	}
-	last = ft_lstlast(*stackB);
-	second_last = *stackB;
-	while (second_last->next != last)
-		second_last = second_last->next;
-	last->next = (*stackB)->next;
-	(*stackB)->next = NULL;
-	second_last->next = *stackB;
-	*stackB = last;
-	ft_putendl_fd("rrb", 1);
-}
-
-void	shift_downAB(t_list **stackA, t_list **stackB)
-{
-	shift_downB(stackB);
-	shift_downA(stackA);
+	second_last = ft_lstsecondlast(*stack);
+	second_last->next->next = *stack;
+	*stack = second_last->next;
+	second_last->next = NULL;
 }
 
 void	shift_up(t_list **stack)
@@ -143,23 +124,42 @@ void	shift_up(t_list **stack)
 	*stack = second;
 }
 
+void	shift_downA(t_list **stack)
+{
+	shift_down(stack);
+	ft_putendl_fd("rra", 1);
+}
+
+void	shift_downB(t_list **stack)
+{
+	shift_down(stack);
+	ft_putendl_fd("rrb", 1);
+}
+
+void	shift_downAB(t_list **stackA, t_list **stackB)
+{
+	shift_down(stackB);
+	shift_down(stackA);
+	ft_putendl_fd("rrr", 1);
+}
+
 void	shift_upA(t_list **stack)
 {
 	shift_up(stack);
-	ft_putendl_fd("ra", 1);
+	// ft_putendl_fd("ra", 1);
 }
 
 void	shift_upB(t_list **stack)
 {
 	shift_up(stack);
-	ft_putendl_fd("rb", 1);
+	// ft_putendl_fd("rb", 1);
 }
 
 void	shift_upAB(t_list **stackA, t_list **stackB)
 {
 	shift_up(stackA);
 	shift_up(stackB);
-	ft_putendl_fd("rr", 1);
+	// ft_putendl_fd("rr", 1);
 }
 
 void	sort(t_list **stackA)
@@ -177,14 +177,13 @@ void	sort(t_list **stackA)
 	shift_downB(&stackB);
 	shift_upA(stackA);
 	// shift_downA(stackA);
+	printf("BEFORE:\n");
+	print_stack(*stackA, 'A');
+	shift_down(stackA);
+	printf("AFTER:\n");
+	print_stack(*stackA, 'A');
 	//swap_topB(stackB);
 	//print_list(stackB);
-	printf("STACK B:\n");
-	while (stackB)
-	{
-		printf("%s\n", (char *)(stackB->content));
-		stackB = stackB->next;
-	}
 }
 
 int	main(int argcount, char **args)
@@ -214,13 +213,70 @@ int	main(int argcount, char **args)
 		ft_lstadd_back(&stackA, ft_lstnew(args[index++]));
 	//ft_lstlast(stackA)->next = stackA;
 	sort(&stackA);
-	printf("STACK A:\n");
-	while (stackA)
-	{
-		printf("%s\n", (char *)(stackA->content));
-		stackA = stackA->next;
-	}
-	//printf("%s\n", stackA->content);
+}
+
+// printf("STACK B:\n");
+	// while (stackB)
+	// {
+	// 	printf("%s\n", (char *)(stackB->content));
+	// 	stackB = stackB->next;
+	// }
+
+// printf("STACK A:\n");
+	// while (stackA)
+	// {
+	// 	printf("%s\n", (char *)(stackA->content));
+	// 	stackA = stackA->next;
+	// }
+	// //printf("%s\n", stackA->content);
 	//printf("%s\n", stackA->next->content);
 	//printf("%s\n", stackA->next->next->content);
-}
+
+// void	shift_downA(t_list **stackA)
+// {
+// 	t_list *last;
+// 	t_list *second_last;
+
+// 	if ((*stackA)->next == NULL)
+// 		return ;
+// 	if ((*stackA)->next->next == NULL)
+// 	{
+// 		swap_topB(*stackA);
+// 		// ft_putendl_fd("rra", 1);
+// 		return ;
+// 	}
+// 	last = ft_lstlast(*stackA);
+// 	second_last = *stackA;
+// 	while (second_last->next != last)
+// 		second_last = second_last->next;
+// 	last->next = (*stackA)->next;
+// 	(*stackA)->next = NULL;
+// 	second_last->next = *stackA;
+// 	*stackA = last;
+// 	// ft_putendl_fd("rra", 1);
+// }
+
+// void	shift_downB(t_list **stackB)
+// {
+// 	t_list *last;
+// 	t_list *second_last;
+// 	t_list *tmp;
+
+// 	if ((*stackB)->next == NULL)
+// 		return ;
+// 	if ((*stackB)->next->next == NULL)
+// 	{
+// 		swap_topB(*stackB);
+// 		// ft_putendl_fd("rrb", 1);
+// 		return ;
+// 	}
+// 	last = ft_lstlast(*stackB);
+// 	second_last = *stackB;
+// 	while (second_last->next != last)
+// 		second_last = second_last->next;
+// 	last->next = (*stackB)->next;
+// 	(*stackB)->next = NULL;
+// 	second_last->next = *stackB;
+// 	*stackB = last;
+// 	// ft_putendl_fd("rrb", 1);
+// }
