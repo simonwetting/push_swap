@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-
 
 void	print_list(t_list *stack)
 {
@@ -51,7 +49,7 @@ void	print_stack(t_list *stack, char c)
 
 void	swap_topA(t_list *stackA)
 {
-	t_list	*tmp;
+	char	*tmp;
 
 	tmp = stackA->next->content;
 	stackA->next->content =  stackA->content;
@@ -61,7 +59,7 @@ void	swap_topA(t_list *stackA)
 
 void	swap_topB(t_list *stackB)
 {
-	t_list	*tmp;
+	char	*tmp;
 
 	tmp = stackB->next->content;
 	stackB->next->content =  stackB->content;
@@ -212,7 +210,8 @@ int	main(int argcount, char **args)
 	while (index < argcount)
 		ft_lstadd_back(&stackA, ft_lstnew(args[index++]));
 	//ft_lstlast(stackA)->next = stackA;
-	sort(&stackA);
+	//sort(&stackA);
+	radix(stackA, stackA);
 }
 
 // printf("STACK B:\n");
