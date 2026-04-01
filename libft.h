@@ -39,7 +39,7 @@ typedef struct s_list
 // char	*ft_strdup(const char *s);
 // size_t	ft_strlcat(char *dest, const char *src, size_t size);
 // size_t	ft_strlcpy(char *dest, char *src, unsigned int size);
-// size_t	ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 int		ft_strncmp(const char *s1, const char *s2, unsigned int n);
 // char	*ft_strnstr(const char *big, const char *little, size_t len);
 // char	*ft_strrchr(const char *s, int c);
