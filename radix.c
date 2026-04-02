@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/01 18:55:26 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/01 18:55:26 by anonymous     ########   odam.nl         */
+/*   Updated: 2026/04/02 18:05:31 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		len_largest(t_list *stackA)
 			len = ft_strlen(stackA->content);
 		stackA = stackA->next;
 	}
+	return (len);
 }
 
 void	count(t_list *stack, int numbcount[10], int index)

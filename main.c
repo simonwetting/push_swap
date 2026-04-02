@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/03/30 14:12:08 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/02 18:06:14 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	print_stacks(t_list *stackA, t_list *stackB)
 
 void	print_stack(t_list *stack, char c)
 {
-	printf("STACK %c:\n", c);
 	while (stack)
 	{
 		printf("%s\n", (char *)(stack->content));
@@ -214,8 +213,8 @@ int	main(int argcount, char **args)
 	//sort(&stackA);
 	// radix(stackA, stackA);
 	print_stack(stackA, 'A');
-	bubble(&stackA);
-	print_stack(stackA, 'A');
+	//bubble(&stackA);
+	//print_stack(stackA, 'A');
 }
 
 // printf("STACK B:\n");
