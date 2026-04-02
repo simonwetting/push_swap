@@ -72,4 +72,22 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 t_list	*ft_lstsecondlast(t_list *lst);
 void	radix(t_list *stackA, t_list *stackB);
+void	bubble(t_list **stackA);
+
+// void	shift_down(t_list **stack);
+// void	shift_up(t_list **stack);
+// void	swap_top(t_list *stack);
+
+void	swap_topA(t_list *stackA);
+void	swap_topB(t_list *stackB);
+void	swap_topAB(t_list *stackA, t_list *stackB);
+void	pushB(t_list **stackA, t_list **stackB);
+void	pushA(t_list **stackA, t_list **stackB);
+void	shift_downA(t_list **stack);
+void	shift_downB(t_list **stack);
+void	shift_downAB(t_list **stackA, t_list **stackB);
+void	shift_upA(t_list **stack);
+void	shift_upB(t_list **stack);
+void	shift_upAB(t_list **stackA, t_list **stackB);
+
 #endif

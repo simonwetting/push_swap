@@ -56,6 +56,7 @@ void	radix(t_list *stackA, t_list *stackB)
 	int		biggest_len;
 
 	//biggest_len = len_largest(stackA);
-	count(stackA, numbcount, 0);
-	print_numbcount(numbcount);
+	// count(stackA, numbcount, 0);
+	// print_numbcount(numbcount);
+	
 }

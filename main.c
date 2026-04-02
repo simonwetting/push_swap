@@ -47,23 +47,24 @@ void	print_stack(t_list *stack, char c)
 	}
 }
 
-void	swap_topA(t_list *stackA)
+void	swap_top(t_list *stack)
 {
 	char	*tmp;
 
-	tmp = stackA->next->content;
-	stackA->next->content =  stackA->content;
-	stackA->content = tmp;
+	tmp = stack->next->content;
+	stack->next->content =  stack->content;
+	stack->content = tmp;
+}
+
+void	swap_topA(t_list *stackA)
+{
+	swap_top(stackA);
 	// ft_putendl_fd("sa", 1);
 }
 
 void	swap_topB(t_list *stackB)
 {
-	char	*tmp;
-
-	tmp = stackB->next->content;
-	stackB->next->content =  stackB->content;
-	stackB->content = tmp;
+	swap_top(stackB);
 	// ft_putendl_fd("sb", 1);
 }
 
@@ -211,7 +212,10 @@ int	main(int argcount, char **args)
 		ft_lstadd_back(&stackA, ft_lstnew(args[index++]));
 	//ft_lstlast(stackA)->next = stackA;
 	//sort(&stackA);
-	radix(stackA, stackA);
+	// radix(stackA, stackA);
+	print_stack(stackA, 'A');
+	bubble(&stackA);
+	print_stack(stackA, 'A');
 }
 
 // printf("STACK B:\n");
