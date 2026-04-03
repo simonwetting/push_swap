@@ -16,39 +16,65 @@ void	print_list(t_list *stack)
 {
 	while (stack)
 	{
-		printf("%p contains:\ncontent>%s\nnext>%p\n\n", stack, (char *)(stack->content), stack->next);
+		printf("%p contains:\ncontent>%d\nnext>%d\n\n", stack, (stack->content), stack->next);
 		stack = stack->next;
 	}
 }
+
+// void	print_stacks(t_list *stackA, t_list *stackB)
+// {
+// 	printf("STACK A:\n");
+// 	while (stackA)
+// 	{
+// 		printf("%s\n", (char *)(stackA->content));
+// 		stackA = stackA->next;
+// 	}
+// 	printf("STACK B:\n");
+// 	while (stackB)
+// 	{
+// 		printf("%s\n", (char *)(stackB->content));
+// 		stackB = stackB->next;
+// 	}
+// }
 
 void	print_stacks(t_list *stackA, t_list *stackB)
 {
 	printf("STACK A:\n");
 	while (stackA)
 	{
-		printf("%s\n", (char *)(stackA->content));
+		printf("%d\n", (stackA->content));
 		stackA = stackA->next;
 	}
 	printf("STACK B:\n");
 	while (stackB)
 	{
-		printf("%s\n", (char *)(stackB->content));
+		printf("%d\n", (stackB->content));
 		stackB = stackB->next;
 	}
 }
 
 void	print_stack(t_list *stack, char c)
 {
+	printf("STACK %c:\n", c);
 	while (stack)
 	{
-		printf("%s\n", (char *)(stack->content));
+		printf("%d\n", (stack->content));
 		stack = stack->next;
 	}
 }
 
+// void	swap_top(t_list *stack)
+// {
+// 	char	*tmp;
+
+// 	tmp = stack->next->content;
+// 	stack->next->content =  stack->content;
+// 	stack->content = tmp;
+// }
+
 void	swap_top(t_list *stack)
 {
-	char	*tmp;
+	int		tmp;
 
 	tmp = stack->next->content;
 	stack->next->content =  stack->content;
@@ -184,6 +210,33 @@ void	sort(t_list **stackA)
 	//print_list(stackB);
 }
 
+void	eval_swap(t_list *stack)
+{
+	// printf("eval swap\n%d\n", (stack)->content - (stack)->next->content);
+	if ((stack)->content > (stack)->next->content)
+	{
+		printf("\n%d > %d\n", (stack)->content, (stack)->next->content);
+		swap_top(stack);
+	}
+	else
+		printf("not swapping %d < %d \n", (stack)->content, (stack)->next->content);
+	// printf("done\n");
+}
+
+int	is_unsorted(t_list *stack)
+{
+	int		unsorted;
+
+	unsorted  = 0;
+	while (stack->next)
+	{
+		if (stack->content > stack->next->content)
+			unsorted = 1;
+		stack =  stack->next;
+	}
+	return (unsorted);
+}
+
 int	main(int argcount, char **args)
 {
 	int		index;
@@ -208,12 +261,25 @@ int	main(int argcount, char **args)
 		return (write(1, "invalid input", 14), 0);
 	stackA = NULL;
 	while (index < argcount)
-		ft_lstadd_back(&stackA, ft_lstnew(args[index++]));
+		ft_lstadd_back(&stackA, ft_lstnew(ft_atoi(args[index++])));
 	//ft_lstlast(stackA)->next = stackA;
 	//sort(&stackA);
 	// radix(stackA, stackA);
 	print_stack(stackA, 'A');
-	//bubble(&stackA);
+	// bubble(&stackA);
+	// shift_down(&stackA);
+	while (1)
+	{
+		eval_swap(stackA);
+		print_stack(stackA, 'A');
+		if (is_unsorted(stackA) == 0)
+			break;
+		shift_down(&stackA);
+		print_stack(stackA, 'A');
+	}
+
+	// eval_swap(stackA);
+	// print_stack(stackA, 'A');
 	//print_stack(stackA, 'A');
 }
 
