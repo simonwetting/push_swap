@@ -17,6 +17,9 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+# define A 0
+# define B 1
+
 typedef struct s_list
 {
 	int				content;
@@ -24,7 +27,7 @@ typedef struct s_list
 }					t_list;
 
 int		ft_atoi(const char *nptr);
-// void	ft_bzero(void *s, size_t n);
+ void	ft_bzero(void *s, size_t n);
 // void	*ft_calloc(size_t nmemb, size_t size);
 // int		ft_isalnum(int c);
 // int		ft_isalpha(int c);
@@ -91,5 +94,11 @@ void	shift_upB(t_list **stack);
 void	shift_upAB(t_list **stackA, t_list **stackB);
 
 void	print_stack(t_list *stack, char c);
+int		*indexate(t_list *stack);
+void	simple(t_list *stackA);
+
+void	quatro_chunk(t_list **stackA, t_list **stackB);
+
+void	turk(t_list **stackA, t_list **stackB);
 
 #endif

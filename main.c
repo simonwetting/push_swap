@@ -210,78 +210,51 @@ void	sort(t_list **stackA)
 	//print_list(stackB);
 }
 
-void	eval_swap(t_list *stack)
-{
-	// printf("eval swap\n%d\n", (stack)->content - (stack)->next->content);
-	if ((stack)->content > (stack)->next->content)
-	{
-		printf("\n%d > %d\n", (stack)->content, (stack)->next->content);
-		swap_top(stack);
-	}
-	else
-		printf("not swapping %d < %d \n", (stack)->content, (stack)->next->content);
-	// printf("done\n");
-}
-
-int	is_unsorted(t_list *stack)
-{
-	int		unsorted;
-
-	unsorted  = 0;
-	while (stack->next)
-	{
-		if (stack->content > stack->next->content)
-			unsorted = 1;
-		stack =  stack->next;
-	}
-	return (unsorted);
-}
-
 int	main(int argcount, char **args)
 {
 	int		index;
 	int		mode;
 	t_list	*stackA;
+	t_list	*stackB;
+	t_list	**stacks[2];
 
 	index = 1;
 	mode = 0;
 	if (argcount < 2)
 		return (0);
-	if (args[1][0] < '0' || args[1][0] > '9' )
-		index++;
-	if (ft_strncmp(args[1], "--simple", 9) == 0)
-		mode = 1;
-	if (ft_strncmp(args[1], "--medium", 9) == 0)
-		mode = 2;
-	if (ft_strncmp(args[1], "--complex", 9) == 0)
-		mode = 3;
-	if (ft_strncmp(args[1], "--adaptive", 9) == 0)
-		mode = 4;
-	if (index == 2 && mode == 0 || argcount == 2)
-		return (write(1, "invalid input", 14), 0);
 	stackA = NULL;
 	while (index < argcount)
 		ft_lstadd_back(&stackA, ft_lstnew(ft_atoi(args[index++])));
-	//ft_lstlast(stackA)->next = stackA;
-	//sort(&stackA);
+	stackB = NULL;
+	stacks[0] = &stackA;
+	stacks[1] = &stackB;
+	if (args[1][0] < '0' || args[1][0] > '9' )
+		index++;
+	else if (ft_strncmp(args[1], "--simple", 9) == 0)
+		simple(stackA);
+	else if (ft_strncmp(args[1], "--medium", 9) == 0)
+		quatro_chunk(&stackA, &stackB);
+	else if (ft_strncmp(args[1], "--complex", 9) == 0)
+		turk(stacks);
+	else if (ft_strncmp(args[1], "--adaptive", 9) == 0)
+		mode = 4;
+	else if (index == 2 || argcount == 2)
+		return (write(1, "invalid input", 14), 0);
+}
+
+//ft_lstlast(stackA)->next = stackA;
+
+//sort(&stackA);
 	// radix(stackA, stackA);
-	print_stack(stackA, 'A');
+	//print_stack(stackA, 'A');
 	// bubble(&stackA);
 	// shift_down(&stackA);
-	while (1)
-	{
-		eval_swap(stackA);
-		print_stack(stackA, 'A');
-		if (is_unsorted(stackA) == 0)
-			break;
-		shift_down(&stackA);
-		print_stack(stackA, 'A');
-	}
+	
 
 	// eval_swap(stackA);
 	// print_stack(stackA, 'A');
 	//print_stack(stackA, 'A');
-}
+
 
 // printf("STACK B:\n");
 	// while (stackB)
