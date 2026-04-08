@@ -175,13 +175,30 @@ void	shift_downAB(t_list **stackA, t_list **stackB)
 	ft_putendl_fd("rrr", 1);
 }
 
-void	shift_up(t_data *data, int stack)
+//void	shift_up2(t_data *data, int stack)
+//{
+//	if (stack == A)
+//		shift_upA(data->p_stacks[A]);
+//	else if (stack == B)
+//		shift_upA(data->p_stacks[B]);
+//}
+
+void	shift_up_stack(t_data *data, int stack_id)
 {
-	if (stack == A)
-		shift_upA(data->p_stacks[A]);
-	else if (stack == B)
-		shift_upA(data->p_stacks[B]);
+	t_list		*second;
+	t_list		**stack;
+
+	//if (stack_id == A)
+		// ft_putendl_fd("ra", 1);
+	//if (stack_id == B)
+		// ft_putendl_fd("rb", 1);
+	stack = data->p_stacks[stack_id];
+	ft_lstlast(*stack)->next = *stack;
+	second = (*stack)->next;
+	(*stack)->next = NULL;
+	*stack = second;
 }
+
 
 void	shift_upA(t_list **stack)
 {

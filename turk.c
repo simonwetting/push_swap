@@ -64,13 +64,13 @@ int		chunksize(int chunks[500][2], int index)
 	return (chunks[index][HIGH] - chunks[index][LOW] + 1);
 }
 
-void	rotate(void (*f)(t_list **), int times, t_list **stack)
+void	repeat_rotate(void (*f)(t_data *, int), int times, t_list *data, int stack)
 {
 	int		n;
 
 	n = 0;
 	while (n++ < times)
-		f(stack);
+		f(data, stack);
 }
 
 void	splitter(t_data *data, int stack, int c_size, int hl[2])
@@ -83,8 +83,22 @@ void	splitter(t_data *data, int stack, int c_size, int hl[2])
 		if (data->stacks[stack]->content >= hl[LOW] && data->stacks[stack]->content <= hl[HIGH])
 			push(data->stackA, data->stackB, stack);
 		else
-			shift_up(data, stack);
+			shift_up_stack(data, stack);
 	}
+}
+
+int		stack_is_split(t_data *data, int stack)
+{
+	int	c_size;
+
+	while (data->stacks[stack])
+	{
+		c_size = chunksize(data->chunks, find_chunk(data->stacks[stack]->content, data->chunks, data->numbers));
+		if (c_size > 5)
+			return (0);
+		repeat_rotate(&shift_up_stack, c_size, data, stack);
+	}
+	return (1);
 }
 
 void	split(t_data *data)
@@ -99,6 +113,8 @@ void	split(t_data *data)
 	stack = A;
 	while (stack < 3)
 	{
+		if (stack_split(data, stack))
+			stack++;
 		c_size = chunksize(data->chunks, find_chunk(data->stacks[stack]->content, data->chunks, data->numbers));
 		if (c_size < 5)
 		{
@@ -107,11 +123,11 @@ void	split(t_data *data)
 			hl[LOW] = data->numbers[data->chunks[split_chunk[1]][LOW]];
 			hl[HIGH] = data->numbers[data->chunks[split_chunk[1]][HIGH]];
 			splitter(data, split_chunk, stack, hl);
+			print_stacks(data->stacks[A], data->stacks[B]);
 		}
 		else
-			rotate(&shift_upA, c_size, data->stacks[A]);
+			repeat_rotate(&shift_up_stack, c_size, data, stack);
 	}
-
 }
 
 void	turk(t_data *data)

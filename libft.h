@@ -108,9 +108,12 @@ void	shift_downAB(t_list **stackA, t_list **stackB);
 void	shift_upA(t_list **stack);
 void	shift_upB(t_list **stack);
 void	shift_upAB(t_list **stackA, t_list **stackB);
-void	shift_up(t_data *data, int stack);
+
+void	shift_up(t_list **stack);
+void	shift_up_stack(t_data *data, int stack_id);
 
 void	print_stack(t_list *stack, char c);
+void	print_stacks(t_list *stackA, t_list *stackB);
 int		*indexate(t_list *stack);
 void	simple(t_list *stackA);
 
