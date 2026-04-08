@@ -19,12 +19,24 @@
 
 # define A 0
 # define B 1
+# define LOW 0
+# define HIGH 1
 
 typedef struct s_list
 {
 	int				content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct	s_data
+{
+	t_list		**stackA;
+	t_list		**stackB;
+	t_list		**p_stacks[2];
+	t_list		*stacks[2];
+	int 		*numbers;
+	int			chunks[500][2];
+}				t_data;
 
 int		ft_atoi(const char *nptr);
  void	ft_bzero(void *s, size_t n);
@@ -84,14 +96,19 @@ void	bubble(t_list **stackA);
 void	swap_topA(t_list *stackA);
 void	swap_topB(t_list *stackB);
 void	swap_topAB(t_list *stackA, t_list *stackB);
+
 void	pushB(t_list **stackA, t_list **stackB);
 void	pushA(t_list **stackA, t_list **stackB);
+void	push(t_list **stackA, t_list **stackB, int stack);
+
 void	shift_downA(t_list **stack);
 void	shift_downB(t_list **stack);
 void	shift_downAB(t_list **stackA, t_list **stackB);
+
 void	shift_upA(t_list **stack);
 void	shift_upB(t_list **stack);
 void	shift_upAB(t_list **stackA, t_list **stackB);
+void	shift_up(t_data *data, int stack);
 
 void	print_stack(t_list *stack, char c);
 int		*indexate(t_list *stack);

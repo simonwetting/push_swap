@@ -128,6 +128,14 @@ void	pushA(t_list **stackA, t_list **stackB)
 	// ft_putendl_fd("pa", 1);
 }
 
+void	push(t_list **stackA, t_list **stackB, int stack)
+{
+	if (stack == A)
+		pushA(stackA, stackB);
+	else if (stack == B)
+		pushB(stackA, stackB);
+}
+
 void	shift_down(t_list **stack)
 {
 	t_list	*second_last;
@@ -165,6 +173,14 @@ void	shift_downAB(t_list **stackA, t_list **stackB)
 	shift_down(stackB);
 	shift_down(stackA);
 	ft_putendl_fd("rrr", 1);
+}
+
+void	shift_up(t_data *data, int stack)
+{
+	if (stack == A)
+		shift_upA(data->p_stacks[A]);
+	else if (stack == B)
+		shift_upA(data->p_stacks[B]);
 }
 
 void	shift_upA(t_list **stack)
@@ -216,7 +232,7 @@ int	main(int argcount, char **args)
 	int		mode;
 	t_list	*stackA;
 	t_list	*stackB;
-	t_list	**stacks[2];
+	t_data	*data;
 
 	index = 1;
 	mode = 0;
@@ -226,8 +242,12 @@ int	main(int argcount, char **args)
 	while (index < argcount)
 		ft_lstadd_back(&stackA, ft_lstnew(ft_atoi(args[index++])));
 	stackB = NULL;
-	stacks[0] = &stackA;
-	stacks[1] = &stackB;
+	data->stackA = &stackA;
+	data->stackB = &stackB;
+	data->stacks[A] = stackA;
+	data->stacks[B] = stackB;
+	data->p_stacks[A] = &stackA;
+	data->p_stacks[B] = &stackB;
 	if (args[1][0] < '0' || args[1][0] > '9' )
 		index++;
 	else if (ft_strncmp(args[1], "--simple", 9) == 0)
@@ -235,7 +255,7 @@ int	main(int argcount, char **args)
 	else if (ft_strncmp(args[1], "--medium", 9) == 0)
 		quatro_chunk(&stackA, &stackB);
 	else if (ft_strncmp(args[1], "--complex", 9) == 0)
-		turk(stacks);
+		turk(data);
 	else if (ft_strncmp(args[1], "--adaptive", 9) == 0)
 		mode = 4;
 	else if (index == 2 || argcount == 2)
