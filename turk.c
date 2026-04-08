@@ -26,11 +26,6 @@ int		in_chunk(int i, int chunks[500][2], int chunk_index, int *numbers)
 	return (0);
 }
 
-void	search_and_push(t_list **stacks[2], int chunks[500][2], int stack, int *)
-{
-	//while (in_chunk)
-}
-
 int		divide_chunk(int chunks[500][2], int chunk_index)
 {
 	int		chunksize;
@@ -48,8 +43,8 @@ int		divide_chunk(int chunks[500][2], int chunk_index)
 	while (chunks[index_newchunk])
 		index_newchunk++;
 	chunks[index_newchunk][LOW] = chunks[chunk_index][LOW];
-	chunks[index_newchunk][HIGH] = chunks[chunk_index][LOW] + s_c1;
-	chunks[chunk_index][LOW] = chunks[index_newchunk][HIGH] -  s_c2;
+	chunks[index_newchunk][HIGH] = chunks[chunk_index][LOW] + s_c2;
+	chunks[chunk_index][LOW] = chunks[index_newchunk][HIGH] -  s_c1;
 	return (index_newchunk);
 }
 
@@ -81,6 +76,26 @@ void	rotate(void (*f)(t_list **), int times, t_list **stack)
 		f(stack);
 }
 
+void	chunk_to_stack(t_list **stacks[2], int chunks[500][2], int *numbers, int split_chunk)
+{
+	t_list	**stackA;
+	t_list	**stackB;
+
+	stackA = stacks[A];
+	stackB = stacks[B];
+	if (in_chunk((*stackA)->content, chunks, numbers))
+}
+
+void	splitter(t_list **stacks[2], int chunks[500][2], int *numbers, int split_chunk)
+{
+	//t_list	**stackA;
+	//t_list	**stackB;
+
+	//stackA = stacks[A];
+	//stackB = stacks[B];
+	//if (in_chunk((*stackA)->content, chunks, )
+}
+
 void	split(t_list **stacks[2], int chunks[500][2], int *numbers)
 {
 	int		numbcount;
@@ -99,7 +114,7 @@ void	split(t_list **stacks[2], int chunks[500][2], int *numbers)
 		{
 			split_chunk[0] = find_chunk((*(stacks[stack]))->content, chunks, numbers);
 			split_chunk[1] = divide_chunk(chunks, split_chunk[0]);
-			
+			splitter(stacks, chunks, numbers, split_chunk);
 		}
 		else
 			rotate(&shift_upA, c_size, stacks[A]);
