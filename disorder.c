@@ -6,7 +6,7 @@
 /*   By: chennating <chennating@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 19:43:26 by chennating        #+#    #+#             */
-/*   Updated: 2026/04/08 21:18:54 by chennating       ###   ########.fr       */
+/*   Updated: 2026/04/08 21:42:34 by chennating       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ double	compute_disorder(t_list **a)
 	double	mistakes;
 	double	total_pairs;
 	t_list	*current;
-	t_list	*next;
+	t_list	*new;
 
 	mistakes = 0;
 	total_pairs = 0;
 	current = *a;
-	next = (*a)->next;
+	new = (*a)->next;
 	while (current)
 	{
-		next = current->next;
-		while (next)
+		new = current->next;
+		while (new)
 		{
-			if (current->content > next->content)
+			if (current->content > new->content)
 				mistakes ++;
-			next = next->next;
+			new = new->next;
 			total_pairs ++;
 		}
 		current = current->next;
