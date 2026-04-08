@@ -6,13 +6,13 @@
 /*   By: chennating <chennating@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 19:43:26 by chennating        #+#    #+#             */
-/*   Updated: 2026/04/08 19:43:29 by chennating       ###   ########.fr       */
+/*   Updated: 2026/04/08 21:18:54 by chennating       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-double	compute_disorder(t_list *a)
+double	compute_disorder(t_list **a)
 {
 	double	mistakes;
 	double	total_pairs;
@@ -21,8 +21,8 @@ double	compute_disorder(t_list *a)
 
 	mistakes = 0;
 	total_pairs = 0;
-	current = a;
-	next = a->next;
+	current = *a;
+	next = (*a)->next;
 	while (current)
 	{
 		next = current->next;
@@ -40,6 +40,7 @@ double	compute_disorder(t_list *a)
 	return (mistakes / total_pairs);
 }
 
+/*************Testing code******************/
 // static	t_list *build_list(int *value, int num)
 // {
 // 	t_list *list;
@@ -72,6 +73,6 @@ double	compute_disorder(t_list *a)
 
 // 	a = build_list(values, 4);
 // 	print_list(a);
-// 	printf("disorder = %.3f\n", compute_disorder(a));
+// 	printf("disorder = %.3f\n", compute_disorder(&a));
 // 	return (0);
 // }
