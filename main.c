@@ -12,6 +12,20 @@
 
 #include "libft.h"
 
+void	update_data(t_data *data, int stack_id)
+{
+	if (stack_id == A)
+	{
+		data->p_stacks[A] = data->stackA;
+		data->stacks[A] = *(data->stackA);
+	}
+	else if (stack_id == B)
+	{
+		data->p_stacks[B] = data->stackB;
+		data->stacks[B] = *(data->stackB);
+	}
+}
+
 void	print_list(t_list *stack)
 {
 	while (stack)
@@ -122,18 +136,23 @@ void	pushA(t_list **stackA, t_list **stackB)
 		next = *stackA;
 	else
 		next = NULL;
+	printf("test");
 	*stackA = *stackB;
+	printf("test2");
 	*stackB = (*stackB)->next;
+	printf("test3");
 	(*stackA)->next = next;
+	printf("test4");
 	// ft_putendl_fd("pa", 1);
 }
 
-void	push(t_list **stackA, t_list **stackB, int stack)
+void	push(t_data *data, int stack)
 {
 	if (stack == A)
-		pushA(stackA, stackB);
+		pushA(data->stackA, data->stackB);
 	else if (stack == B)
-		pushB(stackA, stackB);
+		pushB(data->stackA, data->stackB);
+	update_data(data, stack);
 }
 
 void	shift_down(t_list **stack)
@@ -152,10 +171,7 @@ void	shift_up(t_list **stack)
 
 	ft_lstlast(*stack)->next = *stack;
 	second = (*stack)->next;
-	printf("first: %d\n", (*stack)->content);
-	printf("s %p h %p\n", second, *stack);
 	(*stack)->next = NULL;
-	printf("second: %d\n", second->content);
 	*stack = second;
 }
 
@@ -208,6 +224,7 @@ void	shift_up_stack(t_data *data, int stack_id)
 		shift_upA(data->stackA);
 	if (stack_id == B)
 		shift_upA(data->stackB);
+	update_data(data, stack_id);
 }
 
 

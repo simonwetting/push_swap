@@ -112,10 +112,11 @@ void	splitter(t_data *data, int stack, int c_size, int split_chunk[2])
 		printf("%d >= %d\n", data->stacks[stack]->content, hl[LOW]);
 		printf("%d <= %d\n", data->stacks[stack]->content, hl[HIGH]);
 		if (data->stacks[stack]->content >= hl[LOW] && data->stacks[stack]->content <= hl[HIGH])
-			push(data->stackA, data->stackB, stack);
+			push(data, stack);
 		else
 			shift_up_stack(data, stack);
 		n++;
+		printf("done pushing/shifting");
 	}
 }
 
@@ -143,6 +144,7 @@ void	split(t_data *data)
 			//printf("%d %d\n", split_chunk[0], split_chunk[1]);
 			//print_chunk(data, split_chunk[0]);
 			//print_chunk(data, split_chunk[1]);
+			print_stacks(data->stacks[A], data->stacks[B]);
 			splitter(data, stack, c_size, split_chunk);
 			print_stacks(data->stacks[A], data->stacks[B]);
 			return ;
@@ -165,11 +167,13 @@ void	turk(t_data *data)
 	data->chunks[0][LOW] = 0;
 	data->chunks[0][HIGH] = lstsize - 1;
 	data->chunk_count = 1;
-	split(data);
+	//split(data);
 	printf("TURKed it!\n");
-	//shift_up_stack(data, A);
+	shift_up_stack(data, A);
+	//push(data, A);
+	pushA(data->stackA, data->stackB);
 	//shift_upA(data->stackA);
-	shift_up(data->stackA);
+	//shift_up(data->stackA);
 	print_stacks(data->stacks[A], data->stacks[B]);
 }
 

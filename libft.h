@@ -100,7 +100,7 @@ void	swap_topAB(t_list *stackA, t_list *stackB);
 
 void	pushB(t_list **stackA, t_list **stackB);
 void	pushA(t_list **stackA, t_list **stackB);
-void	push(t_list **stackA, t_list **stackB, int stack);
+void	push(t_data *data, int stack);
 
 void	shift_downA(t_list **stack);
 void	shift_downB(t_list **stack);
