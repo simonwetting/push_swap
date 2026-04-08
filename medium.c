@@ -6,7 +6,7 @@
 /*   By: chennating <chennating@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 21:14:18 by chennating        #+#    #+#             */
-/*   Updated: 2026/04/08 22:18:34 by chennating       ###   ########.fr       */
+/*   Updated: 2026/04/08 23:27:00 by chennating       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,19 @@ static void sort(t_list *list)
 	}
 }
 
-static chunk_size(t_list **stack)
+static int	chunk_size(t_list **stack)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	if(ft_lstsize(*stack) <= 0)
 		return (0);
-	while ((i + 1) * (i + 1) <= ft_lstsize(*stack))
+	while (i * i < ft_lstsize(*stack))
 		i ++;
 	return (i);
 }
 
-static t_pair	find_index(t_list *stack)
+static t_pair	create_index(t_list *stack)
 {
 	t_pair	index;
 	int		i;
@@ -77,7 +77,7 @@ void	chunk_based_sorting(t_list **stackA, t_list **stackB)
 
 	copy = *stackA;
 	sort(copy);
-	index = find_index(copy);
+	index = create_index(copy);
 
-
+//我需要把属于该chunk的node留下，不属于的放到别的地方（b)
 }
