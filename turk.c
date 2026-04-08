@@ -170,8 +170,8 @@ void	turk(t_data *data)
 	//split(data);
 	printf("TURKed it!\n");
 	shift_up_stack(data, A);
-	//push(data, A);
-	pushA(data->stackA, data->stackB);
+	push(data, A);
+	//pushB(data->stackA, data->stackB);
 	//shift_upA(data->stackA);
 	//shift_up(data->stackA);
 	print_stacks(data->stacks[A], data->stacks[B]);

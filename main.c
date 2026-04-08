@@ -146,6 +146,19 @@ void	pushA(t_list **stackA, t_list **stackB)
 	// ft_putendl_fd("pa", 1);
 }
 
+//void	pushA(t_list **stackA, t_list **stackB)
+//{
+//	t_list *next_b;
+//	t_list *next_a;
+
+//	if (*stack)
+//		next = *stackA;
+//	else
+//		next = NULL;
+//	(*stackA)->next = next;
+
+//}
+
 void	push(t_data *data, int stack)
 {
 	if (stack == A)
