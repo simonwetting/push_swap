@@ -22,6 +22,18 @@ void	swap(int *a, int *b,  int *unsorted)
 	*unsorted = 1;
 }
 
+void	test(int *unsorted)
+{
+	//*unsorted = 1;
+	//printf("unsorted>%d\n", *unsorted);
+	printf("unsorted>\n");
+}
+
+void	test2()
+{
+	printf("unsorted>\n");
+}
+
 int		*indexate(t_list *stack)
 {
 	int		*numbers;
@@ -37,6 +49,7 @@ int		*indexate(t_list *stack)
 		numbers[n++]= stack->content;
 		stack = stack->next;
 	}
+	unsorted = 1;
 	while (unsorted)
 	{
 		unsorted = 0;

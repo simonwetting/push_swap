@@ -152,7 +152,10 @@ void	shift_up(t_list **stack)
 
 	ft_lstlast(*stack)->next = *stack;
 	second = (*stack)->next;
+	printf("first: %d\n", (*stack)->content);
+	printf("s %p h %p\n", second, *stack);
 	(*stack)->next = NULL;
+	printf("second: %d\n", second->content);
 	*stack = second;
 }
 
@@ -183,20 +186,28 @@ void	shift_downAB(t_list **stackA, t_list **stackB)
 //		shift_upA(data->p_stacks[B]);
 //}
 
+//void	shift_up_stack(t_data *data, int stack_id)
+//{
+//	t_list		*second;
+//	t_list		**stack;
+
+//	//if (stack_id == A)
+//		// ft_putendl_fd("ra", 1);
+//	//if (stack_id == B)
+//		// ft_putendl_fd("rb", 1);
+//	stack = data->p_stacks[stack_id];
+//	ft_lstlast(*stack)->next = *stack;
+//	second = (*stack)->next;
+//	(*stack)->next = NULL;
+//	*stack = second;
+//}
+
 void	shift_up_stack(t_data *data, int stack_id)
 {
-	t_list		*second;
-	t_list		**stack;
-
-	//if (stack_id == A)
-		// ft_putendl_fd("ra", 1);
-	//if (stack_id == B)
-		// ft_putendl_fd("rb", 1);
-	stack = data->p_stacks[stack_id];
-	ft_lstlast(*stack)->next = *stack;
-	second = (*stack)->next;
-	(*stack)->next = NULL;
-	*stack = second;
+	if (stack_id == A)
+		shift_upA(data->stackA);
+	if (stack_id == B)
+		shift_upA(data->stackB);
 }
 
 
@@ -255,6 +266,7 @@ int	main(int argcount, char **args)
 	mode = 0;
 	if (argcount < 2)
 		return (0);
+	data = malloc(sizeof(t_data));
 	stackA = NULL;
 	while (index < argcount)
 		ft_lstadd_back(&stackA, ft_lstnew(ft_atoi(args[index++])));
@@ -265,18 +277,19 @@ int	main(int argcount, char **args)
 	data->stacks[B] = stackB;
 	data->p_stacks[A] = &stackA;
 	data->p_stacks[B] = &stackB;
-	if (args[1][0] < '0' || args[1][0] > '9' )
-		index++;
-	else if (ft_strncmp(args[1], "--simple", 9) == 0)
-		simple(stackA);
-	else if (ft_strncmp(args[1], "--medium", 9) == 0)
-		quatro_chunk(&stackA, &stackB);
-	else if (ft_strncmp(args[1], "--complex", 9) == 0)
-		turk(data);
-	else if (ft_strncmp(args[1], "--adaptive", 9) == 0)
-		mode = 4;
-	else if (index == 2 || argcount == 2)
-		return (write(1, "invalid input", 14), 0);
+	turk(data);
+	//if (args[1][0] < '0' || args[1][0] > '9' )
+	//	index++;
+	//else if (ft_strncmp(args[1], "--simple", 9) == 0)
+	//	simple(stackA);
+	//else if (ft_strncmp(args[1], "--medium", 9) == 0)
+	//	quatro_chunk(&stackA, &stackB);
+	//else if (ft_strncmp(args[1], "--complex", 9) == 0)
+	//	turk(data);
+	//else if (ft_strncmp(args[1], "--adaptive", 9) == 0)
+	//	mode = 4;
+	//else if (index == 2 || argcount == 2)
+	//	return (write(1, "invalid input", 14), 0);
 }
 
 //ft_lstlast(stackA)->next = stackA;

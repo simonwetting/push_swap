@@ -36,6 +36,7 @@ typedef struct	s_data
 	t_list		*stacks[2];
 	int 		*numbers;
 	int			chunks[500][2];
+	int			chunk_count;
 }				t_data;
 
 int		ft_atoi(const char *nptr);
@@ -119,6 +120,6 @@ void	simple(t_list *stackA);
 
 void	quatro_chunk(t_list **stackA, t_list **stackB);
 
-void	turk(t_list **stackA, t_list **stackB);
+void	turk(t_data *data);
 
 #endif

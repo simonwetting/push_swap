@@ -12,6 +12,12 @@
 
 #include "libft.h"
 
+int		chunksize(int chunks[500][2], int index)
+{
+	//printf("%d - %d + 1\n", chunks[index][HIGH], chunks[index][LOW]);
+	return (chunks[index][HIGH] - chunks[index][LOW] + 1);
+}
+
 int		in_chunk(int i, int chunks[500][2], int chunk_index, int *numbers)
 {
 	int		n;
@@ -23,26 +29,24 @@ int		in_chunk(int i, int chunks[500][2], int chunk_index, int *numbers)
 	return (0);
 }
 
-int		divide_chunk(int chunks[500][2], int chunk_index)
+int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data)
 {
-	int		chunksize;
+	int		c_size;
 	int		s_c1;
 	int		s_c2;
-	int		index_newchunk;
 
-	chunksize = chunks[chunk_index][HIGH] - chunks[chunk_index][LOW];
-	if (chunksize % 2 == 1)
-		s_c1 = (chunksize + 1) / 2;
+	//c_size = chunks[chunk_index][HIGH] - chunks[chunk_index][LOW] + 1;
+	c_size = chunksize(chunks, chunk_index);
+	if (c_size % 2 == 1)
+		s_c1 = (c_size + 1) / 2;
 	else
-		s_c1 = chunksize / 2;
-	s_c2 = chunksize - s_c1;
-	index_newchunk = 0;
-	while (chunks[index_newchunk])
-		index_newchunk++;
-	chunks[index_newchunk][LOW] = chunks[chunk_index][LOW];
-	chunks[index_newchunk][HIGH] = chunks[chunk_index][LOW] + s_c2;
-	chunks[chunk_index][LOW] = chunks[index_newchunk][HIGH] -  s_c1;
-	return (index_newchunk);
+		s_c1 = c_size / 2;
+	s_c2 = c_size - s_c1;
+	//printf("c_size: %d s_c2: %d   s_c1: %d\n", c_size, s_c2, s_c1);
+	chunks[data->chunk_count][LOW] = chunks[chunk_index][LOW];
+	chunks[data->chunk_count][HIGH] = chunks[chunk_index][LOW] + s_c2 - 1;
+	chunks[chunk_index][LOW] = chunks[chunk_index][LOW] + s_c2 ; //+ (c_size % 2 == 1);
+	return (data->chunk_count++);
 }
 
 int		find_chunk(int i, int chunks[500][2], int *numbers)
@@ -54,17 +58,17 @@ int		find_chunk(int i, int chunks[500][2], int *numbers)
 	while (numbers[index] != i)
 		index++;
 	chunk_index = 0;
-	while ((chunks[chunk_index][LOW] >= index && chunks[chunk_index][HIGH] <= index) == 0)
+	//printf("Low: %d    High: %d   number: %d index: %d\n", chunks[chunk_index][LOW], chunks[chunk_index][HIGH], i, index);\
+	//printf("%d  %d\n", chunks[chunk_index][LOW] <= index, chunks[chunk_index][HIGH] >= index);
+	//printf("%d\n", (chunks[chunk_index][LOW] <= index && chunks[chunk_index][HIGH] >= index));
+	//printf("%d <= %d\n", chunks[chunk_index][HIGH], index);
+	while ((chunks[chunk_index][LOW] <= index && chunks[chunk_index][HIGH] >= index) == 0)
 		chunk_index++;
+	//printf("chunk index: %d\n", chunk_index);
 	return (chunk_index);
 }
 
-int		chunksize(int chunks[500][2], int index)
-{
-	return (chunks[index][HIGH] - chunks[index][LOW] + 1);
-}
-
-void	repeat_rotate(void (*f)(t_data *, int), int times, t_list *data, int stack)
+void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack)
 {
 	int		n;
 
@@ -73,32 +77,46 @@ void	repeat_rotate(void (*f)(t_data *, int), int times, t_list *data, int stack)
 		f(data, stack);
 }
 
-void	splitter(t_data *data, int stack, int c_size, int hl[2])
+int		stack_is_split(t_data *d, int stack)
+{
+	int	c_size;
+
+	
+	while (d->stacks[stack])
+	{
+		//printf("Chunk_id = %d\n",find_chunk(d->stacks[stack]->content, d->chunks, d->numbers));
+		c_size = chunksize(d->chunks, find_chunk(d->stacks[stack]->content, d->chunks, d->numbers));
+		//printf("chunk %d of size %d\n", find_chunk(d->stacks[stack]->content, d->chunks, d->numbers), c_size);
+		if (c_size > 5)
+			return (0);
+		repeat_rotate(&shift_up_stack, c_size, d, stack);
+	}
+	return (1);
+}
+
+void	print_chunk(t_data *data, int chunk_id)
+{
+	printf("Chunk %d LOW: %d  HIGH: %d\n", chunk_id, data->chunks[chunk_id][LOW], data->chunks[chunk_id][HIGH]);
+}
+
+void	splitter(t_data *data, int stack, int c_size, int split_chunk[2])
 {
 	int		n;
+	int		hl[2];
 
+	hl[LOW] = data->numbers[data->chunks[split_chunk[1]][LOW]];
+	hl[HIGH] = data->numbers[data->chunks[split_chunk[1]][HIGH]];
 	n = 0;
 	while (n < c_size)
 	{
+		printf("%d >= %d\n", data->stacks[stack]->content, hl[LOW]);
+		printf("%d <= %d\n", data->stacks[stack]->content, hl[HIGH]);
 		if (data->stacks[stack]->content >= hl[LOW] && data->stacks[stack]->content <= hl[HIGH])
 			push(data->stackA, data->stackB, stack);
 		else
 			shift_up_stack(data, stack);
+		n++;
 	}
-}
-
-int		stack_is_split(t_data *data, int stack)
-{
-	int	c_size;
-
-	while (data->stacks[stack])
-	{
-		c_size = chunksize(data->chunks, find_chunk(data->stacks[stack]->content, data->chunks, data->numbers));
-		if (c_size > 5)
-			return (0);
-		repeat_rotate(&shift_up_stack, c_size, data, stack);
-	}
-	return (1);
 }
 
 void	split(t_data *data)
@@ -107,23 +125,28 @@ void	split(t_data *data)
 	int		split_chunk[2];
 	int		c_size;
 	int		stack;
-	int		hl[2];
 
-	numbcount = ft_lstsize(*(data->stackA))+ ft_lstsize(*(data->stackA) - 1);
+	numbcount = ft_lstsize(data->stacks[A]) + ft_lstsize(data->stacks[B]) - 1;
 	stack = A;
 	while (stack < 3)
 	{
-		if (stack_split(data, stack))
+		if (stack_is_split(data, stack))
 			stack++;
+		printf("TURK3\n");
 		c_size = chunksize(data->chunks, find_chunk(data->stacks[stack]->content, data->chunks, data->numbers));
-		if (c_size < 5)
+		if (c_size > 5)
 		{
+			printf("c_size < 5\n");
 			split_chunk[0] = find_chunk(data->stacks[stack]->content, data->chunks, data->numbers);
-			split_chunk[1] = divide_chunk(data->chunks, split_chunk[0]);
-			hl[LOW] = data->numbers[data->chunks[split_chunk[1]][LOW]];
-			hl[HIGH] = data->numbers[data->chunks[split_chunk[1]][HIGH]];
-			splitter(data, split_chunk, stack, hl);
+			//print_chunk(data, split_chunk[0]);
+			split_chunk[1] = divide_chunk(data->chunks, split_chunk[0], data);
+			//printf("%d %d\n", split_chunk[0], split_chunk[1]);
+			//print_chunk(data, split_chunk[0]);
+			//print_chunk(data, split_chunk[1]);
+			splitter(data, stack, c_size, split_chunk);
 			print_stacks(data->stacks[A], data->stacks[B]);
+			return ;
+			printf("endif\n");
 		}
 		else
 			repeat_rotate(&shift_up_stack, c_size, data, stack);
@@ -136,11 +159,18 @@ void	turk(t_data *data)
 
 	data->numbers = indexate(data->stacks[A]);
 	lstsize = ft_lstsize(data->stacks[A]);
+	for (int p = 0; p < lstsize; p++)
+		printf("[%d] = %d\n", p, data->numbers[p]);
 	ft_bzero(data->chunks, 4000);
 	data->chunks[0][LOW] = 0;
 	data->chunks[0][HIGH] = lstsize - 1;
-	for (int p = 0; p < lstsize; p++)
-		printf("[%d] = %d\n", p, data->numbers[p]);
+	data->chunk_count = 1;
+	split(data);
+	printf("TURKed it!\n");
+	//shift_up_stack(data, A);
+	//shift_upA(data->stackA);
+	shift_up(data->stackA);
+	print_stacks(data->stacks[A], data->stacks[B]);
 }
 
 
