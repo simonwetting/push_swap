@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 12:48:16 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/09 16:42:06 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/09 16:44:07 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,6 @@ void	four_chunks(t_data *data)
 	//PUSH CHUNK 2 back to B
 	//DIVIDE CHUNK 0, AND PUSH CHUNK 3 to B
 	//PUSH CHUNK 0 to B
+
+	//Per Chunk push the largest number first to A.
 }
