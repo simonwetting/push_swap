@@ -36,7 +36,9 @@ void	push_chunk(t_data *data, int chunk_index, int stack)
 		else
 			shift_up_stack(data, stack);
 	}
-}		
+}
+
+//TEST
 
 void	four_chunks(t_data *data)
 {
