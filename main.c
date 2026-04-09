@@ -14,12 +14,12 @@
 
 void	update_data(t_data *data, int stack_id)
 {
-	if (stack_id == A)
+	if (stack_id == A || stack_id == 3)
 	{
 		data->p_stacks[A] = data->stackA;
 		data->stacks[A] = *(data->stackA);
 	}
-	else if (stack_id == B)
+	if (stack_id == B || stack_id == 3)
 	{
 		data->p_stacks[B] = data->stackB;
 		data->stacks[B] = *(data->stackB);
@@ -114,10 +114,15 @@ void	swap_topAB(t_list *stackA, t_list *stackB)
 	// ft_putendl_fd("ss", 1);
 }
 
-void	pushB(t_list **stackA, t_list **stackB)
+void	push_to_B(t_list **stackA, t_list **stackB)
 {
 	t_list *next;
 
+	if (*stackA == NULL)
+	{
+		ft_putendl_fd("nothing to push", 1);
+		return ;
+	}
 	if (*stackB)
 		next = *stackB;
 	else
@@ -128,25 +133,26 @@ void	pushB(t_list **stackA, t_list **stackB)
 	// ft_putendl_fd("pb", 1);
 }
 
-void	pushA(t_list **stackA, t_list **stackB)
+void	push_to_A(t_list **stackA, t_list **stackB)
 {
 	t_list *next;
 
+	if (*stackB == NULL)
+	{
+		ft_putendl_fd("nothing to push", 1);
+		return ;
+	}
 	if (*stackA)
 		next = *stackA;
 	else
 		next = NULL;
-	printf("test");
 	*stackA = *stackB;
-	printf("test2");
 	*stackB = (*stackB)->next;
-	printf("test3");
 	(*stackA)->next = next;
-	printf("test4");
 	// ft_putendl_fd("pa", 1);
 }
 
-//void	pushA(t_list **stackA, t_list **stackB)
+//void	push_to_A(t_list **stackA, t_list **stackB)
 //{
 //	t_list *next_b;
 //	t_list *next_a;
@@ -162,10 +168,10 @@ void	pushA(t_list **stackA, t_list **stackB)
 void	push(t_data *data, int stack)
 {
 	if (stack == A)
-		pushA(data->stackA, data->stackB);
+		push_to_A(data->stackA, data->stackB);
 	else if (stack == B)
-		pushB(data->stackA, data->stackB);
-	update_data(data, stack);
+		push_to_B(data->stackA, data->stackB);
+	update_data(data, 3);
 }
 
 void	shift_down(t_list **stack)
@@ -266,12 +272,12 @@ void	sort(t_list **stackA)
 
 	swap_topA(*stackA);
 	stackB = NULL;
-	pushB(stackA, &stackB);
-	pushB(stackA, &stackB);
-	pushA(stackA, &stackB);
+	push_to_B(stackA, &stackB);
+	push_to_B(stackA, &stackB);
+	push_to_A(stackA, &stackB);
 	shift_downA(stackA);
-	pushB(stackA, &stackB);
-	//pushB(stackA, &stackB);
+	push_to_B(stackA, &stackB);
+	//push_to_B(stackA, &stackB);
 	shift_downB(&stackB);
 	shift_upA(stackA);
 	// shift_downA(stackA);
@@ -307,6 +313,11 @@ int	main(int argcount, char **args)
 	data->stacks[B] = stackB;
 	data->p_stacks[A] = &stackA;
 	data->p_stacks[B] = &stackB;
+	print_stacks(stackA, stackB);
+	// push_to_B(&stackA, &stackB);
+	// push(data, B);
+	// print_stacks(data->stacks[A], data->stacks[B]);
+	// print_stacks(stackA, stackB);
 	turk(data);
 	//if (args[1][0] < '0' || args[1][0] > '9' )
 	//	index++;

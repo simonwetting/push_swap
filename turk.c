@@ -77,21 +77,33 @@ void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack)
 		f(data, stack);
 }
 
+void	print_chunks(t_data *data)
+{
+	int		n;
+
+	n = 0;
+	while (n < data->chunk_count)
+		printf("chunk [%d] size [%d]", n, data->chunks[n][HIGH] - data->chunks[n][LOW] + 1);
+}
+
 int		stack_is_split(t_data *d, int stack)
 {
 	int	c_size;
+	int	counter;
 
-	
+	printf("is the stack split?\n");
+	counter = 0;
 	while (d->stacks[stack])
 	{
-		//printf("Chunk_id = %d\n",find_chunk(d->stacks[stack]->content, d->chunks, d->numbers));
+		printf("Chunk_id = %d\n",find_chunk(d->stacks[stack]->content, d->chunks, d->numbers));
 		c_size = chunksize(d->chunks, find_chunk(d->stacks[stack]->content, d->chunks, d->numbers));
-		//printf("chunk %d of size %d\n", find_chunk(d->stacks[stack]->content, d->chunks, d->numbers), c_size);
+		printf("chunk %d of size %d\n", find_chunk(d->stacks[stack]->content, d->chunks, d->numbers), c_size);
 		if (c_size > 5)
 			return (0);
 		repeat_rotate(&shift_up_stack, c_size, d, stack);
+		if (counter++ > ft_lstsize(d->stacks[stack]));
+			return (1);
 	}
-	return (1);
 }
 
 void	print_chunk(t_data *data, int chunk_id)
@@ -112,7 +124,7 @@ void	splitter(t_data *data, int stack, int c_size, int split_chunk[2])
 		printf("%d >= %d\n", data->stacks[stack]->content, hl[LOW]);
 		printf("%d <= %d\n", data->stacks[stack]->content, hl[HIGH]);
 		if (data->stacks[stack]->content >= hl[LOW] && data->stacks[stack]->content <= hl[HIGH])
-			push(data, stack);
+			push(data, 1 - stack);
 		else
 			shift_up_stack(data, stack);
 		n++;
@@ -147,7 +159,6 @@ void	split(t_data *data)
 			print_stacks(data->stacks[A], data->stacks[B]);
 			splitter(data, stack, c_size, split_chunk);
 			print_stacks(data->stacks[A], data->stacks[B]);
-			return ;
 			printf("endif\n");
 		}
 		else
@@ -167,11 +178,11 @@ void	turk(t_data *data)
 	data->chunks[0][LOW] = 0;
 	data->chunks[0][HIGH] = lstsize - 1;
 	data->chunk_count = 1;
-	//split(data);
+	split(data);
 	printf("TURKed it!\n");
-	shift_up_stack(data, A);
-	push(data, A);
-	//pushB(data->stackA, data->stackB);
+	// shift_up_stack(data, A);
+	// push(data, B);
+	//push_to_B(data->stackA, data->stackB);
 	//shift_upA(data->stackA);
 	//shift_up(data->stackA);
 	print_stacks(data->stacks[A], data->stacks[B]);
