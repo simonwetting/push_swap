@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 10:35:28 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/07 10:35:28 by anonymous     ########   odam.nl         */
+/*   Updated: 2026/04/09 11:44:42 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,6 @@ void	swap(int *a, int *b,  int *unsorted)
 	*unsorted = 1;
 }
 
-void	test(int *unsorted)
-{
-	//*unsorted = 1;
-	//printf("unsorted>%d\n", *unsorted);
-	printf("unsorted>\n");
-}
-
-void	test2()
-{
-	printf("unsorted>\n");
-}
 
 int		*indexate(t_list *stack)
 {

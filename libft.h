@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/03/25 14:11:06 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/09 16:30:45 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,11 @@ void	simple(t_list *stackA);
 void	quatro_chunk(t_list **stackA, t_list **stackB);
 
 void	turk(t_data *data);
+
+int		chunksize(int chunks[500][2], int index);
+int		in_chunk(int i, int chunks[500][2], int chunk_index, int *numbers);
+int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data);
+int		find_chunk(int i, int chunks[500][2], int *numbers);
+void	print_chunks(t_data *data);
 
 #endif

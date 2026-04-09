@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/02 18:06:14 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/09 14:17:45 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	print_list(t_list *stack)
 {
 	while (stack)
 	{
-		printf("%p contains:\ncontent>%d\nnext>%d\n\n", stack, (stack->content), stack->next);
+		printf("%p contains:\ncontent>%d\nnext>%p\n\n", stack, (stack->content), stack->next);
 		stack = stack->next;
 	}
 }
@@ -242,7 +242,7 @@ void	shift_up_stack(t_data *data, int stack_id)
 	if (stack_id == A)
 		shift_upA(data->stackA);
 	if (stack_id == B)
-		shift_upA(data->stackB);
+		shift_upB(data->stackB);
 	update_data(data, stack_id);
 }
 
