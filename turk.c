@@ -148,6 +148,8 @@ void	turk(t_data *data)
 	push_largest(data, chunk_order);
 	print_stacks(data->stacks[A], data->stacks[B]);
 	printf("Sorted %d numbers in %d operations\n %d ops per number\n", ft_lstsize(data->stacks[A]), data->count_ops, data->count_ops / ft_lstsize(data->stacks[A]));
+	//for (int n = 0; n < ft_lstsize(data->stacks[A]); n++)
+	//	printf("[%d] %d\n", n, data->numbers[n]);
 }
 
 

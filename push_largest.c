@@ -50,14 +50,14 @@ void	push_largest(t_data *data, int *chunk_order)
 	chunk_index = -1;
 	while (++chunk_index < data->chunk_count)
 	{
-		n = data->chunks[chunk_order[chunk_index]][LOW];
-		while (n <= data->chunks[chunk_order[chunk_index]][HIGH])
+		n = data->chunks[chunk_order[chunk_index]][HIGH];
+		while (n >= data->chunks[chunk_order[chunk_index]][LOW])
 		{
 			printf("Looking for %d   ",data->numbers[n]);
 			move(data, find_number(data, data->numbers[n]));
 			printf("after moving, number is %d steps downward\n", find_number(data, data->numbers[n]));
 			push_to(data, A);
-			n++;
+			n--;
 		}	
 	}
 }
