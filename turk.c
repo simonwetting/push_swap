@@ -146,6 +146,7 @@ void	turk(t_data *data)
 	for (int n = 0; n < data->chunk_count; n++)
 		printf("%d\n", data->chunks[chunk_order[n]][LOW]);
 	push_largest(data, chunk_order);
+	print_stacks(data->stacks[A], data->stacks[B]);
 }
 
 

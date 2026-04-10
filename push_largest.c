@@ -56,7 +56,7 @@ void	push_largest(t_data *data, int *chunk_order)
 			printf("Looking for %d   ",data->numbers[n]);
 			move(data, find_number(data, data->numbers[n]));
 			printf("after moving, number is %d steps downward\n", find_number(data, data->numbers[n]));
-			//push_to_A(data->stackA, data->stackB);
+			push_to(data, A);
 			n++;
 		}	
 	}
