@@ -37,6 +37,7 @@ typedef struct	s_data
 	int 		*numbers;
 	int			chunks[500][2];
 	int			chunk_count;
+	int			count_ops;
 }				t_data;
 
 int		ft_atoi(const char *nptr);

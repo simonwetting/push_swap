@@ -167,6 +167,7 @@ void	push_to(t_data *data, int stack)
 		push_to_A(data->stackA, data->stackB);
 	else if (stack == B)
 		push_to_B(data->stackA, data->stackB);
+	data->count_ops++;
 	update_data(data, 3);
 }
 //void	push_to_A(t_list **stackA, t_list **stackB)
@@ -253,6 +254,7 @@ void	shift_up_stack(t_data *data, int stack_id)
 	if (stack_id == B)
 		shift_upB(data->stackB);
 	update_data(data, stack_id);
+	data->count_ops++;
 }
 void	shift_down_stack(t_data *data, int stack_id)
 {
@@ -261,6 +263,7 @@ void	shift_down_stack(t_data *data, int stack_id)
 	if (stack_id == B)
 		shift_downB(data->stackB);
 	update_data(data, stack_id);
+	data->count_ops++;
 }
 
 
@@ -330,6 +333,7 @@ int	main(int argcount, char **args)
 	data->stacks[B] = stackB;
 	data->p_stacks[A] = &stackA;
 	data->p_stacks[B] = &stackB;
+	data->count_ops = 0;
 	print_stacks(stackA, stackB);
 	// push_to_B(&stackA, &stackB);
 	// push(data, B);
