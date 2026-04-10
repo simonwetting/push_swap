@@ -12,6 +12,15 @@
 
 #include "libft.h"
 
+void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack)
+{
+	int		n;
+
+	n = 0;
+	while (n++ < times)
+		f(data, stack);
+}
+
 void	update_data(t_data *data, int stack_id)
 {
 	if (stack_id == A || stack_id == 3)
@@ -203,7 +212,7 @@ void	shift_downA(t_list **stack)
 void	shift_downB(t_list **stack)
 {
 	shift_down(stack);
-	ft_putendl_fd("rrb", 1);
+	//ft_putendl_fd("rrb", 1);
 }
 
 void	shift_downAB(t_list **stackA, t_list **stackB)
@@ -243,6 +252,14 @@ void	shift_up_stack(t_data *data, int stack_id)
 		shift_upA(data->stackA);
 	if (stack_id == B)
 		shift_upB(data->stackB);
+	update_data(data, stack_id);
+}
+void	shift_down_stack(t_data *data, int stack_id)
+{
+	if (stack_id == A)
+		shift_downA(data->stackA);
+	if (stack_id == B)
+		shift_downB(data->stackB);
 	update_data(data, stack_id);
 }
 

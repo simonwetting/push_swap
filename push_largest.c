@@ -18,18 +18,28 @@ int		find_number(t_data *data, int i)
 	int		n;
 
 	n = 0;
+	tmp = data->stacks[B];
 	while (tmp)
 	{
 		if (tmp->content == i)
 			return (n);
 		tmp = tmp->next;
+		n++;
 	}
 	return (-1);
 }
 
-void	move(int i)
+void	move(t_data *data, int i)
 {
-	printf ("Need to move %d down", i);
+	int	lst_size;
+
+	lst_size = ft_lstsize(data->stacks[B]);
+	printf ("Need to move %d down\n", i);
+	if (i > lst_size - i)
+		repeat_rotate(shift_down_stack, lst_size - i, data, B);
+	else
+		repeat_rotate(shift_up_stack, i, data, B);
+	
 }
 
 void	push_largest(t_data *data, int *chunk_order)
@@ -40,12 +50,13 @@ void	push_largest(t_data *data, int *chunk_order)
 	chunk_index = -1;
 	while (++chunk_index < data->chunk_count)
 	{
-		printf("test");
 		n = data->chunks[chunk_order[chunk_index]][LOW];
 		while (n <= data->chunks[chunk_order[chunk_index]][HIGH])
 		{
-			printf("test %d", find_number(data, data->numbers[n]));
-			move(find_number(data, data->numbers[n]));
+			printf("Looking for %d   ",data->numbers[n]);
+			move(data, find_number(data, data->numbers[n]));
+			printf("after moving, number is %d steps downward\n", find_number(data, data->numbers[n]));
+			//push_to_A(data->stackA, data->stackB);
 			n++;
 		}	
 	}

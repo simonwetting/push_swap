@@ -90,7 +90,6 @@ t_list	*ft_lstsecondlast(t_list *lst);
 void	radix(t_list *stackA, t_list *stackB);
 void	bubble(t_list **stackA);
 
-// void	shift_down(t_list **stack);
 // void	shift_up(t_list **stack);
 // void	swap_top(t_list *stack);
 
@@ -111,7 +110,10 @@ void	shift_upB(t_list **stack);
 void	shift_upAB(t_list **stackA, t_list **stackB);
 
 void	shift_up(t_list **stack);
+void	shift_down(t_list **stack);
+
 void	shift_up_stack(t_data *data, int stack_id);
+void	shift_down_stack(t_data *data, int stack_id);
 
 void	print_stack(t_list *stack, char c);
 void	print_stacks(t_list *stackA, t_list *stackB);
@@ -132,5 +134,7 @@ void	print_chunk(t_data *data, int chunk_id);
 void	swap(int *a, int *b,  int *unsorted);
 int		*index_chunks(t_data *data);
 void	push_largest(t_data *data, int *chunk_order);
+
+void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack);
 
 #endif

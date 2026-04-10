@@ -12,15 +12,6 @@
 
 #include "libft.h"
 
-void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack)
-{
-	int		n;
-
-	n = 0;
-	while (n++ < times)
-		f(data, stack);
-}
-
 //int		stack_is_split(t_data *d, int stack)
 //{
 //	int	c_size;
