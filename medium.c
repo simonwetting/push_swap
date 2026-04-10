@@ -38,8 +38,6 @@ void	push_chunk(t_data *data, int chunk_index, int stack)
 	}
 }
 
-//TEST
-
 void	four_chunks(t_data *data)
 {
 	data->numbers = indexate(data->stacks[A]);
