@@ -50,11 +50,6 @@ int		stack_is_split(t_data *d, int stack)
 	return (1);
 }
 
-void	print_chunk(t_data *data, int chunk_id)
-{
-	printf("Chunk %d LOW: %d  HIGH: %d\n", chunk_id, data->chunks[chunk_id][LOW], data->chunks[chunk_id][HIGH]);
-}
-
 void	splitter(t_data *data, int stack, int c_size, int split_chunk[2])
 {
 	int		n;
@@ -89,6 +84,8 @@ void	split(t_data *data)
 	{
 		if (stack_is_split(data, stack))
 			stack++;
+		if (stack > 2)
+			break;
 		printf("TURK3\n");
 		c_size = chunksize(data->chunks, find_chunk(data->stacks[stack]->content, data->chunks, data->numbers));
 		printf("Turk4");
@@ -109,6 +106,7 @@ void	split(t_data *data)
 		else
 			repeat_rotate(&shift_up_stack, c_size, data, stack);
 	}
+	printf("done splitting\n");
 }
 
 void	turk(t_data *data)
@@ -131,6 +129,8 @@ void	turk(t_data *data)
 	//shift_upA(data->stackA);
 	//shift_up(data->stackA);
 	print_stacks(data->stacks[A], data->stacks[B]);
+	print_chunks(data);
+	
 }
 
 

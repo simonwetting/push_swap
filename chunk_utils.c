@@ -68,11 +68,24 @@ int		find_chunk(int i, int chunks[500][2], int *numbers)
 	return (chunk_index);
 }
 
+void	print_chunk(t_data *data, int chunk_id)
+{
+	printf("Chunk %d LOW: %d  HIGH: %d\n", chunk_id, data->chunks[chunk_id][LOW], data->chunks[chunk_id][HIGH]);
+}
+
 void	print_chunks(t_data *data)
 {
 	int		n;
+	int		c_size;
+	int		n_index;
 
-	n = 0;
-	while (n < data->chunk_count)
-		printf("chunk [%d] size [%d]", n, data->chunks[n][HIGH] - data->chunks[n][LOW] + 1);
+	n = -1;
+	while (++n < data->chunk_count)
+	{
+		c_size = data->chunks[n][HIGH] - data->chunks[n][LOW] + 1;
+		printf("chunk [%d] size [%d]\n", n, c_size);
+		n_index =  data->chunks[n][LOW];
+		while (n_index <= data->chunks[n][HIGH])
+			printf("%d\n", data->numbers[n_index++]);
+	}
 }

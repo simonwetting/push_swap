@@ -127,5 +127,6 @@ int		in_chunk(int i, int chunks[500][2], int chunk_index, int *numbers);
 int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data);
 int		find_chunk(int i, int chunks[500][2], int *numbers);
 void	print_chunks(t_data *data);
+void	print_chunk(t_data *data, int chunk_id);
 
 #endif
