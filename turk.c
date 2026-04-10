@@ -78,7 +78,7 @@ void	splitter(t_data *data, int stack, int c_size, int split_chunk[2])
 		//printf("%d >= %d\n", data->stacks[stack]->content, hl[LOW]);
 		//printf("%d <= %d\n", data->stacks[stack]->content, hl[HIGH]);
 		if (data->stacks[stack]->content >= hl[LOW] && data->stacks[stack]->content <= hl[HIGH])
-			push(data, 1 - stack);
+			push_to(data, 1 - stack);
 		else
 			shift_up_stack(data, stack);
 		n++;
@@ -127,6 +127,7 @@ void	split(t_data *data)
 void	turk(t_data *data)
 {
 	int	lstsize;
+	int	*chunk_order;
 
 	data->numbers = indexate(data->stacks[A]);
 	lstsize = ft_lstsize(data->stacks[A]);
@@ -145,7 +146,15 @@ void	turk(t_data *data)
 	//shift_up(data->stackA);
 	//print_stacks(data->stacks[A], data->stacks[B]);
 	print_chunks(data);
-	
+	while (data->stacks[A])
+		push_to(data, B);
+	print_stacks(data->stacks[A], data->stacks[B]);
+	chunk_order = index_chunks(data);
+	//for (int n = 0; n < data->chunk_count; n++)
+	//	printf("%d\n", chunk_order[n]);
+	for (int n = 0; n < data->chunk_count; n++)
+		printf("%d\n", data->chunks[chunk_order[n]][LOW]);
+	push_largest(data, chunk_order);
 }
 
 

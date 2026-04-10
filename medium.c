@@ -30,7 +30,7 @@ void	push_chunk(t_data *data, int chunk_index, int stack)
 	{
 		if ((data->stacks[stack]->content >= L2 && data->stacks[stack]->content <= H2))
 		{
-			push(data, 1 - stack);
+			push_to(data, 1 - stack);
 			pushed++;
 		}
 		else

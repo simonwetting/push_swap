@@ -16,6 +16,7 @@ void	swap(int *a, int *b,  int *unsorted)
 {
 	int tmp;
 
+	//printf("%d > %d\n", *a, *b);
 	tmp  = *a;
 	*a = *b;
 	*b = tmp;

@@ -98,9 +98,9 @@ void	swap_topA(t_list *stackA);
 void	swap_topB(t_list *stackB);
 void	swap_topAB(t_list *stackA, t_list *stackB);
 
-void	pushB(t_list **stackA, t_list **stackB);
-void	pushA(t_list **stackA, t_list **stackB);
-void	push(t_data *data, int stack);
+void	push_to_B(t_list **stackA, t_list **stackB);
+void	push_to_A(t_list **stackA, t_list **stackB);
+void	push_to(t_data *data, int stack);
 
 void	shift_downA(t_list **stack);
 void	shift_downB(t_list **stack);
@@ -128,5 +128,9 @@ int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data);
 int		find_chunk(int i, int chunks[500][2], int *numbers);
 void	print_chunks(t_data *data);
 void	print_chunk(t_data *data, int chunk_id);
+
+void	swap(int *a, int *b,  int *unsorted);
+int		*index_chunks(t_data *data);
+void	push_largest(t_data *data, int *chunk_order);
 
 #endif
