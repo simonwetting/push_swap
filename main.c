@@ -261,6 +261,27 @@ void	free_everything(t_data *data)
 	free(data);
 }
 
+void	run(int argcount, char **args, int index, t_data *data)
+{
+	if (args[1][0] < '0' || args[1][0] > '9' )
+		index++;
+	else if (ft_strncmp(args[1], "--simple", 9) == 0)
+		simple(stackA);//void	run(int argcount, char **args, int index, t_data *data)
+{
+	if (args[1][0] < '0' || args[1][0] > '9' )
+		index++;
+	else if (ft_strncmp(args[1], "--simple", 9) == 0)
+		simple(stackA);
+	else if (ft_strncmp(args[1], "--medium", 9) == 0)
+		quatro_chunk(&stackA, &stackB);
+	else if (ft_strncmp(args[1], "--complex", 9) == 0)
+		turk(data);
+	else if (ft_strncmp(args[1], "--adaptive", 9) == 0)
+		mode = 4;
+	else if (index == 2 || argcount == 2)
+		return (write(1, "invalid input", 14), 0);
+}
+
 int	main(int argcount, char **args)
 {
 	int		index;
@@ -287,31 +308,11 @@ int	main(int argcount, char **args)
 	data->count_ops = 0;
 	//print_stacks(stackA, stackB);
 	//turk(data);
-	four_chunks(data);
+	//four_chunks(data);
+	run(argcount, args, index, data);
 	free_everything(data);
 	return (0);
 }
-
-//void	run(int argcount, char **args, int index, t_data *data)
-//{
-//	if (args[1][0] < '0' || args[1][0] > '9' )
-//		index++;
-//	else if (ft_strncmp(args[1], "--simple", 9) == 0)
-//		simple(stackA);//void	run(int argcount, char **args, int index, t_data *data)
-//{
-//	if (args[1][0] < '0' || args[1][0] > '9' )
-//		index++;
-//	else if (ft_strncmp(args[1], "--simple", 9) == 0)
-//		simple(stackA);
-//	else if (ft_strncmp(args[1], "--medium", 9) == 0)
-//		quatro_chunk(&stackA, &stackB);
-//	else if (ft_strncmp(args[1], "--complex", 9) == 0)
-//		turk(data);
-//	else if (ft_strncmp(args[1], "--adaptive", 9) == 0)
-//		mode = 4;
-//	else if (index == 2 || argcount == 2)
-//		return (write(1, "invalid input", 14), 0);
-//}
 
 //	else if (ft_strncmp(args[1], "--medium", 9) == 0)
 //		quatro_chunk(&stackA, &stackB);

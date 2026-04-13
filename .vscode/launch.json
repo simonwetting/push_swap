@@ -1,0 +1,34 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "(gdb) Launch",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/a.exe",
+			"args": [1127 86 786 89 234 23 42 34 65 6735423 32 7 590 986 645 4768 8759 9856 98665 1123 124234 12312312 23423451 920 161 199 724518 20076669 74427 463653 64 91 5792148 49043 152797313 84295835 70 12 89011325 52278 961803 6637 32314237 4036 6 12672883 9477251113 286917 8609703 217615 80041 383834 41 11 73758537 4955889641 93534 32025 46620 36 8522605 1339 1454204778 1657 2514 7 816 92141744 1735303549 876 3491098 13 2068 49150 17 9083350282 80 3417820 53287 940000 86340 9236 739289 360745 569189781 680231 22 6160 4286 879 3766 56354 2296 34 833315565 13020 970 459268 73516 6324315 3894428 8 2913411 217686654 236 1018471309 407978915 440 5 54004 242697369 3382227 165023130 1821 4 288152667 0 192268 95 1367841 3 607281987 709],
+			"stopAtEntry": false,
+			"cwd": "${fileDirname}",
+			"environment": [],
+			"externalConsole": false,
+			"MIMode": "gdb",
+			"miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				},
+				{
+					"description": "Set Disassembly Flavor to Intel",
+					"text": "-gdb-set disassembly-flavor intel",
+					"ignoreFailures": true
+				}
+			]
+		}
+
+	]
+}
