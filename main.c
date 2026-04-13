@@ -248,6 +248,19 @@ void	sort(t_list **stackA)
 	//print_list(stackB);
 }
 
+void	del(void *p)
+{
+	free(p);
+}
+
+void	free_everything(t_data *data)
+{
+	ft_lstclear(data->stackA, del);
+	ft_lstclear(data->stackB, del);
+	free(data->numbers);
+	free(data);
+}
+
 int	main(int argcount, char **args)
 {
 	int		index;
@@ -275,6 +288,7 @@ int	main(int argcount, char **args)
 	//print_stacks(stackA, stackB);
 	//turk(data);
 	four_chunks(data);
+	free_everything(data);
 	return (0);
 }
 
