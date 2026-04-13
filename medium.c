@@ -54,22 +54,22 @@ void	four_chunks(t_data *data)
 	divide_chunk(data->chunks, 0, data);	//DIVIDE the first chunk into two
 	//print_stacks(data->stacks[A], data->stacks[B]);
 	push_chunk(data, 1, A);	//PUSH the second chunk to B
-	print_stacks(data->stacks[A], data->stacks[B]);
+	// print_stacks(data->stacks[A], data->stacks[B]);
 	//DIVIDE CHUNK 1, AND PUSH CHUNK 2 A
 	divide_chunk(data->chunks, 1, data);
 	push_chunk(data, 2, B);
-	print_stacks(data->stacks[A], data->stacks[B]);
+	// print_stacks(data->stacks[A], data->stacks[B]);
 	// //PUSH CHUNK 2 back to B
 	push_chunk(data, 2, A);
-	print_stacks(data->stacks[A], data->stacks[B]);
+	// print_stacks(data->stacks[A], data->stacks[B]);
 	// //DIVIDE CHUNK 0, AND PUSH CHUNK 3 to B
 	divide_chunk(data->chunks, 0, data);
 	push_chunk(data, 3, A);
-	print_stacks(data->stacks[A], data->stacks[B]);
+	// print_stacks(data->stacks[A], data->stacks[B]);
 	// //PUSH CHUNK 0 to B
 	push_chunk(data, 0, A);
 	// print_chunks(data);
-	print_stacks(data->stacks[A], data->stacks[B]);
+	// print_stacks(data->stacks[A], data->stacks[B]);
 	//Per Chunk push the largest number first to A.
 	int		chunk_order[4] = {0, 3, 1, 2};
 	// h = 0, l = 1

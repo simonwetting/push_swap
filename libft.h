@@ -121,8 +121,6 @@ void	print_stacks(t_list *stackA, t_list *stackB);
 int		*indexate(t_list *stack);
 void	simple(t_list *stackA);
 
-void	quatro_chunk(t_list **stackA, t_list **stackB);
-
 void	turk(t_data *data);
 
 int		chunksize(int chunks[500][2], int index);

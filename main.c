@@ -261,23 +261,24 @@ void	free_everything(t_data *data)
 	free(data);
 }
 
-void	run(int argcount, char **args, int index, t_data *data)
+int	run(int argcount, char **args, int index, t_data *data)
 {
+	if (argcount < 2)
+		return (0);
 	if (ft_strncmp(args[1], "--simple", 9) == 0)
-		simple(data->stackA);
+		simple(data->stacks[A]);
 	else if (ft_strncmp(args[1], "--medium", 9) == 0)
 		four_chunks(data);
 	else if (ft_strncmp(args[1], "--complex", 10) == 0)
 		turk(data);
-	else if (ft_strncmp(args[1], "--adaptive", 11) == 0)
-		adaptive(data);
+	// else if (ft_strncmp(args[1], "--adaptive", 11) == 0)
+	// 	adaptive(data);
 	else if (args[1][0] < '0' || args[1][0] > '9')
 		index++;
 	else
-	{
-		write(1, "invalid input\n", 14);
-		return (0);
-	}
+		return (write(1, "invalid input\n", 14), 0);
+	return (0);
+		
 }
 
 int	main(int argcount, char **args)
