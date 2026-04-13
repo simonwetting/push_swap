@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/09 16:30:45 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/13 13:40:39 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,13 @@ int		find_chunk(int i, int chunks[500][2], int *numbers);
 void	print_chunks(t_data *data);
 void	print_chunk(t_data *data, int chunk_id);
 
+int		div_chunk(int chunks[500][2], int chunk_index, t_data *data);
+
 void	swap(int *a, int *b,  int *unsorted);
 int		*index_chunks(t_data *data);
 void	push_largest(t_data *data, int *chunk_order);
 
 void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack);
+void	four_chunks(t_data *data);
 
 #endif

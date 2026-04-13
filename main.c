@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/09 14:17:45 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/13 13:39:43 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,6 @@ void	print_list(t_list *stack)
 	}
 }
 
-// void	print_stacks(t_list *stackA, t_list *stackB)
-// {
-// 	printf("STACK A:\n");
-// 	while (stackA)
-// 	{
-// 		printf("%s\n", (char *)(stackA->content));
-// 		stackA = stackA->next;
-// 	}
-// 	printf("STACK B:\n");
-// 	while (stackB)
-// 	{
-// 		printf("%s\n", (char *)(stackB->content));
-// 		stackB = stackB->next;
-// 	}
-// }
-
 void	print_stacks(t_list *stackA, t_list *stackB)
 {
 	printf("STACK A:\n");
@@ -85,15 +69,6 @@ void	print_stack(t_list *stack, char c)
 		stack = stack->next;
 	}
 }
-
-// void	swap_top(t_list *stack)
-// {
-// 	char	*tmp;
-
-// 	tmp = stack->next->content;
-// 	stack->next->content =  stack->content;
-// 	stack->content = tmp;
-// }
 
 void	swap_top(t_list *stack)
 {
@@ -170,19 +145,6 @@ void	push_to(t_data *data, int stack)
 	data->count_ops++;
 	update_data(data, 3);
 }
-//void	push_to_A(t_list **stackA, t_list **stackB)
-//{
-//	t_list *next_b;
-//	t_list *next_a;
-
-//	if (*stack)
-//		next = *stackA;
-//	else
-//		next = NULL;
-//	(*stackA)->next = next;
-
-//}
-
 
 void	shift_down(t_list **stack)
 {
@@ -222,30 +184,6 @@ void	shift_downAB(t_list **stackA, t_list **stackB)
 	shift_down(stackA);
 	ft_putendl_fd("rrr", 1);
 }
-
-//void	shift_up2(t_data *data, int stack)
-//{
-//	if (stack == A)
-//		shift_upA(data->p_stacks[A]);
-//	else if (stack == B)
-//		shift_upA(data->p_stacks[B]);
-//}
-
-//void	shift_up_stack(t_data *data, int stack_id)
-//{
-//	t_list		*second;
-//	t_list		**stack;
-
-//	//if (stack_id == A)
-//		// ft_putendl_fd("ra", 1);
-//	//if (stack_id == B)
-//		// ft_putendl_fd("rb", 1);
-//	stack = data->p_stacks[stack_id];
-//	ft_lstlast(*stack)->next = *stack;
-//	second = (*stack)->next;
-//	(*stack)->next = NULL;
-//	*stack = second;
-//}
 
 void	shift_up_stack(t_data *data, int stack_id)
 {
@@ -334,25 +272,27 @@ int	main(int argcount, char **args)
 	data->p_stacks[A] = &stackA;
 	data->p_stacks[B] = &stackB;
 	data->count_ops = 0;
-	print_stacks(stackA, stackB);
-	// push_to_B(&stackA, &stackB);
-	// push(data, B);
-	// print_stacks(data->stacks[A], data->stacks[B]);
-	// print_stacks(stackA, stackB);
-	turk(data);
-	//if (args[1][0] < '0' || args[1][0] > '9' )
-	//	index++;
-	//else if (ft_strncmp(args[1], "--simple", 9) == 0)
-	//	simple(stackA);
-	//else if (ft_strncmp(args[1], "--medium", 9) == 0)
-	//	quatro_chunk(&stackA, &stackB);
-	//else if (ft_strncmp(args[1], "--complex", 9) == 0)
-	//	turk(data);
-	//else if (ft_strncmp(args[1], "--adaptive", 9) == 0)
-	//	mode = 4;
-	//else if (index == 2 || argcount == 2)
-	//	return (write(1, "invalid input", 14), 0);
+	//print_stacks(stackA, stackB);
+	//turk(data);
+	four_chunks(data);
+	return (0);
 }
+
+//void	run(int argcount, char **args, int index, t_data *data)
+//{
+//	if (args[1][0] < '0' || args[1][0] > '9' )
+//		index++;
+//	else if (ft_strncmp(args[1], "--simple", 9) == 0)
+//		simple(stackA);
+//	else if (ft_strncmp(args[1], "--medium", 9) == 0)
+//		quatro_chunk(&stackA, &stackB);
+//	else if (ft_strncmp(args[1], "--complex", 9) == 0)
+//		turk(data);
+//	else if (ft_strncmp(args[1], "--adaptive", 9) == 0)
+//		mode = 4;
+//	else if (index == 2 || argcount == 2)
+//		return (write(1, "invalid input", 14), 0);
+//}
 
 //ft_lstlast(stackA)->next = stackA;
 
@@ -432,4 +372,66 @@ int	main(int argcount, char **args)
 // 	second_last->next = *stackB;
 // 	*stackB = last;
 // 	// ft_putendl_fd("rrb", 1);
+// }
+
+//void	shift_up2(t_data *data, int stack)
+//{
+//	if (stack == A)
+//		shift_upA(data->p_stacks[A]);
+//	else if (stack == B)
+//		shift_upA(data->p_stacks[B]);
+//}
+
+//void	shift_up_stack(t_data *data, int stack_id)
+//{
+//	t_list		*second;
+//	t_list		**stack;
+
+//	//if (stack_id == A)
+//		// ft_putendl_fd("ra", 1);
+//	//if (stack_id == B)
+//		// ft_putendl_fd("rb", 1);
+//	stack = data->p_stacks[stack_id];
+//	ft_lstlast(*stack)->next = *stack;
+//	second = (*stack)->next;
+//	(*stack)->next = NULL;
+//	*stack = second;
+//}
+
+//void	push_to_A(t_list **stackA, t_list **stackB)
+//{
+//	t_list *next_b;
+//	t_list *next_a;
+
+//	if (*stack)
+//		next = *stackA;
+//	else
+//		next = NULL;
+//	(*stackA)->next = next;
+
+//}
+
+// void	swap_top(t_list *stack)
+// {
+// 	char	*tmp;
+
+// 	tmp = stack->next->content;
+// 	stack->next->content =  stack->content;
+// 	stack->content = tmp;
+// }
+
+// void	print_stacks(t_list *stackA, t_list *stackB)
+// {
+// 	printf("STACK A:\n");
+// 	while (stackA)
+// 	{
+// 		printf("%s\n", (char *)(stackA->content));
+// 		stackA = stackA->next;
+// 	}
+// 	printf("STACK B:\n");
+// 	while (stackB)
+// 	{
+// 		printf("%s\n", (char *)(stackB->content));
+// 		stackB = stackB->next;
+// 	}
 // }
