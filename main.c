@@ -175,7 +175,7 @@ void	shift_downA(t_list **stack)
 void	shift_downB(t_list **stack)
 {
 	shift_down(stack);
-	//ft_putendl_fd("rrb", 1);
+	// ft_putendl_fd("rrb", 1);
 }
 
 void	shift_downAB(t_list **stackA, t_list **stackB)
@@ -297,7 +297,22 @@ int	main(int argcount, char **args)
 //	if (args[1][0] < '0' || args[1][0] > '9' )
 //		index++;
 //	else if (ft_strncmp(args[1], "--simple", 9) == 0)
+//		simple(stackA);//void	run(int argcount, char **args, int index, t_data *data)
+//{
+//	if (args[1][0] < '0' || args[1][0] > '9' )
+//		index++;
+//	else if (ft_strncmp(args[1], "--simple", 9) == 0)
 //		simple(stackA);
+//	else if (ft_strncmp(args[1], "--medium", 9) == 0)
+//		quatro_chunk(&stackA, &stackB);
+//	else if (ft_strncmp(args[1], "--complex", 9) == 0)
+//		turk(data);
+//	else if (ft_strncmp(args[1], "--adaptive", 9) == 0)
+//		mode = 4;
+//	else if (index == 2 || argcount == 2)
+//		return (write(1, "invalid input", 14), 0);
+//}
+
 //	else if (ft_strncmp(args[1], "--medium", 9) == 0)
 //		quatro_chunk(&stackA, &stackB);
 //	else if (ft_strncmp(args[1], "--complex", 9) == 0)

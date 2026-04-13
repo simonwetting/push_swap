@@ -51,19 +51,19 @@ void	four_chunks(t_data *data)
 	data->chunks[0][HIGH] = ft_lstsize(data->stacks[A]) - 1;	//FIRST CHUNK
 	data->chunk_count = 1;
 	// printf("%d   %d\n", data->chunks[0][LOW], data->chunks[0][HIGH]);
-	div_chunk(data->chunks, 0, data);	//DIVIDE the first chunk into two
+	divide_chunk(data->chunks, 0, data);	//DIVIDE the first chunk into two
 	//print_stacks(data->stacks[A], data->stacks[B]);
 	push_chunk(data, 1, A);	//PUSH the second chunk to B
 	print_stacks(data->stacks[A], data->stacks[B]);
 	//DIVIDE CHUNK 1, AND PUSH CHUNK 2 A
-	div_chunk(data->chunks, 1, data);
+	divide_chunk(data->chunks, 1, data);
 	push_chunk(data, 2, B);
 	print_stacks(data->stacks[A], data->stacks[B]);
 	// //PUSH CHUNK 2 back to B
 	push_chunk(data, 2, A);
 	print_stacks(data->stacks[A], data->stacks[B]);
 	// //DIVIDE CHUNK 0, AND PUSH CHUNK 3 to B
-	div_chunk(data->chunks, 0, data);
+	divide_chunk(data->chunks, 0, data);
 	push_chunk(data, 3, A);
 	print_stacks(data->stacks[A], data->stacks[B]);
 	// //PUSH CHUNK 0 to B

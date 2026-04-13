@@ -49,26 +49,6 @@ int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data)
 	return (data->chunk_count++);
 }
 
-int		div_chunk(int chunks[500][2], int chunk_index, t_data *data)
-{
-	int		c_size;
-	int		s_c1;
-	int		s_c2;
-
-	//c_size = chunks[chunk_index][HIGH] - chunks[chunk_index][LOW] + 1;
-	c_size = chunksize(chunks, chunk_index);
-	if (c_size % 2 == 1)
-		s_c1 = (c_size + 1) / 2;
-	else
-		s_c1 = c_size / 2;
-	s_c2 = c_size - s_c1;
-	//printf("c_size: %d s_c2: %d   s_c1: %d\n", c_size, s_c2, s_c1);
-	chunks[data->chunk_count][LOW] = chunks[chunk_index][LOW];
-	chunks[data->chunk_count][HIGH] = chunks[chunk_index][LOW] + s_c2 - 1;
-	chunks[chunk_index][LOW] = chunks[chunk_index][LOW] + s_c2 ; //+ (c_size % 2 == 1);
-	return (data->chunk_count++);
-}
-
 int		find_chunk(int i, int chunks[500][2], int *numbers)
 {
 	int		index;
