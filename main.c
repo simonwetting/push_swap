@@ -271,13 +271,13 @@ void	run(int argcount, char **args, int index, t_data *data)
 	if (args[1][0] < '0' || args[1][0] > '9' )
 		index++;
 	else if (ft_strncmp(args[1], "--simple", 9) == 0)
-		simple(stackA);
+		simple(data->stackA);
 	else if (ft_strncmp(args[1], "--medium", 9) == 0)
-		quatro_chunk(&stackA, &stackB);
+		four_chunks(data);
 	else if (ft_strncmp(args[1], "--complex", 9) == 0)
 		turk(data);
 	else if (ft_strncmp(args[1], "--adaptive", 9) == 0)
-		mode = 4;
+		//asdasdoiajsdiajsdoiasjd
 	else if (index == 2 || argcount == 2)
 		return (write(1, "invalid input", 14), 0);
 }
