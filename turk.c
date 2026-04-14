@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 13:00:05 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/13 12:58:14 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 13:16:45 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,15 +102,15 @@ void	split(t_data *data)
 			//print_stacks(data->stacks[A], data->stacks[B]);
 			splitter(data, stack, c_size, split_chunk);
 			//print_stacks(data->stacks[A], data->stacks[B]);
-			stack_split[A] = stack_is_split(data, A);
-			stack_split[B] = stack_is_split(data, B);
-			if (stack_split[stack] == 1 && stack == A)
-				stack = B;
-			if (stack_split[stack] == 1 && stack == B)
-				stack = A;
 		}
 		else
 			repeat_rotate(&shift_up_stack, c_size, data, stack);
+		stack_split[A] = stack_is_split(data, A);
+		stack_split[B] = stack_is_split(data, B);
+		if (stack_split[stack] == 1 && stack == A)
+			stack = B;
+		if (stack_split[stack] == 1 && stack == B)
+			stack = A;
 	}
 	// printf("done splitting\n");
 }
