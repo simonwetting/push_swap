@@ -271,9 +271,9 @@ int	run(int argcount, char **args, int index, t_data *data)
 		four_chunks(data);
 	else if (ft_strncmp(args[1], "--complex", 10) == 0)
 		turk(data);
-	// else if (ft_strncmp(args[1], "--adaptive", 11) == 0)
-	// 	adaptive(data);
-	else if (args[1][0] > '0' || args[1][0] < '9')
+	else if (ft_strncmp(args[1], "--adaptive", 11) == 0)
+		adaptive(data);
+	else if (args[1][0] > '0' && args[1][0] < '9')
 		turk(data);
 	else
 		return (write(1, "invalid input\n", 14), 0);

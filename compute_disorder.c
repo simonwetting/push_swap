@@ -32,6 +32,16 @@ int	compute_disorder(t_list *stack)
 	return ((mistakes) / pairs);
 }
 
+void	adaptive(t_data *data)
+{
+	int		disorder = compute_disorder;
+
+	if (disorder < 2000)
+	else if (disorder >= 2000 && disorder < 5000)
+	else if (disorder >= 5000 && disorder <= 10000)
+	else
+}
+
 
 //mistakes = 0
 //total_pairs = 0
