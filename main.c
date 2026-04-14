@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/14 13:35:07 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 14:01:26 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,20 @@ void	swap_top(t_list *stack)
 void	swap_topA(t_list *stackA)
 {
 	swap_top(stackA);
-	// ft_putendl_fd("sa", 1);
+	 ft_putendl_fd("sa", 1);
 }
 
 void	swap_topB(t_list *stackB)
 {
 	swap_top(stackB);
-	// ft_putendl_fd("sb", 1);
+	 ft_putendl_fd("sb", 1);
 }
 
 void	swap_topAB(t_list *stackA, t_list *stackB)
 {
 	swap_topA(stackA);
 	swap_topB(stackB);
-	// ft_putendl_fd("ss", 1);
+	 ft_putendl_fd("ss", 1);
 }
 
 void	push_to_B(t_list **stackA, t_list **stackB)
@@ -114,7 +114,7 @@ void	push_to_B(t_list **stackA, t_list **stackB)
 	*stackB = *stackA;
 	*stackA = (*stackA)->next;
 	(*stackB)->next = next;
-	// ft_putendl_fd("pb", 1);
+	 ft_putendl_fd("pb", 1);
 }
 
 void	push_to_A(t_list **stackA, t_list **stackB)
@@ -133,7 +133,7 @@ void	push_to_A(t_list **stackA, t_list **stackB)
 	*stackA = *stackB;
 	*stackB = (*stackB)->next;
 	(*stackA)->next = next;
-	// ft_putendl_fd("pa", 1);
+	 ft_putendl_fd("pa", 1);
 }
 
 void	push_to(t_data *data, int stack)
@@ -169,13 +169,13 @@ void	shift_up(t_list **stack)
 void	shift_downA(t_list **stack)
 {
 	shift_down(stack);
-	// ft_putendl_fd("rra", 1);
+	 ft_putendl_fd("rra", 1);
 }
 
 void	shift_downB(t_list **stack)
 {
 	shift_down(stack);
-	// ft_putendl_fd("rrb", 1);
+	 ft_putendl_fd("rrb", 1);
 }
 
 void	shift_downAB(t_list **stackA, t_list **stackB)
@@ -208,20 +208,20 @@ void	shift_down_stack(t_data *data, int stack_id)
 void	shift_upA(t_list **stack)
 {
 	shift_up(stack);
-	// ft_putendl_fd("ra", 1);
+	 ft_putendl_fd("ra", 1);
 }
 
 void	shift_upB(t_list **stack)
 {
 	shift_up(stack);
-	// ft_putendl_fd("rb", 1);
+	 ft_putendl_fd("rb", 1);
 }
 
 void	shift_upAB(t_list **stackA, t_list **stackB)
 {
 	shift_up(stackA);
 	shift_up(stackB);
-	// ft_putendl_fd("rr", 1);
+	 ft_putendl_fd("rr", 1);
 }
 
 void	sort(t_list **stackA)
@@ -272,7 +272,7 @@ int	run(int argcount, char **args, t_data *data)
 		ft_lstadd_back(data->stackA, ft_lstnew(ft_atoi(args[index++])));
 	update_data(data, 3);
 	if (ft_strncmp(args[1], "--simple", 9) == 0)
-		bubble(data->stackA);
+		bubble (data->stackA);
 	else if (ft_strncmp(args[1], "--medium", 9) == 0)
 		four_chunks(data);
 	else if (ft_strncmp(args[1], "--complex", 10) == 0)

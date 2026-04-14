@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   turk.c                                             :+:    :+:            */
+/*   merge_sort.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 13:00:05 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/14 13:32:14 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 13:44:58 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	merge_sort(t_data *data)
 	data->chunks[0][HIGH] = lstsize - 1;
 	data->chunk_count = 1;
 	split(data);
-	printf("TURKed it!\n");
+	//printf("TURKed it!\n");
 	// shift_up_stack(data, A);
 	// push(data, B);
 	//push_to_B(data->stackA, data->stackB);
@@ -146,7 +146,7 @@ void	merge_sort(t_data *data)
 	// for (int n = 0; n < data->chunk_count; n++)
 	// 	printf("%d\n", data->chunks[chunk_order[n]][LOW]);
 	push_largest(data, chunk_order);
-	print_stacks(data->stacks[A], data->stacks[B]);
+	//print_stacks(data->stacks[A], data->stacks[B]);
 	printf("COMPLEX: ");
 	printf("Sorted %d numbers in %d operations\n %d ops per number\n", ft_lstsize(data->stacks[A]), data->count_ops, data->count_ops / ft_lstsize(data->stacks[A]));
 	//for (int n = 0; n < ft_lstsize(data->stacks[A]); n++)
