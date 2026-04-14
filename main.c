@@ -273,7 +273,7 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 	while (index < argcount)
 		ft_lstadd_back(data->stackA, ft_lstnew(ft_atoi(args[index++])));
 	update_data(data, 3);
-	//bench->disorder = compute_disorder(data->stacks[A]);
+	bench->disorder = compute_disorder(data->stacks[A]);
 	if (ft_strncmp(args[1 + (index - ft_lstsize(data->stacks[A]) == 3)], "--simple", 9) == 0)
 		bubble (data->stackA);
 	else if (ft_strncmp(args[1 + (index - ft_lstsize(data->stacks[A]) == 3)], "--medium", 9) == 0)

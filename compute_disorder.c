@@ -21,7 +21,7 @@ int	compute_disorder(t_list *stack)
 	tmp = stack;
 	pairs = 0;
 	mistakes = 0;
-	while (stack)
+	while (tmp->next)
 	{
 		pairs++;
 		if (tmp->content > tmp->next->content)
@@ -29,6 +29,7 @@ int	compute_disorder(t_list *stack)
 		tmp = tmp->next;
 	}
 	mistakes *= 10000;
+	printf("test");
 	return (mistakes / pairs);
 }
 
