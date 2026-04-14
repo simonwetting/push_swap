@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 13:00:05 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/14 13:44:58 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 14:13:48 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,12 +146,13 @@ void	merge_sort(t_data *data)
 	// for (int n = 0; n < data->chunk_count; n++)
 	// 	printf("%d\n", data->chunks[chunk_order[n]][LOW]);
 	push_largest(data, chunk_order);
-	//print_stacks(data->stacks[A], data->stacks[B]);
+	print_stacks(data->stacks[A], data->stacks[B]);
 	printf("COMPLEX: ");
 	printf("Sorted %d numbers in %d operations\n %d ops per number\n", ft_lstsize(data->stacks[A]), data->count_ops, data->count_ops / ft_lstsize(data->stacks[A]));
 	//for (int n = 0; n < ft_lstsize(data->stacks[A]); n++)
 	//	printf("[%d] %d\n", n, data->numbers[n]);
 }
+//516098 662528 532658 896200 590280 811082 882957 744038 -82794 249343 363863 416207 220938 689849 445267 6591 911140 82263 850589 569376 114915 522943 727119 81730 534662 114209 423937 5084 186853 651710 59799 417081 904124 410245 71619 339806 650910 861245 708810 438706 855344 820661 968501 882060 885961 -60905 308499 379569 843288 631239 567901 638289 739186 942743 886200 526376 449524 681458 490151 630842 708293 254266 233790 231131 -92584 314810 447075 296189 940870 295442 658528 658044 150182 588099 33831 93227 931689 707478 661305 627554 669818 420853 -19330 161955 23180 138901 776403 309507 293188 344770 425942 549217 890373 479755 150649 517741 526472 371417 517494 277191
 
 
 //void	chunk_to_stack(t_list **stacks[2], int chunks[500][2], int *numbers, int split_chunk)
