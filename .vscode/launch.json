@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/a.out",
-			"args": [897 65 76 87 89 787 5856 487 7096 56 3786 6 856 9876],
+			"args": [--bench --complex 089 89 875  5 43 759 87 4 456 7 6 54 7689],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],

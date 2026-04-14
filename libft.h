@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/14 13:34:11 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 16:35:48 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ int		ft_strncmp(const char *s1, const char *s2, unsigned int n);
 // char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 // void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
-// void	ft_putchar_fd(char c, int fd);
-// void	ft_putstr_fd(char *s, int fd);
+ void	ft_putchar_fd(char c, int fd);
+ void	ft_putstr_fd(char *s, int fd);
  void	ft_putendl_fd(char *s, int fd);
-// void	ft_putnbr_fd(int n, int fd);
+ void	ft_putnbr_fd(int n, int fd);
 
 t_list	*ft_lstnew(int content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -138,5 +138,6 @@ void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack)
 void	four_chunks(t_data *data);
 
 void	adaptive(t_data *data);
+void	benchmark(t_data *data);
 
 #endif

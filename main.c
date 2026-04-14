@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/14 14:01:26 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 16:53:30 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,30 +261,32 @@ void	free_everything(t_data *data)
 	free(data);
 }
 
-int	run(int argcount, char **args, t_data *data)
+void	run(int argcount, char **args, t_data *data)
 {
 	int		index;
 
 	index  = 1;
 	if (ft_isdigit(args[1][0]) == 0)
 		index++;
+	if (ft_strncmp(args[1], "--bench", 11) == 0)
+		index++;
 	while (index < argcount)
 		ft_lstadd_back(data->stackA, ft_lstnew(ft_atoi(args[index++])));
 	update_data(data, 3);
-	if (ft_strncmp(args[1], "--simple", 9) == 0)
+	if (ft_strncmp(args[1 + (index - ft_lstsize(data->stacks[A]) == 3)], "--simple", 9) == 0)
 		bubble (data->stackA);
-	else if (ft_strncmp(args[1], "--medium", 9) == 0)
+	else if (ft_strncmp(args[1 + (index - ft_lstsize(data->stacks[A]) == 3)], "--medium", 9) == 0)
 		four_chunks(data);
-	else if (ft_strncmp(args[1], "--complex", 10) == 0)
+	else if (ft_strncmp(args[1 + (index - ft_lstsize(data->stacks[A]) == 3)], "--complex", 10) == 0)
 		merge_sort(data);
-	else if (ft_strncmp(args[1], "--adaptive", 11) == 0)
+	else if (ft_strncmp(args[1 + (index - ft_lstsize(data->stacks[A]) == 3)], "--adaptive", 11) == 0)
 		adaptive(data);
-	else if (args[1][0] > '0' && args[1][0] < '9')
+	else if (args[1 + (index - ft_lstsize(data->stacks[A]) == 3)][0] > '0' && args[1 + (index - ft_lstsize(data->stacks[A]) == 3)][0] < '9')
 		merge_sort(data);
 	else
-		return (write(1, "invalid input\n", 14), 0);
-	return (0);
-		
+		write(1, "invalid input\n", 14);
+	if (ft_strncmp(args[1], "--bench", 11) == 0 || ft_strncmp(args[2], "--bench", 11) == 0)
+		benchmark(data);
 }
 
 int	main(int argcount, char **args)
