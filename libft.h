@@ -139,4 +139,6 @@ void	push_largest(t_data *data, int *chunk_order);
 void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack);
 void	four_chunks(t_data *data);
 
+void	adaptive(t_data *data);
+
 #endif

@@ -34,12 +34,16 @@ int	compute_disorder(t_list *stack)
 
 void	adaptive(t_data *data)
 {
-	int		disorder = compute_disorder;
+	int		disorder = compute_disorder(data->stacks[A]);
 
 	if (disorder < 2000)
+		simple(data->stacks[A]);
 	else if (disorder >= 2000 && disorder < 5000)
+		four_chunks(data);
 	else if (disorder >= 5000 && disorder <= 10000)
+		turk(data);
 	else
+		write(1, "disorder more than 1", 20);
 }
 
 

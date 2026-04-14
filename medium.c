@@ -15,14 +15,10 @@
 
 void	push_chunk(t_data *data, int chunk_index, int stack)
 {
-	// int		H1;
-	// int		L1;
 	int		H2;
 	int		L2;
 	int		pushed;
 
-	// L1 = data->numbers[data->chunks[split_chunk[0]][LOW]];
-	// H1 = data->numbers[data->chunks[split_chunk[0]][HIGH]];
 	L2 = data->numbers[data->chunks[chunk_index][LOW]];
 	H2 = data->numbers[data->chunks[chunk_index][HIGH]];
 	pushed = 0;
