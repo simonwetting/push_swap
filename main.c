@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/14 17:37:14 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 17:48:50 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,7 +261,7 @@ void	free_everything(t_data *data)
 	free(data);
 }
 
-void	run(int argcount, char **args, t_data *data)
+void	run(int argcount, char **args, t_data *data, t_bench *bench)
 {
 	int		index;
 
@@ -272,8 +272,8 @@ void	run(int argcount, char **args, t_data *data)
 		index++;
 	while (index < argcount)
 		ft_lstadd_back(data->stackA, ft_lstnew(ft_atoi(args[index++])));
-	
 	update_data(data, 3);
+	//bench->disorder = compute_disorder(data->stacks[A]);
 	if (ft_strncmp(args[1 + (index - ft_lstsize(data->stacks[A]) == 3)], "--simple", 9) == 0)
 		bubble (data->stackA);
 	else if (ft_strncmp(args[1 + (index - ft_lstsize(data->stacks[A]) == 3)], "--medium", 9) == 0)
@@ -295,9 +295,11 @@ int	main(int argcount, char **args)
 	t_list	*stackA;
 	t_list	*stackB;
 	t_data	*data;
+	t_bench	*bench;
 ;
 	if (argcount < 2)
 		return (0);
+	bench = malloc(sizeof(t_bench));
 	data = malloc(sizeof(t_data));
 	stackA = NULL;
 	stackB = NULL;
@@ -308,7 +310,7 @@ int	main(int argcount, char **args)
 	data->p_stacks[A] = &stackA;
 	data->p_stacks[B] = &stackB;
 	data->count_ops = 0;
-	run(argcount, args, data);
+	run(argcount, args, data, bench);
 	free_everything(data);
 	return (0);
 }

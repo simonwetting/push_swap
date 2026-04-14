@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 12:59:27 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/14 13:34:38 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 17:39:29 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	compute_disorder(t_list *stack)
 		tmp = tmp->next;
 	}
 	mistakes *= 10000;
-	return ((mistakes) / pairs);
+	return (mistakes / pairs);
 }
 
 void	adaptive(t_data *data)
