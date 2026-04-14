@@ -31,11 +31,11 @@ static void	eval_swap(t_list *stack)
 	// printf("eval swap\n%d\n", (stack)->content - (stack)->next->content);
 	if ((stack)->content > (stack)->next->content)
 	{
-		printf("\n%d > %d\n", (stack)->content, (stack)->next->content);
+		// printf("\n%d > %d\n", (stack)->content, (stack)->next->content);
 		swap_topA(stack);
 	}
-	else
-		printf("not swapping %d < %d \n", (stack)->content, (stack)->next->content);
+	// else
+	// 	printf("not swapping %d < %d \n", (stack)->content, (stack)->next->content);
 	// printf("done\n");
 }
 
@@ -50,12 +50,14 @@ void	simple(t_list *stackA)
 			eval_swap(stackA);
 		else
 			counter = 0;
-		print_stack(stackA, 'A');
+		// print_stack(stackA, 'A');
 		if (is_unsorted(stackA) == 0)
 			break;
 		shift_downA(&stackA);
-		print_stack(stackA, 'A');
+		// print_stack(stackA, 'A');
 		operations += 2;
 	}
+	print_stack(stackA, 'A');
+	printf("SIMPLE: ");
 	printf("%d numbers in %d operations", lstsize, operations);
 }

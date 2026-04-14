@@ -77,5 +77,6 @@ void	four_chunks(t_data *data)
 	// lh = 3 
 	push_largest(data, chunk_order);
 	print_stacks(data->stacks[A], data->stacks[B]);
+	printf("MEDIUM: ");
 	printf("Sorted %d numbers in %d operations\n %d ops per number\n", ft_lstsize(data->stacks[A]), data->count_ops, data->count_ops / ft_lstsize(data->stacks[A]));
 }

@@ -169,7 +169,7 @@ void	shift_up(t_list **stack)
 void	shift_downA(t_list **stack)
 {
 	shift_down(stack);
-	ft_putendl_fd("rra", 1);
+	// ft_putendl_fd("rra", 1);
 }
 
 void	shift_downB(t_list **stack)
@@ -273,8 +273,8 @@ int	run(int argcount, char **args, int index, t_data *data)
 		turk(data);
 	// else if (ft_strncmp(args[1], "--adaptive", 11) == 0)
 	// 	adaptive(data);
-	else if (args[1][0] < '0' || args[1][0] > '9')
-		index++;
+	else if (args[1][0] > '0' || args[1][0] < '9')
+		turk(data);
 	else
 		return (write(1, "invalid input\n", 14), 0);
 	return (0);

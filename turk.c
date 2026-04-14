@@ -87,13 +87,13 @@ void	split(t_data *data)
 	stack = A;
 	stack_split[A] = stack_is_split(data, A);
 	stack_split[B] = 0;
-	printf ("%d %d\n", stack_split[A], stack_split[B]);
+	// printf ("%d %d\n", stack_split[A], stack_split[B]);
 	while (stack_split[A] == 0 || stack_split[B] == 0)
 	{
-		if (stack == A)
-			printf ("Splitting A!\n");
-		if (stack == B)
-			printf ("Splitting B!\n");
+		// if (stack == A)
+		// 	printf ("Splitting A!\n");
+		// if (stack == B)
+		// 	printf ("Splitting B!\n");
 		c_size = chunksize(data->chunks, find_chunk(data->stacks[stack]->content, data->chunks, data->numbers));
 		if (c_size > 35)
 		{
@@ -112,7 +112,7 @@ void	split(t_data *data)
 		else
 			repeat_rotate(&shift_up_stack, c_size, data, stack);
 	}
-	printf("done splitting\n");
+	// printf("done splitting\n");
 }
 
 void	turk(t_data *data)
@@ -122,8 +122,8 @@ void	turk(t_data *data)
 
 	data->numbers = indexate(data->stacks[A]);
 	lstsize = ft_lstsize(data->stacks[A]);
-	for (int p = 0; p < lstsize; p++)
-		printf("[%d] = %d\n", p, data->numbers[p]);
+	// for (int p = 0; p < lstsize; p++)
+	// 	printf("[%d] = %d\n", p, data->numbers[p]);
 	ft_bzero(data->chunks, 4000);
 	data->chunks[0][LOW] = 0;
 	data->chunks[0][HIGH] = lstsize - 1;
@@ -136,17 +136,18 @@ void	turk(t_data *data)
 	//shift_upA(data->stackA);
 	//shift_up(data->stackA);
 	//print_stacks(data->stacks[A], data->stacks[B]);
-	print_chunks(data);
+	// print_chunks(data);
 	while (data->stacks[A])
 		push_to(data, B);
-	print_stacks(data->stacks[A], data->stacks[B]);
+	// print_stacks(data->stacks[A], data->stacks[B]);
 	chunk_order = index_chunks(data);
 	//for (int n = 0; n < data->chunk_count; n++)
 	//	printf("%d\n", chunk_order[n]);
-	for (int n = 0; n < data->chunk_count; n++)
-		printf("%d\n", data->chunks[chunk_order[n]][LOW]);
+	// for (int n = 0; n < data->chunk_count; n++)
+	// 	printf("%d\n", data->chunks[chunk_order[n]][LOW]);
 	push_largest(data, chunk_order);
 	print_stacks(data->stacks[A], data->stacks[B]);
+	printf("COMPLEX: ");
 	printf("Sorted %d numbers in %d operations\n %d ops per number\n", ft_lstsize(data->stacks[A]), data->count_ops, data->count_ops / ft_lstsize(data->stacks[A]));
 	//for (int n = 0; n < ft_lstsize(data->stacks[A]); n++)
 	//	printf("[%d] %d\n", n, data->numbers[n]);
