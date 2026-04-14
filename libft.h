@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/14 13:27:56 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 13:34:11 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 t_list	*ft_lstsecondlast(t_list *lst);
-void	radix(t_list *stackA, t_list *stackB);
 void	bubble(t_list **stackA);
 
 // void	shift_up(t_list **stack);
@@ -119,9 +118,8 @@ void	shift_down_stack(t_data *data, int stack_id);
 void	print_stack(t_list *stack, char c);
 void	print_stacks(t_list *stackA, t_list *stackB);
 int		*indexate(t_list *stack);
-void	simple(t_list *stackA);
 
-void	turk(t_data *data);
+void	merge_sort(t_data *data);
 
 int		chunksize(int chunks[500][2], int index);
 int		in_chunk(int i, int chunks[500][2], int chunk_index, int *numbers);

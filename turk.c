@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 13:00:05 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/14 13:16:45 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 13:32:14 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	split(t_data *data)
 	// printf("done splitting\n");
 }
 
-void	turk(t_data *data)
+void	merge_sort(t_data *data)
 {
 	int	lstsize;
 	int	*chunk_order;

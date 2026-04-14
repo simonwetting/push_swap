@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/14 13:29:20 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 13:35:07 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,18 +271,16 @@ int	run(int argcount, char **args, t_data *data)
 	while (index < argcount)
 		ft_lstadd_back(data->stackA, ft_lstnew(ft_atoi(args[index++])));
 	update_data(data, 3);
-	if (argcount < 2)
-		return (0);
 	if (ft_strncmp(args[1], "--simple", 9) == 0)
-		simple(data->stacks[A]);
+		bubble(data->stackA);
 	else if (ft_strncmp(args[1], "--medium", 9) == 0)
 		four_chunks(data);
 	else if (ft_strncmp(args[1], "--complex", 10) == 0)
-		turk(data);
+		merge_sort(data);
 	else if (ft_strncmp(args[1], "--adaptive", 11) == 0)
 		adaptive(data);
 	else if (args[1][0] > '0' && args[1][0] < '9')
-		turk(data);
+		merge_sort(data);
 	else
 		return (write(1, "invalid input\n", 14), 0);
 	return (0);
@@ -291,20 +289,14 @@ int	run(int argcount, char **args, t_data *data)
 
 int	main(int argcount, char **args)
 {
-	int		index;
-	int		mode;
 	t_list	*stackA;
 	t_list	*stackB;
 	t_data	*data;
-
-	index = 1;
-	mode = 0;
+;
 	if (argcount < 2)
 		return (0);
 	data = malloc(sizeof(t_data));
 	stackA = NULL;
-	//while (index < argcount)
-	//	ft_lstadd_back(&stackA, ft_lstnew(ft_atoi(args[index++])));
 	stackB = NULL;
 	data->stackA = &stackA;
 	data->stackB = &stackB;
@@ -313,9 +305,6 @@ int	main(int argcount, char **args)
 	data->p_stacks[A] = &stackA;
 	data->p_stacks[B] = &stackB;
 	data->count_ops = 0;
-	//print_stacks(stackA, stackB);
-	//turk(data);
-	//four_chunks(data);
 	run(argcount, args, data);
 	free_everything(data);
 	return (0);
@@ -324,7 +313,7 @@ int	main(int argcount, char **args)
 //	else if (ft_strncmp(args[1], "--medium", 9) == 0)
 //		quatro_chunk(&stackA, &stackB);
 //	else if (ft_strncmp(args[1], "--complex", 9) == 0)
-//		turk(data);
+//		merge_sort(data);
 //	else if (ft_strncmp(args[1], "--adaptive", 9) == 0)
 //		mode = 4;
 //	else if (index == 2 || argcount == 2)

@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/13 12:59:27 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/13 13:27:45 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 13:34:38 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	adaptive(t_data *data)
 	int		disorder = compute_disorder(data->stacks[A]);
 
 	if (disorder < 2000)
-		simple(data->stacks[A]);
+		bubble(data->stackA);
 	else if (disorder >= 2000 && disorder < 5000)
 		four_chunks(data);
 	else if (disorder >= 5000 && disorder <= 10000)
-		turk(data);
+		merge_sort(data);
 	else
 		write(1, "disorder more than 1", 20);
 }

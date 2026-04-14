@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 12:45:30 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/07 12:45:30 by anonymous     ########   odam.nl         */
+/*   Updated: 2026/04/14 13:33:18 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,25 @@ static void	eval_swap(t_list *stack)
 	// printf("done\n");
 }
 
-void	simple(t_list *stackA)
+void	bubble(t_list **stackA)
 {
 	int		counter = 0;
-	int		lstsize = ft_lstsize(stackA);
+	int		lstsize = ft_lstsize(*stackA);
 	int		operations = 0;
 	while (1)
 	{
 		if (counter++ < lstsize - 1)
-			eval_swap(stackA);
+			eval_swap(*stackA);
 		else
 			counter = 0;
 		// print_stack(stackA, 'A');
-		if (is_unsorted(stackA) == 0)
+		if (is_unsorted(*stackA) == 0)
 			break;
-		shift_downA(&stackA);
+		shift_downA(stackA);
 		// print_stack(stackA, 'A');
 		operations += 2;
 	}
-	print_stack(stackA, 'A');
+	print_stack(*stackA, 'A');
 	printf("SIMPLE: ");
 	printf("%d numbers in %d operations", lstsize, operations);
 }
