@@ -154,6 +154,6 @@ void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack)
 void	four_chunks(t_data *data);
 
 void	adaptive(t_data *data);
-void	benchmark(t_data *data);
+void	benchmark(t_data *datal, t_bench *bench);
 int		compute_disorder(t_list *stack);
 #endif

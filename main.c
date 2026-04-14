@@ -287,7 +287,7 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 	else
 		write(1, "invalid input\n", 14);
 	if (ft_strncmp(args[1], "--bench", 11) == 0 || ft_strncmp(args[2], "--bench", 11) == 0)
-		benchmark(data);
+		benchmark(data, bench);
 }
 
 int	main(int argcount, char **args)
