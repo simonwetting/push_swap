@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/14 16:35:48 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 17:34:41 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ typedef struct	s_data
 	int			chunk_count;
 	int			count_ops;
 }				t_data;
+
+typedef struct	s_benchmark
+{
+	int	disorder;
+	int sa;
+	int sb;
+	int ss;
+	int pa;
+	int pb;
+	int ra;
+	int rb;
+	int rr;
+	int rra;
+	int rrb;
+	int rrr;
+}				t_bench;
 
 int		ft_atoi(const char *nptr);
  void	ft_bzero(void *s, size_t n);
@@ -139,5 +155,5 @@ void	four_chunks(t_data *data);
 
 void	adaptive(t_data *data);
 void	benchmark(t_data *data);
-
+int		compute_disorder(t_list *stack);
 #endif
