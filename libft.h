@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/13 13:40:39 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 13:27:56 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		ft_atoi(const char *nptr);
 // void	*ft_calloc(size_t nmemb, size_t size);
 // int		ft_isalnum(int c);
 // int		ft_isalpha(int c);
-// int		ft_isdigit(int c);
+ int		ft_isdigit(int c);
 // int		ft_isprint(int c);
 // int		ft_isascii(int c);
 // void	*ft_memcpy(void *dest, const void *src, size_t n);

@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/13 13:39:43 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/14 13:29:20 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,8 +261,16 @@ void	free_everything(t_data *data)
 	free(data);
 }
 
-int	run(int argcount, char **args, int index, t_data *data)
+int	run(int argcount, char **args, t_data *data)
 {
+	int		index;
+
+	index  = 1;
+	if (ft_isdigit(args[1][0]) == 0)
+		index++;
+	while (index < argcount)
+		ft_lstadd_back(data->stackA, ft_lstnew(ft_atoi(args[index++])));
+	update_data(data, 3);
 	if (argcount < 2)
 		return (0);
 	if (ft_strncmp(args[1], "--simple", 9) == 0)
@@ -295,8 +303,8 @@ int	main(int argcount, char **args)
 		return (0);
 	data = malloc(sizeof(t_data));
 	stackA = NULL;
-	while (index < argcount)
-		ft_lstadd_back(&stackA, ft_lstnew(ft_atoi(args[index++])));
+	//while (index < argcount)
+	//	ft_lstadd_back(&stackA, ft_lstnew(ft_atoi(args[index++])));
 	stackB = NULL;
 	data->stackA = &stackA;
 	data->stackB = &stackB;
@@ -308,7 +316,7 @@ int	main(int argcount, char **args)
 	//print_stacks(stackA, stackB);
 	//turk(data);
 	//four_chunks(data);
-	run(argcount, args, index, data);
+	run(argcount, args, data);
 	free_everything(data);
 	return (0);
 }
