@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 12:25:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 17:48:32 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 18:01:05 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	update_data(t_data *data, int stack_id)
 {
 	if (stack_id == A || stack_id == 3)
 	{
-		data->p_stacks[A] = data->stackA;
-		data->stacks[A] = *(data->stackA);
+		data->p_stacks[A] = data->stack_a;
+		data->stacks[A] = *(data->stack_a);
 	}
 	if (stack_id == B || stack_id == 3)
 	{
-		data->p_stacks[B] = data->stackB;
-		data->stacks[B] = *(data->stackB);
+		data->p_stacks[B] = data->stack_b;
+		data->stacks[B] = *(data->stack_b);
 	}
 }
 

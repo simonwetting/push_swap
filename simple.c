@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 12:45:30 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 17:56:37 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 18:00:59 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,25 @@ static void	eval_swap(t_list *stack, t_bench *bench)
 		swap_topA(stack, bench);
 }
 
-void	bubble(t_list **stackA, t_bench *bench)
+void	bubble(t_list **stack_a, t_bench *bench)
 {
 	int		counter;
 	int		lstsize;
 	int		operations;
 
 	counter = 0;
-	lstsize = ft_lstsize(*stackA);
+	lstsize = ft_lstsize(*stack_a);
 	operations = 0;
 	bench->strategy = 1;
 	while (1)
 	{
 		if (counter++ < lstsize - 1)
-			eval_swap(*stackA, bench);
+			eval_swap(*stack_a, bench);
 		else
 			counter = 0;
-		if (is_unsorted(*stackA) == 0)
+		if (is_unsorted(*stack_a) == 0)
 			break ;
-		shift_downa(stackA, bench);
+		shift_downa(stack_a, bench);
 		operations += 2;
 	}
 }

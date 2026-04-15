@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 17:00:11 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 18:01:05 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 	if (ft_strncmp(args[1], "--bench", 11) == 0)
 		turn_bench_on(&index, bench);
 	while (index < argcount)
-		ft_lstadd_back(data->stackA, ft_lstnew(ft_atoi(args[index++])));
+		ft_lstadd_back(data->stack_a, ft_lstnew(ft_atoi(args[index++])));
 	update_data(data, 3);
 	bench->disorder = compute_disorder(data->stacks[A]);
 	if (ft_strncmp(args[1 + bench->bench_on], "--simple", 9) == 0)
-		bubble (data->stackA, bench);
+		bubble (data->stack_a, bench);
 	else if (ft_strncmp(args[1 + bench->bench_on], "--medium", 9) == 0)
 		four_chunks(data, bench);
 	else if (ft_strncmp(args[1 + bench->bench_on], "--complex", 10) == 0)
@@ -70,8 +70,8 @@ void	init_bench(t_bench *bench)
 
 int	main(int argcount, char **args)
 {
-	t_list	*stackA;
-	t_list	*stackB;
+	t_list	*stack_a;
+	t_list	*stack_b;
 	t_data	*data;
 	t_bench	*bench;
 
@@ -83,14 +83,14 @@ int	main(int argcount, char **args)
 	init_bench(bench);
 	data = malloc(sizeof(t_data));
 	data->bench = bench;
-	stackA = NULL;
-	stackB = NULL;
-	data->stackA = &stackA;
-	data->stackB = &stackB;
-	data->stacks[A] = stackA;
-	data->stacks[B] = stackB;
-	data->p_stacks[A] = &stackA;
-	data->p_stacks[B] = &stackB;
+	stack_a = NULL;
+	stack_b = NULL;
+	data->stack_a = &stack_a;
+	data->stack_b = &stack_b;
+	data->stacks[A] = stack_a;
+	data->stacks[B] = stack_b;
+	data->p_stacks[A] = &stack_a;
+	data->p_stacks[B] = &stack_b;
 	data->count_ops = 0;
 	run(argcount, args, data, bench);
 	//free_everything(data);
