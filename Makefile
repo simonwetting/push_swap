@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                          ::::::::            #
-#    Makefile                                            :+:    :+:            #
-#                                                       +:+                    #
-#    By: fluthra <marvin@42.fr>                        +#+                     #
-#                                                     +#+                      #
-#    Created: 2026/03/10 17:12:13 by fluthra        #+#    #+#                 #
-#    Updated: 2026/03/24 14:26:19 by fluthra        ########   odam.nl         #
+#                                                         ::::::::             #
+#    Makefile                                           :+:    :+:             #
+#                                                      +:+                     #
+#    By: fluthra <marvin@42.fr>                       +#+                      #
+#                                                    +#+                       #
+#    Created: 2026/03/10 17:12:13 by fluthra       #+#    #+#                  #
+#    Updated: 2026/04/15 15:41:45 by swetting      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ SRC = 	adaptive.c \
 		ft_lstadd_back.c \
 		ft_lstadd_front.c \
 		ft_lstclear.c \
-		ft_lstdup.c \
 		ft_lstlast.c \
 		ft_lstnew.c \
 		ft_lstsecondlast.c \
@@ -47,11 +46,9 @@ SRC = 	adaptive.c \
 
 OBJ = $(SRC:%.c=%.o)
 
-NAME = push_swap.a
-
-AR = ar rcs
-
 CC = cc
+
+NAME = push_swap
 
 CFlags = -Wall -Wextra -Wall
 
@@ -59,14 +56,11 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(AR) $(NAME) $(OBJ)
-
-%.o : %.c
-	$(CC) -c $(CFlags) $< -o $@
+$(NAME):
+	$(CC) $(CFlags) $(SRC) -o push_swap
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(NAME)
 	
 fclean: clean
 	$(RM) $(NAME) &
