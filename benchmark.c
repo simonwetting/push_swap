@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/14 14:21:10 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 13:36:38 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 13:43:01 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 
 void	print_strategy(t_bench *bench)
 {
-	if (bench->strategy == 1)
+	if (bench->adaptive == 1)
+	{
+		if (bench->disorder < 2000)
+			ft_putendl_fd("Adaptive / O(n\xC2\xB2)", 2);
+		else if (bench->disorder >= 2000 && bench->disorder < 5000)
+			ft_putendl_fd("Adaptive /  O(n\xe2\x88\x9an)", 2);
+		else if (bench->disorder >= 5000 && bench->disorder <= 10000)
+			ft_putendl_fd("Adaptive / O(nlogn)", 2);
+	}
+	else if (bench->strategy == 1)
 		ft_putendl_fd("Simple / O(n\xC2\xB2)", 2);
-	if (bench->strategy == 2)
+	else if (bench->strategy == 2)
 		ft_putendl_fd("Medium /  O(n\xe2\x88\x9an)", 2);
-	if (bench->strategy == 3)
+	else if (bench->strategy == 3)
 		ft_putendl_fd("Complex / O(nlogn)", 2);
-	if (bench->strategy == 4)
-		ft_putendl_fd("Adaptive / ", 2);
 }
-
 int	get_total_ops(t_bench *bench)
 {
 	return (bench->sa + bench->sb + bench->ss +
@@ -68,7 +74,7 @@ void	print_ops(t_bench *bench)
 	
 }
 
-void	benchmark(t_data *data, t_bench *bench)
+void	benchmark(t_bench *bench)
 {
 	ft_putstr_fd("[bench] disorder:   ", 2);
 	ft_putnbr_fd(bench->disorder / 100, 2);
@@ -78,5 +84,4 @@ void	benchmark(t_data *data, t_bench *bench)
 	ft_putstr_fd("[bench] strategy:   ", 2);
 	print_strategy(bench);
 	print_ops(bench);
-	(void)data;
 }
