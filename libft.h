@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 14:55:08 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:26:01 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int		ft_strncmp(const char *s1, const char *s2, unsigned int n);
 
  void	ft_putchar_fd(char c, int fd);
  void	ft_putstr_fd(char *s, int fd);
- void	ft_putendl_fd(char *s, int fd);
+ int	ft_putendl_fd(char *s, int fd);
  void	ft_putnbr_fd(int n, int fd);
 
 t_list	*ft_lstnew(int content);
@@ -173,4 +173,7 @@ void	adaptive(t_data *data, t_bench *bench);
 
 void	benchmark(t_bench *bench);
 int		compute_disorder(t_list *stack);
+
+//check_args.c
+int	check_input(int argcount, char **args);
 #endif

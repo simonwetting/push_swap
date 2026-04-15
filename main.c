@@ -6,11 +6,13 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 14:51:10 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:00:11 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+
 
 void	turn_bench_on(int	*index, t_bench *bench)
 {
@@ -72,9 +74,11 @@ int	main(int argcount, char **args)
 	t_list	*stackB;
 	t_data	*data;
 	t_bench	*bench;
-;
+
 	if (argcount < 2)
 		return (0);
+	if (check_input(argcount, args))
+		return(ft_putendl_fd("Error", 2), 0);
 	bench = malloc(sizeof(t_bench));
 	init_bench(bench);
 	data = malloc(sizeof(t_data));

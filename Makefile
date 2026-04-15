@@ -6,7 +6,7 @@
 #    By: fluthra <marvin@42.fr>                       +#+                      #
 #                                                    +#+                       #
 #    Created: 2026/03/10 17:12:13 by fluthra       #+#    #+#                  #
-#    Updated: 2026/04/15 15:41:45 by swetting      ########   odam.nl          #
+#    Updated: 2026/04/15 17:18:23 by swetting      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRC = 	adaptive.c \
 		shift_up.c \
 		simple.c \
 		swap.c \
-		utils.c
+		utils.c \
+		check_input.c
 
 OBJ = $(SRC:%.c=%.o)
 
