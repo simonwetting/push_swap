@@ -6,13 +6,13 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 12:42:36 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 12:55:56 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:53:16 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	push_to_B(t_list **stackA, t_list **stackB, t_bench *bench)
+void	push_to_b(t_list **stackA, t_list **stackB, t_bench *bench)
 {
 	t_list *next;
 
@@ -32,7 +32,7 @@ void	push_to_B(t_list **stackA, t_list **stackB, t_bench *bench)
 	bench->pb++; 
 }
 
-void	push_to_A(t_list **stackA, t_list **stackB, t_bench *bench)
+void	push_to_a(t_list **stackA, t_list **stackB, t_bench *bench)
 {
 	t_list *next;
 
@@ -55,9 +55,9 @@ void	push_to_A(t_list **stackA, t_list **stackB, t_bench *bench)
 void	push_to(t_data *data, int stack)
 {
 	if (stack == A)
-		push_to_A(data->stackA, data->stackB, data->bench);
+		push_to_a(data->stackA, data->stackB, data->bench);
 	else if (stack == B)
-		push_to_B(data->stackA, data->stackB, data->bench);
+		push_to_b(data->stackA, data->stackB, data->bench);
 	data->count_ops++;
 	update_data(data, 3);
 }

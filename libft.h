@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 17:42:55 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:53:16 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,9 @@ void	swap_top(t_list *stack);
 void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack);
 
 //shift_up.c
-void	shift_upA(t_list **stack, t_bench *bench);
-void	shift_upB(t_list **stack, t_bench *bench);
-void	shift_upAB(t_list **stackA, t_list **stackB, t_bench *bench);
+void	shift_up_a(t_list **stack, t_bench *bench);
+void	shift_up_b(t_list **stack, t_bench *bench);
+void	shift_up_ab(t_list **stackA, t_list **stackB, t_bench *bench);
 void	shift_up_stack(t_data *data, int stack_id);
 
 //shift_down.c
@@ -136,8 +136,8 @@ void	swap_topB(t_list *stackB, t_bench *bench);
 void	swap_topAB(t_list *stackA, t_list *stackB, t_bench *bench);
 
 //push.c
-void	push_to_B(t_list **stackA, t_list **stackB, t_bench *bench);
-void	push_to_A(t_list **stackA, t_list **stackB, t_bench *bench);
+void	push_to_b(t_list **stackA, t_list **stackB, t_bench *bench);
+void	push_to_a(t_list **stackA, t_list **stackB, t_bench *bench);
 void	push_to(t_data *data, int stack);
 
 //UTILS.C'
