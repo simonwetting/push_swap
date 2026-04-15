@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 13:00:05 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 17:45:23 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:46:12 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	split(t_data *data)
 
 	stack = A;
 	stack_split[A] = stack_is_split(data, A);
-	stack_split[B] = 0;
 	while (stack_split[A] == 0 || stack_split[B] == 0)
 	{
 		c_size = chunksize(data->chunks, find_chunk(data, stack));
@@ -89,7 +88,6 @@ void	merge_sort(t_data *data, t_bench *bench)
 	data->chunks[0][HIGH] = lstsize - 1;
 	data->chunk_count = 1;
 	split(data);
-
 	while (data->stacks[A])
 		push_to(data, B);
 	chunk_order = index_chunks(data);

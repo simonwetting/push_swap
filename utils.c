@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 12:25:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 14:41:22 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:48:32 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	update_data(t_data *data, int stack_id)
 	}
 }
 
-int		find_stack_for_number(t_data *data, int i)
+int	find_stack_for_number(t_data *data, int i)
 {
 	t_list	*tmp;
 

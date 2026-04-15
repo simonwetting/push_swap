@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 12:45:30 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 13:44:42 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:48:11 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static int	is_unsorted(t_list *stack)
 {
 	int		unsorted;
 
-	unsorted  = 0;
+	unsorted = 0;
 	while (stack->next)
 	{
 		if (stack->content > stack->next->content)
 			unsorted = 1;
-		stack =  stack->next;
+		stack = stack->next;
 	}
 	return (unsorted);
 }
@@ -35,7 +35,7 @@ static void	eval_swap(t_list *stack, t_bench *bench)
 void	bubble(t_list **stackA, t_bench *bench)
 {
 	int		counter;
-	int		lstsize = ft_lstsize(*stackA);
+	int		lstsize;
 	int		operations;
 
 	counter = 0;
@@ -49,7 +49,7 @@ void	bubble(t_list **stackA, t_bench *bench)
 		else
 			counter = 0;
 		if (is_unsorted(*stackA) == 0)
-			break;
+			break ;
 		shift_downA(stackA, bench);
 		operations += 2;
 	}

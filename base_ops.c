@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 12:35:59 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 14:02:57 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:49:16 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	swap_top(t_list *stack)
 	int		tmp;
 
 	tmp = stack->next->content;
-	stack->next->content =  stack->content;
+	stack->next->content = stack->content;
 	stack->content = tmp;
 }
 
@@ -41,7 +41,8 @@ void	shift_up(t_list **stack)
 	*stack = second;
 }
 
-void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack)
+void	repeat_rotate(void (*f)(t_data *, int),
+						int times, t_data *data, int stack)
 {
 	int		n;
 
