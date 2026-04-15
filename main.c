@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 14:43:18 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:51:10 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ int	main(int argcount, char **args)
 	data->p_stacks[B] = &stackB;
 	data->count_ops = 0;
 	run(argcount, args, data, bench);
-	free_everything(data);
+	//free_everything(data);
 	return (0);
 }

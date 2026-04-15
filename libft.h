@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 14:44:11 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:50:57 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,20 +146,23 @@ int		find_stack_for_number(t_data *data, int i);
 
 //indexate.c
 int		*indexate(t_list *stack);
+void	swap(int *a, int *b,  int *unsorted);
 
 //chunk_utils.c
 int		chunksize(int chunks[500][2], int index);
 int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data);
 int		find_chunk(int i, int chunks[500][2], int *numbers);
-
-void	swap(int *a, int *b,  int *unsorted);
-int		*index_chunks(t_data *data);
-void	push_largest(t_data *data, int *chunk_order);
 int		find_stack_for_chunk(t_data *data, int chunk_index);
 int		verify_chunk_in_stack(t_data *data, int chunk_index, int stack);
 
-//free.c
 
+//push_largest.c
+int		*index_chunks(t_data *data);
+void	push_largest(t_data *data, int *chunk_order);
+
+//free.c
+void	del(void *p);
+void	free_everything(t_data *data);
 
 //Algorithms
 void	bubble(t_list **stackA, t_bench *bench);
