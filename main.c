@@ -6,24 +6,11 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 14:15:41 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:43:18 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void	del(void *p)
-{
-	free(p);
-}
-
-void	free_everything(t_data *data)
-{
-	ft_lstclear(data->stackA, del);
-	ft_lstclear(data->stackB, del);
-	free(data->numbers);
-	free(data);
-}
 
 void	turn_bench_on(int	*index, t_bench *bench)
 {
