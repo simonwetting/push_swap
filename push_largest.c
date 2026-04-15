@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 14:15:09 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 12:57:57 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:16:08 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	move(t_data *data, int i)
 	int	lst_size;
 
 	lst_size = ft_lstsize(data->stacks[B]);
-	// printf ("Need to move %d down\n", i);
 	if (i > lst_size - i)
 		repeat_rotate(shift_down_stack, lst_size - i, data, B);
 	else
@@ -53,9 +52,7 @@ void	push_largest(t_data *data, int *chunk_order)
 		n = data->chunks[chunk_order[chunk_index]][HIGH];
 		while (n >= data->chunks[chunk_order[chunk_index]][LOW])
 		{
-			// printf("Looking for %d   ",data->numbers[n]);
 			move(data, find_number(data, data->numbers[n]));
-			// printf("after moving, number is %d steps downward\n", find_number(data, data->numbers[n]));
 			push_to(data, A);
 			n--;
 		}	

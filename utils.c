@@ -6,20 +6,11 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 12:25:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 13:08:32 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:02:52 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack)
-{
-	int		n;
-
-	n = 0;
-	while (n++ < times)
-		f(data, stack);
-}
 
 void	update_data(t_data *data, int stack_id)
 {
