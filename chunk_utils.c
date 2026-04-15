@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 16:28:21 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/13 13:40:19 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:04:52 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,6 @@ int		find_chunk(int i, int chunks[500][2], int *numbers)
 	return (chunk_index);
 }
 
-void	print_chunk(t_data *data, int chunk_id)
-{
-	printf("Chunk %d LOW: %d  HIGH: %d\n", chunk_id, data->chunks[chunk_id][LOW], data->chunks[chunk_id][HIGH]);
-}
-
 int		find_stack_for_number(t_data *data, int i)
 {
 	t_list	*tmp;
@@ -107,30 +102,4 @@ int		verify_chunk_in_stack(t_data *data, int chunk_index, int stack)
 		if (find_stack_for_number(data, data->numbers[numb_index++]) != stack)
 			return (data->numbers[--numb_index]);
 	return (900900900);
-}
-
-void	print_chunks(t_data *data)
-{
-	int		n;
-	int		c_size;
-	int		n_index;
-	int		status;
-
-	n = -1;
-	while (++n < data->chunk_count)
-	{
-		c_size = data->chunks[n][HIGH] - data->chunks[n][LOW] + 1;
-		printf("chunk [%d] size [%d]\n", n, c_size);
-		status = find_stack_for_chunk(data, n);
-		if (status == 0)
-			printf("Inside stack [A]\n");
-		if (status == 1)
-			printf("Inside stack [B]\n");
-		status = verify_chunk_in_stack(data, n, status);
-		if (status != 900900900)
-			printf("Though %d is not in this stack, and maybe more\n", status);
-		n_index =  data->chunks[n][LOW];
-		while (n_index <= data->chunks[n][HIGH])
-			printf("%d\n", data->numbers[n_index++]);
-	}
 }

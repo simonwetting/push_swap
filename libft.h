@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 13:43:28 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:03:06 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ t_list	*ft_lstsecondlast(t_list *lst);
 void	shift_up(t_list **stack);
 void	shift_down(t_list **stack);
 void	swap_top(t_list *stack);
+void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack);
 
 //shift_up.c
 void	shift_upA(t_list **stack, t_bench *bench);
@@ -139,10 +140,15 @@ void	push_to_B(t_list **stackA, t_list **stackB, t_bench *bench);
 void	push_to_A(t_list **stackA, t_list **stackB, t_bench *bench);
 void	push_to(t_data *data, int stack);
 
+//UTILS.C'
+void	update_data(t_data *data, int stack_id);
 void	print_stack(t_list *stack, char c);
 void	print_stacks(t_list *stackA, t_list *stackB);
+
+//indexate.c
 int		*indexate(t_list *stack);
 
+//chunk_utils.c
 int		chunksize(int chunks[500][2], int index);
 int		in_chunk(int i, int chunks[500][2], int chunk_index, int *numbers);
 int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data);
@@ -155,9 +161,7 @@ void	swap(int *a, int *b,  int *unsorted);
 int		*index_chunks(t_data *data);
 void	push_largest(t_data *data, int *chunk_order);
 
-//UTILS.C'
-void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack);
-void	update_data(t_data *data, int stack_id);
+
 
 //Algorithms
 void	bubble(t_list **stackA, t_bench *bench);
