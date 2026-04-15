@@ -14,8 +14,9 @@
 
 void	adaptive(t_data *data, t_bench *bench)
 {
-	int		disorder = compute_disorder(data->stacks[A]);
+	int		disorder;
 
+	disorder = compute_disorder(data->stacks[A]);
 	bench->adaptive = 1;
 	if (disorder < 2000)
 		bubble(data->stackA, bench);

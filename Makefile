@@ -10,27 +10,40 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = bubble.c \
+SRC = 	adaptive.c \
+		base_ops.c \
+		benchmark.c \
 		chunk_utils.c \
 		compute_disorder.c \
 		ft_atoi.c \
 		ft_bzero.c \
-		ft_lstadd_back \
-		ft_lstadd_front \
+		ft_isdigit.c \
+		ft_lstadd_back.c \
+		ft_lstadd_front.c \
 		ft_lstclear.c \
 		ft_lstdup.c \
 		ft_lstlast.c \
 		ft_lstnew.c \
 		ft_lstsecondlast.c \
 		ft_lstsize.c \
+		ft_putchar_fd.c \
 		ft_putendl_fd.c \
+		ft_putnbr_fd.c \
+		ft_putstr_fd.c \
 		ft_strlen.c \
 		ft_strncmp.c \
-		index.c \
+		indexate.c \
 		main.c \
 		medium.c \
-		push_largest.c \
 		merge_sort.c \
+		print_chunks.c \
+		push_largest.c \
+		push.c \
+		shift_down.c \
+		shift_up.c \
+		simple.c \
+		swap.c \
+		utils.c
 
 OBJ = $(SRC:%.c=%.o)
 
