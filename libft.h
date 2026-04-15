@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 17:53:16 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:57:04 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,9 +125,9 @@ void	shift_up_ab(t_list **stackA, t_list **stackB, t_bench *bench);
 void	shift_up_stack(t_data *data, int stack_id);
 
 //shift_down.c
-void	shift_downA(t_list **stack, t_bench *bench);
-void	shift_downB(t_list **stack, t_bench *bench);
-void	shift_downAB(t_list **stackA, t_list **stackB, t_bench *bench);
+void	shift_downa(t_list **stack, t_bench *bench);
+void	shift_downb(t_list **stack, t_bench *bench);
+void	shift_downab(t_list **stackA, t_list **stackB, t_bench *bench);
 void	shift_down_stack(t_data *data, int stack_id);
 
 //swap.c

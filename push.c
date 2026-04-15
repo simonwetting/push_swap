@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 12:42:36 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 17:53:16 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:57:55 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push_to_b(t_list **stackA, t_list **stackB, t_bench *bench)
 {
-	t_list *next;
+	t_list	*next;
 
 	if (*stackA == NULL)
 	{
@@ -29,12 +29,12 @@ void	push_to_b(t_list **stackA, t_list **stackB, t_bench *bench)
 	*stackA = (*stackA)->next;
 	(*stackB)->next = next;
 	ft_putendl_fd("pb", 1);
-	bench->pb++; 
+	bench->pb++;
 }
 
 void	push_to_a(t_list **stackA, t_list **stackB, t_bench *bench)
 {
-	t_list *next;
+	t_list	*next;
 
 	if (*stackB == NULL)
 	{

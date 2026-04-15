@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 12:45:30 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 17:48:11 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:56:37 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	bubble(t_list **stackA, t_bench *bench)
 			counter = 0;
 		if (is_unsorted(*stackA) == 0)
 			break ;
-		shift_downA(stackA, bench);
+		shift_downa(stackA, bench);
 		operations += 2;
 	}
 }
