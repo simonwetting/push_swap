@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 13:09:12 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 13:43:28 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,6 @@ void	merge_sort(t_data *data, t_bench *bench);
 void	adaptive(t_data *data, t_bench *bench);
 
 
-void	benchmark(t_data *datal, t_bench *bench);
+void	benchmark(t_bench *bench);
 int		compute_disorder(t_list *stack);
 #endif

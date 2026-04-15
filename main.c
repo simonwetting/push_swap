@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 13:24:58 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 13:43:07 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 	else
 		write(1, "invalid input\n", 14);
 	if (ft_strncmp(args[1], "--bench", 11) == 0 || ft_strncmp(args[2], "--bench", 11) == 0)
-		benchmark(data, bench);
+		benchmark(bench);
 }
 
 void	init_bench(t_bench *bench)
@@ -76,7 +76,6 @@ void	init_bench(t_bench *bench)
 	bench->rra = 0;
 	bench->rrb = 0;
 	bench->rrr = 0;
-	bench->ra++;
 }
 
 int	main(int argcount, char **args)
@@ -89,12 +88,7 @@ int	main(int argcount, char **args)
 	if (argcount < 2)
 		return (0);
 	bench = malloc(sizeof(t_bench));
-	write(1, "test", 4);
 	init_bench(bench);
-	write(1, "test2\n", 6);
-	printf("%d", bench->ra);
-	ft_putchar_fd('0' + bench->ra, 1);
-	write(1, "test3", 5);
 	data = malloc(sizeof(t_data));
 	data->bench = bench;
 	stackA = NULL;

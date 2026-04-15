@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/14 14:21:10 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 13:36:38 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 13:43:01 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	print_ops(t_bench *bench)
 	
 }
 
-void	benchmark(t_data *data, t_bench *bench)
+void	benchmark(t_bench *bench)
 {
 	ft_putstr_fd("[bench] disorder:   ", 2);
 	ft_putnbr_fd(bench->disorder / 100, 2);
@@ -78,5 +78,4 @@ void	benchmark(t_data *data, t_bench *bench)
 	ft_putstr_fd("[bench] strategy:   ", 2);
 	print_strategy(bench);
 	print_ops(bench);
-	(void)data;
 }
