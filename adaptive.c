@@ -12,10 +12,11 @@
 
 #include "libft.h"
 
-void	adaptive(t_data *data)
+void	adaptive(t_data *data, t_bench *bench)
 {
 	int		disorder = compute_disorder(data->stacks[A]);
 
+	bench->strategy = 4;
 	if (disorder < 2000)
 		bubble(data->stackA);
 	else if (disorder >= 2000 && disorder < 5000)

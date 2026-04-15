@@ -281,7 +281,7 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 	update_data(data, 3);
 	bench->disorder = compute_disorder(data->stacks[A]);
 	if (ft_strncmp(args[1 + bench->bench_on], "--simple", 9) == 0)
-		bubble (data->stackA);
+		bubble (data->stackA, bench);
 	else if (ft_strncmp(args[1 + bench->bench_on], "--medium", 9) == 0)
 		four_chunks(data);
 	else if (ft_strncmp(args[1 + bench->bench_on], "--complex", 10) == 0)
@@ -300,6 +300,7 @@ void	init_bench(t_bench *bench)
 {
 	bench->bench_on = 0;
 	bench->disorder = 0;
+	bench->strategy = 0;
 	bench->sa = 0;
 	bench->sb = 0;
 	bench->ss = 0;

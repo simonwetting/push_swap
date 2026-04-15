@@ -39,22 +39,25 @@ static void	eval_swap(t_list *stack)
 	// printf("done\n");
 }
 
-void	bubble(t_list **stackA)
+void	bubble(t_list **stackA, t_bench *bench)
 {
-	int		counter = 0;
+	int		counter;
 	int		lstsize = ft_lstsize(*stackA);
-	int		operations = 0;
+	int		operations;
+
+	counter = 0;
+	lstsize = lstsize = ft_lstsize(*stackA);
+	operations = 0;
+	bench->strategy = 1;
 	while (1)
 	{
 		if (counter++ < lstsize - 1)
 			eval_swap(*stackA);
 		else
 			counter = 0;
-		// print_stack(stackA, 'A');
 		if (is_unsorted(*stackA) == 0)
 			break;
 		shift_downA(stackA);
-		// print_stack(stackA, 'A');
 		operations += 2;
 	}
 	print_stack(*stackA, 'A');

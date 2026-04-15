@@ -12,6 +12,15 @@
 
 #include "libft.h"
 
+void	print_strategy(t_bench *bench)
+{
+	if (bench->strategy == 1)
+		ft_putendl_fd(" %", 2);
+	if (bench->strategy == 2)
+	if (bench->strategy == 3)
+	if (bench->strategy == 4)
+}
+
 void	benchmark(t_data *data, t_bench *bench)
 {
 	ft_putstr_fd("[bench] disorder:   ", 2);
@@ -19,5 +28,7 @@ void	benchmark(t_data *data, t_bench *bench)
 	ft_putstr_fd(",", 2);
 	ft_putnbr_fd(bench->disorder % 100, 2);
 	ft_putendl_fd(" %", 2);
+	ft_putstr_fd("[bench] disorder:   ", 2);
+	print_strategy(bench);
 	(void)data;
 }

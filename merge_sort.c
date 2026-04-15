@@ -115,11 +115,12 @@ void	split(t_data *data)
 	// printf("done splitting\n");
 }
 
-void	merge_sort(t_data *data)
+void	merge_sort(t_data *data, t_bench *bench)
 {
 	int	lstsize;
 	int	*chunk_order;
 
+	bench->strategy = 3;
 	data->numbers = indexate(data->stacks[A]);
 	lstsize = ft_lstsize(data->stacks[A]);
 	// for (int p = 0; p < lstsize; p++)

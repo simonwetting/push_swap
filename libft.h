@@ -44,6 +44,7 @@ typedef struct	s_benchmark
 {
 	int	disorder;
 	int	bench_on;
+	int	strategy;
 	int sa;
 	int sb;
 	int ss;

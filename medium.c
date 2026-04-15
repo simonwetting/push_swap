@@ -40,8 +40,9 @@ void	push_chunk(t_data *data, int chunk_index, int stack)
 	}
 }
 
-void	four_chunks(t_data *data)
+void	four_chunks(t_data *data, t_bench *bench)
 {
+	bench->strategy = 2;
 	data->numbers = indexate(data->stacks[A]);
 	data->chunks[0][LOW] = 0;	//FIRST CHUNK
 	data->chunks[0][HIGH] = ft_lstsize(data->stacks[A]) - 1;	//FIRST CHUNK
