@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 12:19:26 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 12:27:09 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ t_list	*ft_lstsecondlast(t_list *lst);
 // void	shift_up(t_list **stack);
 // void	swap_top(t_list *stack);
 
+//operations.c
 void	swap_topA(t_list *stackA);
 void	swap_topB(t_list *stackB);
 void	swap_topAB(t_list *stackA, t_list *stackB);
@@ -144,18 +145,21 @@ void	print_chunks(t_data *data);
 void	print_chunk(t_data *data, int chunk_id);
 
 int		div_chunk(int chunks[500][2], int chunk_index, t_data *data);
-
 void	swap(int *a, int *b,  int *unsorted);
 int		*index_chunks(t_data *data);
 void	push_largest(t_data *data, int *chunk_order);
 
+//UTILS.C
 void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack);
+void	update_data(t_data *data, int stack_id);
 
-
+//Algorithms
 void	bubble(t_list **stackA, t_bench *bench);
 void	four_chunks(t_data *data, t_bench *bench);
 void	merge_sort(t_data *data, t_bench *bench);
 void	adaptive(t_data *data, t_bench *bench);
+
+
 void	benchmark(t_data *datal, t_bench *bench);
 int		compute_disorder(t_list *stack);
 #endif

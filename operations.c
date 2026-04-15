@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 12:24:15 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 12:24:31 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 12:28:30 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	swap_top(t_list *stack)
 void	swap_topA(t_list *stackA)
 {
 	swap_top(stackA);
-	 ft_putendl_fd("sa", 1);
+	ft_putendl_fd("sa", 1);
 }
 
 void	swap_topB(t_list *stackB)
