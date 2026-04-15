@@ -15,13 +15,13 @@
 void	print_strategy(t_bench *bench)
 {
 	if (bench->strategy == 1)
-		ft_putendl_fd("Simple", 2);
+		ft_putendl_fd("Simple / O(n\xC2\xB2)", 2);
 	if (bench->strategy == 2)
-		ft_putendl_fd("Medium", 2);
+		ft_putendl_fd("Medium /  O(n\xe2\x88\x9an)", 2);
 	if (bench->strategy == 3)
-		ft_putendl_fd("Complex", 2);
+		ft_putendl_fd("Complex / O(nlogn)", 2);
 	if (bench->strategy == 4)
-		ft_putendl_fd("Adaptive", 2);
+		ft_putendl_fd("Adaptive / ", 2);
 }
 
 int	get_total_ops(t_bench *bench)
