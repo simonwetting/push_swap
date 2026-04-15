@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 12:48:16 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 13:40:44 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:42:25 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,4 @@ void	four_chunks(t_data *data, t_bench *bench)
 	push_chunk(data, 3, A);
 	push_chunk(data, 0, A);
 	push_largest(data, chunk_order);
-	print_stacks(data->stacks[A], data->stacks[B]);
 }

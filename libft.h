@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 14:03:06 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:40:04 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,7 @@ void	push_to(t_data *data, int stack);
 
 //UTILS.C'
 void	update_data(t_data *data, int stack_id);
-void	print_stack(t_list *stack, char c);
-void	print_stacks(t_list *stackA, t_list *stackB);
+int		find_stack_for_number(t_data *data, int i);
 
 //indexate.c
 int		*indexate(t_list *stack);

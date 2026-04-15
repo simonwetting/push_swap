@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 12:25:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 14:02:52 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:41:22 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,37 +26,23 @@ void	update_data(t_data *data, int stack_id)
 	}
 }
 
-void	print_list(t_list *stack)
+int		find_stack_for_number(t_data *data, int i)
 {
-	while (stack)
-	{
-		printf("%p contains:\ncontent>%d\nnext>%p\n\n", stack, (stack->content), stack->next);
-		stack = stack->next;
-	}
-}
+	t_list	*tmp;
 
-void	print_stacks(t_list *stackA, t_list *stackB)
-{
-	printf("STACK A:\n");
-	while (stackA)
+	tmp = data->stacks[A];
+	while (tmp)
 	{
-		printf("%d\n", (stackA->content));
-		stackA = stackA->next;
+		if (tmp->content == i)
+			return (A);
+		tmp = tmp->next;
 	}
-	printf("STACK B:\n");
-	while (stackB)
+	tmp = data->stacks[B];
+	while (tmp)
 	{
-		printf("%d\n", (stackB->content));
-		stackB = stackB->next;
+		if (tmp->content == i)
+			return (B);
+		tmp = tmp->next;
 	}
-}
-
-void	print_stack(t_list *stack, char c)
-{
-	printf("STACK %c:\n", c);
-	while (stack)
-	{
-		printf("%d\n", (stack->content));
-		stack = stack->next;
-	}
+	return (-1);
 }
