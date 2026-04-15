@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 17:26:01 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:42:55 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ void	swap(int *a, int *b,  int *unsorted);
 //chunk_utils.c
 int		chunksize(int chunks[500][2], int index);
 int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data);
-int		find_chunk(int i, int chunks[500][2], int *numbers);
+int		find_chunk(t_data *data, int stack);
 int		find_stack_for_chunk(t_data *data, int chunk_index);
 //int		verify_chunk_in_stack(t_data *data, int chunk_index, int stack);
 

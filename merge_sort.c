@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 13:00:05 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 15:06:45 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:45:23 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	stack_is_split(t_data *d, int stack)
 	while (tmp)
 	{
 		if (chunksize(d->chunks,
-				find_chunk(tmp->content, d->chunks, d->numbers)) > 35)
+				find_chunk(d, stack)) > 35)
 			return (0);
 		tmp = tmp->next;
 	}
@@ -58,10 +58,10 @@ void	split(t_data *data)
 	stack_split[B] = 0;
 	while (stack_split[A] == 0 || stack_split[B] == 0)
 	{
-		c_size = chunksize(data->chunks, find_chunk(data->stacks[stack]->content, data->chunks, data->numbers));
+		c_size = chunksize(data->chunks, find_chunk(data, stack));
 		if (c_size > 35)
 		{
-			split_chunk[0] = find_chunk(data->stacks[stack]->content, data->chunks, data->numbers);
+			split_chunk[0] = find_chunk(data, stack);
 			split_chunk[1] = divide_chunk(data->chunks, split_chunk[0], data);
 			splitter(data, stack, c_size, split_chunk);
 		}

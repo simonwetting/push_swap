@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 16:28:21 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 14:57:16 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 17:41:50 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,19 @@ int	divide_chunk(int chunks[500][2], int chunk_index, t_data *data)
 	return (data->chunk_count++);
 }
 
-int	find_chunk(int i, int chunks[500][2], int *numbers)
+int	find_chunk(t_data *data, int stack)
 {
 	int		index;
 	int		chunk_index;
+	int		i;
 
+	i = data->stacks[stack]->content;
 	index = 0;
-	while (numbers[index] != i)
+	while (data->numbers[index] != i)
 		index++;
 	chunk_index = 0;
-	while ((chunks[chunk_index][LOW] <= index
-		&& chunks[chunk_index][HIGH] >= index) == 0)
+	while ((data->chunks[chunk_index][LOW] <= index
+		&& data->chunks[chunk_index][HIGH] >= index) == 0)
 		chunk_index++;
 	return (chunk_index);
 }
