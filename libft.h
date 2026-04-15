@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 14:50:57 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:55:08 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ int		chunksize(int chunks[500][2], int index);
 int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data);
 int		find_chunk(int i, int chunks[500][2], int *numbers);
 int		find_stack_for_chunk(t_data *data, int chunk_index);
-int		verify_chunk_in_stack(t_data *data, int chunk_index, int stack);
+//int		verify_chunk_in_stack(t_data *data, int chunk_index, int stack);
 
 
 //push_largest.c
