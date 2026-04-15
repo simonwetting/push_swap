@@ -43,6 +43,7 @@ typedef struct	s_data
 typedef struct	s_benchmark
 {
 	int	disorder;
+	int	bench_on;
 	int sa;
 	int sb;
 	int ss;
