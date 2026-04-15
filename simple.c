@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 12:45:30 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/14 13:33:18 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 12:21:41 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	bubble(t_list **stackA, t_bench *bench)
 	int		operations;
 
 	counter = 0;
-	lstsize = lstsize = ft_lstsize(*stackA);
+	lstsize = ft_lstsize(*stackA);
 	operations = 0;
 	bench->strategy = 1;
 	while (1)

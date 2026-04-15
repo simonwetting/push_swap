@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/14 17:48:50 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 12:23:44 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -283,13 +283,13 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 	if (ft_strncmp(args[1 + bench->bench_on], "--simple", 9) == 0)
 		bubble (data->stackA, bench);
 	else if (ft_strncmp(args[1 + bench->bench_on], "--medium", 9) == 0)
-		four_chunks(data);
+		four_chunks(data, bench);
 	else if (ft_strncmp(args[1 + bench->bench_on], "--complex", 10) == 0)
-		merge_sort(data);
+		merge_sort(data, bench);
 	else if (ft_strncmp(args[1 + bench->bench_on], "--adaptive", 11) == 0)
-		adaptive(data);
+		adaptive(data, bench);
 	else if (args[1 + (index - ft_lstsize(data->stacks[A]) == 3)][0] > '0' && args[1 + (index - ft_lstsize(data->stacks[A]) == 3)][0] < '9')
-		merge_sort(data);
+		merge_sort(data, bench);
 	else
 		write(1, "invalid input\n", 14);
 	if (ft_strncmp(args[1], "--bench", 11) == 0 || ft_strncmp(args[2], "--bench", 11) == 0)

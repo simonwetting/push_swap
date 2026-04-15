@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/14 17:34:41 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 12:19:26 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 t_list	*ft_lstsecondlast(t_list *lst);
-void	bubble(t_list **stackA);
 
 // void	shift_up(t_list **stack);
 // void	swap_top(t_list *stack);
@@ -137,8 +136,6 @@ void	print_stack(t_list *stack, char c);
 void	print_stacks(t_list *stackA, t_list *stackB);
 int		*indexate(t_list *stack);
 
-void	merge_sort(t_data *data);
-
 int		chunksize(int chunks[500][2], int index);
 int		in_chunk(int i, int chunks[500][2], int chunk_index, int *numbers);
 int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data);
@@ -153,9 +150,12 @@ int		*index_chunks(t_data *data);
 void	push_largest(t_data *data, int *chunk_order);
 
 void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack);
-void	four_chunks(t_data *data);
 
-void	adaptive(t_data *data);
+
+void	bubble(t_list **stackA, t_bench *bench);
+void	four_chunks(t_data *data, t_bench *bench);
+void	merge_sort(t_data *data, t_bench *bench);
+void	adaptive(t_data *data, t_bench *bench);
 void	benchmark(t_data *datal, t_bench *bench);
 int		compute_disorder(t_list *stack);
 #endif

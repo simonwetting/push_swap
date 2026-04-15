@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 11:21:31 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 11:21:31 by anonymous     ########   odam.nl         */
+/*   Updated: 2026/04/15 12:20:46 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	adaptive(t_data *data, t_bench *bench)
 
 	bench->strategy = 4;
 	if (disorder < 2000)
-		bubble(data->stackA);
+		bubble(data->stackA, bench);
 	else if (disorder >= 2000 && disorder < 5000)
-		four_chunks(data);
+		four_chunks(data, bench);
 	else if (disorder >= 5000 && disorder <= 10000)
-		merge_sort(data);
+		merge_sort(data, bench);
 	else
 		write(1, "disorder more than 1", 20);
 }
