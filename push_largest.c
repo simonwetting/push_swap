@@ -6,13 +6,13 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/10 14:15:09 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 14:16:08 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 14:59:33 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		find_number(t_data *data, int i)
+int	find_number(t_data *data, int i)
 {
 	t_list	*tmp;
 	int		n;
@@ -38,7 +38,6 @@ void	move(t_data *data, int i)
 		repeat_rotate(shift_down_stack, lst_size - i, data, B);
 	else
 		repeat_rotate(shift_up_stack, i, data, B);
-	
 }
 
 void	push_largest(t_data *data, int *chunk_order)
@@ -55,17 +54,17 @@ void	push_largest(t_data *data, int *chunk_order)
 			move(data, find_number(data, data->numbers[n]));
 			push_to(data, A);
 			n--;
-		}	
+		}
 	}
 }
 
-int		*index_chunks(t_data *data)
+int	*index_chunks(t_data *data)
 {
 	int		*chunk_order;
 	int		unsorted;
 	int		n;
 
-	chunk_order =  malloc(sizeof(int) * data->chunk_count);
+	chunk_order = malloc(sizeof(int) * data->chunk_count);
 	unsorted = 1;
 	n = -1;
 	while (++n < data->chunk_count)
@@ -75,7 +74,8 @@ int		*index_chunks(t_data *data)
 		unsorted = 0;
 		n = -1;
 		while (++n < data->chunk_count - 1)
-			if (data->chunks[chunk_order[n]][LOW] < data->chunks[chunk_order[n + 1]][LOW])
+			if (data->chunks[chunk_order[n]][LOW]
+				< data->chunks[chunk_order[n + 1]][LOW])
 				swap(chunk_order + n, chunk_order + n + 1, &unsorted);
 	}
 	return (chunk_order);

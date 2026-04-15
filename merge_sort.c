@@ -6,20 +6,21 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 13:00:05 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 13:38:31 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 15:06:45 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		stack_is_split(t_data *d, int stack)
+int	stack_is_split(t_data *d, int stack)
 {
 	t_list	*tmp;
 
 	tmp = d->stacks[stack];
 	while (tmp)
 	{
-		if (chunksize(d->chunks, find_chunk(tmp->content, d->chunks, d->numbers)) > 35)
+		if (chunksize(d->chunks,
+				find_chunk(tmp->content, d->chunks, d->numbers)) > 35)
 			return (0);
 		tmp = tmp->next;
 	}
@@ -36,7 +37,8 @@ void	splitter(t_data *data, int stack, int c_size, int split_chunk[2])
 	n = 0;
 	while (n < c_size)
 	{
-		if (data->stacks[stack]->content >= hl[LOW] && data->stacks[stack]->content <= hl[HIGH])
+		if (data->stacks[stack]->content >= hl[LOW]
+			&& data->stacks[stack]->content <= hl[HIGH])
 			push_to(data, 1 - stack);
 		else
 			shift_up_stack(data, stack);

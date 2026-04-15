@@ -6,25 +6,26 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 12:48:16 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 14:42:25 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/15 15:02:48 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-
 void	push_chunk(t_data *data, int chunk_index, int stack)
 {
-	int		H2;
-	int		L2;
-	int		pushed;
+	int	h;
+	int	l;
+	int	pushed;
 
-	L2 = data->numbers[data->chunks[chunk_index][LOW]];
-	H2 = data->numbers[data->chunks[chunk_index][HIGH]];
+	l = data->numbers[data->chunks[chunk_index][LOW]];
+	h = data->numbers[data->chunks[chunk_index][HIGH]];
 	pushed = 0;
-	while (pushed < data->chunks[chunk_index][HIGH] - data->chunks[chunk_index][LOW] + 1)
+	while (pushed < data->chunks[chunk_index][HIGH] -
+			data->chunks[chunk_index][LOW] + 1)
 	{
-		if ((data->stacks[stack]->content >= L2 && data->stacks[stack]->content <= H2))
+		if ((data->stacks[stack]->content >= l
+				&& data->stacks[stack]->content <= h))
 		{
 			push_to(data, 1 - stack);
 			pushed++;
@@ -36,8 +37,8 @@ void	push_chunk(t_data *data, int chunk_index, int stack)
 
 void	four_chunks(t_data *data, t_bench *bench)
 {
-	int		chunk_order[4];
-	
+	int	chunk_order[4];
+
 	chunk_order[0] = 0;
 	chunk_order[1] = 3;
 	chunk_order[2] = 1;

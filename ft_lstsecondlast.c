@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/30 18:56:45 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/03/30 18:56:45 by anonymous     ########   odam.nl         */
+/*   Updated: 2026/04/15 14:58:11 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 t_list	*ft_lstsecondlast(t_list *lst)
 {
 	t_list	*second_last;
+
 	if (lst == 0)
 		return (0);
 	while (lst->next)
