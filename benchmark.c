@@ -38,7 +38,7 @@ int	get_total_ops(t_bench *bench)
 			bench->rra + bench->rrb + bench->rrr);
 }
 
-void	print_ops(t_bench *bench)
+void	print_ops_1(t_bench *bench)
 {
 	int		total_ops;
 
@@ -57,7 +57,14 @@ void	print_ops(t_bench *bench)
 	ft_putstr_fd(" pb: ", 2);
 	ft_putnbr_fd(bench->pb, 2);
 	ft_putchar_fd('\n', 2);
+}
 
+
+void	print_ops_2(t_bench *bench)
+{
+	int		total_ops;
+
+	total_ops = get_total_ops(bench);
 	ft_putstr_fd("[bench] ra: ", 2);
 	ft_putnbr_fd(bench->ra, 2);
 	ft_putstr_fd(" rb: ", 2);
@@ -71,7 +78,6 @@ void	print_ops(t_bench *bench)
 	ft_putstr_fd(" rrr: ", 2);
 	ft_putnbr_fd(bench->rrr, 2);
 	ft_putchar_fd('\n', 2);
-	
 }
 
 void	benchmark(t_bench *bench)
@@ -83,5 +89,6 @@ void	benchmark(t_bench *bench)
 	ft_putendl_fd("%", 2);
 	ft_putstr_fd("[bench] strategy:   ", 2);
 	print_strategy(bench);
-	print_ops(bench);
+	print_ops_1(bench);
+	print_ops_2(bench);
 }
