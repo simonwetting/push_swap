@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   check_args.c                                       :+:    :+:            */
+/*   check_input.c                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 16:16:00 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 17:14:32 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/16 13:23:43 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	str_isnumber(char *s)
 
 int	flag_exists(char *str)
 {
-	printf("flag>%s\n", str);
 	if (ft_strncmp(str, "--simple", 11) == 0
 		|| ft_strncmp(str, "--medium", 11) == 0
 		|| ft_strncmp(str, "--complex", 11) == 0
