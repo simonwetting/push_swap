@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/16 13:45:08 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/16 14:16:09 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,30 @@ void	init_bench(t_bench *bench)
 	bench->rrr = 0;
 }
 
+char	**init_input(int *argcount, char **args)
+{
+	char	**input;
+	char	*tmp;
+	char	*tmp2;
+	int		size;
+	
+	if (*argcount == 2)
+	{
+		tmp = ft_strjoin(args[0], " ");
+		tmp2 = ft_strjoin(tmp, args[1]);
+		input = ft_split(tmp2, ' ');
+		free(tmp);
+		free(tmp2);
+		size = 0;
+		while (input[size])
+			size++;
+		*argcount = size;
+	}
+	else
+		input = args;
+	return (input);
+}
+
 int	main(int argcount, char **args)
 {
 	t_list	*stack_a;
@@ -76,15 +100,10 @@ int	main(int argcount, char **args)
 	t_bench	*bench;
 	char	**input;
 
-	if (argcount == 2)
-		input = ft_split(args[1], ' ');
-	else
-		input = NULL;
-	if (argcount < 2)
-		return (0);
-	if (check_input(argcount, args))
+	input = init_input(&argcount, args);
+	if (check_input(argcount, input))
 		return(ft_putendl_fd("Error", 2), 0);
-	bench = malloc(sizeof(t_bench))
+	bench = malloc(sizeof(t_bench));
 	data = malloc(sizeof(t_data));
 	data->bench = bench;
 	stack_a = NULL;
@@ -93,7 +112,7 @@ int	main(int argcount, char **args)
 	data->stack_b = &stack_b;
 	update_data(data, 3);
 	data->count_ops = 0;
-	run(argcount, args, data, bench);
+	run(argcount, input, data, bench);
 	free_everything(data);
 	return (0);
 }

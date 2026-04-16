@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 16:16:00 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/16 13:24:27 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/16 13:54:23 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int	check_input(int argcount, char **args)
 	int		n;
 	int		flag_count;
 
+	if (argcount < 2)
+		return (0);
 	flag_count = check_flags(args);
 	if (flag_count == -1)
 		return (1);
