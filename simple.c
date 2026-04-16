@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 12:45:30 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 18:00:59 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/16 13:00:41 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	is_unsorted(t_list *stack)
 static void	eval_swap(t_list *stack, t_bench *bench)
 {
 	if ((stack)->content > (stack)->next->content)
-		swap_topA(stack, bench);
+		swap_top_a(stack, bench);
 }
 
 void	bubble(t_list **stack_a, t_bench *bench)
