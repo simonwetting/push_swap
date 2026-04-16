@@ -12,19 +12,17 @@
 
 #include "libft.h"
 
-void	swap(int *a, int *b,  int *unsorted)
+void	swap(int *a, int *b, int *unsorted)
 {
-	int tmp;
+	int	tmp;
 
-	//printf("%d > %d\n", *a, *b);
-	tmp  = *a;
+	tmp = *a;
 	*a = *b;
 	*b = tmp;
 	*unsorted = 1;
 }
 
-
-int		*indexate(t_list *stack)
+int	*indexate(t_list *stack)
 {
 	int		*numbers;
 	int		n;
@@ -36,7 +34,7 @@ int		*indexate(t_list *stack)
 	n = 0;
 	while (stack)
 	{
-		numbers[n++]= stack->content;
+		numbers[n++] = stack->content;
 		stack = stack->next;
 	}
 	unsorted = 1;

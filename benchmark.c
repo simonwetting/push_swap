@@ -30,12 +30,13 @@ void	print_strategy(t_bench *bench)
 	else if (bench->strategy == 3)
 		ft_putendl_fd("Complex / O(nlogn)", 2);
 }
+
 int	get_total_ops(t_bench *bench)
 {
-	return (bench->sa + bench->sb + bench->ss +
-			bench->pa + bench->pb +
-			bench->ra + bench->rb + bench->rr +
-			bench->rra + bench->rrb + bench->rrr);
+	return (bench->sa + bench->sb + bench->ss
+		+ bench->pa + bench->pb
+		+ bench->ra + bench->rb + bench->rr
+		+ bench->rra + bench->rrb + bench->rrr);
 }
 
 void	print_ops_1(t_bench *bench)
@@ -58,7 +59,6 @@ void	print_ops_1(t_bench *bench)
 	ft_putnbr_fd(bench->pb, 2);
 	ft_putchar_fd('\n', 2);
 }
-
 
 void	print_ops_2(t_bench *bench)
 {

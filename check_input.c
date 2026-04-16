@@ -17,7 +17,7 @@ int	check_duplicates(int argcount, char **args, int flag_count)
 	int		n;
 	int		m;
 
-	n =  flag_count + 1;
+	n = flag_count + 1;
 	while (n < argcount)
 	{
 		m = flag_count;
@@ -26,7 +26,7 @@ int	check_duplicates(int argcount, char **args, int flag_count)
 				return (1);
 		n++;
 	}
-	return (0);	
+	return (0);
 }
 
 int	str_isnumber(char *s)

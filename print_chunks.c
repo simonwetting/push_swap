@@ -14,7 +14,8 @@
 
 //void	print_chunk(t_data *data, int chunk_id)
 //{
-//	printf("Chunk %d LOW: %d  HIGH: %d\n", chunk_id, data->chunks[chunk_id][LOW], data->chunks[chunk_id][HIGH]);
+//	printf("Chunk %d LOW: %d  HIGH: %d\n", chunk_id, 
+//		data->chunks[chunk_id][LOW], data->chunks[chunk_id][HIGH]);
 //}
 
 //void	print_chunks(t_data *data)
