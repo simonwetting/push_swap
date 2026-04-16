@@ -29,72 +29,72 @@ int	check_duplicates(int argcount, char **args, int flag_count)
 	return (0);
 }
 
-int	str_isnumber(char *s)
-{
-	int		n;
+// int	str_isnumber(char *s)
+// {
+// 	int		n;
 
-	n = -1;
-	while (s[++n])
-		if (!ft_isdigit(s[n]))
-			return (0);
-	return (1);
-}
+// 	n = -1;
+// 	while (s[++n])
+// 		if (!ft_isdigit(s[n]))
+// 			return (0);
+// 	return (1);
+// }
 
-int	flag_exists(char *str)
-{
-	if (ft_strncmp(str, "--simple", 11) == 0
-		|| ft_strncmp(str, "--medium", 11) == 0
-		|| ft_strncmp(str, "--complex", 11) == 0
-		|| ft_strncmp(str, "--adaptive", 11) == 0
-		|| ft_strncmp(str, "--bench", 11) == 0)
-		return (1);
-	return (0);
-}
+// int	flag_exists(char *str)
+// {
+// 	if (ft_strncmp(str, "--simple", 11) == 0
+// 		|| ft_strncmp(str, "--medium", 11) == 0
+// 		|| ft_strncmp(str, "--complex", 11) == 0
+// 		|| ft_strncmp(str, "--adaptive", 11) == 0
+// 		|| ft_strncmp(str, "--bench", 11) == 0)
+// 		return (1);
+// 	return (0);
+// }
 
-int	flags_cant_coexist(char **args)
-{
-	if (ft_strncmp(args[1], "--bench", 11 == 0))
-		if (ft_strncmp(args[2], "--bench", 11 == 0))
-			return (1);
-	if (ft_strncmp(args[1], "--simple", 11) == 0
-		|| ft_strncmp(args[1], "--medium", 11) == 0
-		|| ft_strncmp(args[1], "--complex", 11) == 0
-		|| ft_strncmp(args[1], "--adaptive", 11) == 0)
-		if (ft_strncmp(args[2], "--simple", 11) == 0
-			|| ft_strncmp(args[2], "--medium", 11) == 0
-			|| ft_strncmp(args[2], "--complex", 11) == 0
-			|| ft_strncmp(args[2], "--adaptive", 11) == 0)
-			return (1);
-	return (0);
-}
+// int	flags_cant_coexist(char **args)
+// {
+// 	if (ft_strncmp(args[1], "--bench", 11 == 0))
+// 		if (ft_strncmp(args[2], "--bench", 11 == 0))
+// 			return (1);
+// 	if (ft_strncmp(args[1], "--simple", 11) == 0
+// 		|| ft_strncmp(args[1], "--medium", 11) == 0
+// 		|| ft_strncmp(args[1], "--complex", 11) == 0
+// 		|| ft_strncmp(args[1], "--adaptive", 11) == 0)
+// 		if (ft_strncmp(args[2], "--simple", 11) == 0
+// 			|| ft_strncmp(args[2], "--medium", 11) == 0
+// 			|| ft_strncmp(args[2], "--complex", 11) == 0
+// 			|| ft_strncmp(args[2], "--adaptive", 11) == 0)
+// 			return (1);
+// 	return (0);
+// }
 
-int	check_flags(char **args)
-{
-	int		flag_count;
+// int	check_flags(char **args)
+// {
+// 	int		flag_count;
 
-	flag_count = 0;
-	if (!str_isnumber(args[1]))
-	{
-		if (flag_exists(args[1]))
-			flag_count++;
-		else
-			return (-1);
-	}
-	if (!str_isnumber(args[2]))
-	{
-		if (flag_exists(args[2]))
-			flag_count++;
-		else
-			return (-1);
-	}
-	if (flag_count == 2)
-		if (ft_strncmp(args[2], args[1], 11) == 0)
-			return (-1);
-	if (flag_count == 2)
-		if (flags_cant_coexist(args))
-			return (-1);
-	return (flag_count);
-}
+// 	flag_count = 0;
+// 	if (!str_isnumber(args[1]))
+// 	{
+// 		if (flag_exists(args[1]))
+// 			flag_count++;
+// 		else
+// 			return (-1);
+// 	}
+// 	if (!str_isnumber(args[2]))
+// 	{
+// 		if (flag_exists(args[2]))
+// 			flag_count++;
+// 		else
+// 			return (-1);
+// 	}
+// 	if (flag_count == 2)
+// 		if (ft_strncmp(args[2], args[1], 11) == 0)
+// 			return (-1);
+// 	if (flag_count == 2)
+// 		if (flags_cant_coexist(args))
+// 			return (-1);
+// 	return (flag_count);
+// }
 
 int	check_input(int argcount, char **args)
 {

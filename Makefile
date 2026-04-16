@@ -44,6 +44,7 @@ SRC = 	adaptive.c \
 		swap.c \
 		utils.c \
 		check_input.c
+		check_flags.c
 
 OBJ = $(SRC:%.c=%.o)
 
