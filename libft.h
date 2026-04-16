@@ -28,44 +28,44 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct	s_benchmark
+typedef struct s_benchmark
 {
 	int	disorder;
 	int	bench_on;
 	int	strategy;
 	int	adaptive;
-	int sa;
-	int sb;
-	int ss;
-	int pa;
-	int pb;
-	int ra;
-	int rb;
-	int rr;
-	int rra;
-	int rrb;
-	int rrr;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
 }				t_bench;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	t_list		**stack_a;
 	t_list		**stack_b;
 	t_list		**p_stacks[2];
 	t_list		*stacks[2];
 	t_bench		*bench;
-	int 		*numbers;
+	int			*numbers;
 	int			chunks[500][2];
 	int			chunk_count;
 	int			count_ops;
 }				t_data;
 
 int		ft_atoi(const char *nptr);
- void	ft_bzero(void *s, size_t n);
+void	ft_bzero(void *s, size_t n);
 // void	*ft_calloc(size_t nmemb, size_t size);
 // int		ft_isalnum(int c);
 // int		ft_isalpha(int c);
- int		ft_isdigit(int c);
+int		ft_isdigit(int c);
 // int		ft_isprint(int c);
 // int		ft_isascii(int c);
  void	*ft_memcpy(void *dest, const void *src, size_t n);
@@ -92,10 +92,10 @@ int		ft_strncmp(const char *s1, const char *s2, unsigned int n);
 // char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 // void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
- void	ft_putchar_fd(char c, int fd);
- void	ft_putstr_fd(char *s, int fd);
- int	ft_putendl_fd(char *s, int fd);
- void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+int		ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 t_list	*ft_lstnew(int content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -105,7 +105,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstdelone(t_list *lst, void (*del)(void*));
 void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),
+			void (*del)(void *));
 
 t_list	*ft_lstsecondlast(t_list *lst);
 
@@ -116,7 +117,8 @@ t_list	*ft_lstsecondlast(t_list *lst);
 void	shift_up(t_list **stack);
 void	shift_down(t_list **stack);
 void	swap_top(t_list *stack);
-void	repeat_rotate(void (*f)(t_data *, int), int times, t_data *data, int stack);
+void	repeat_rotate(void (*f)(t_data *, int),
+			int times, t_data *data, int stack);
 
 //shift_up.c
 void	shift_up_a(t_list **stack, t_bench *bench);
@@ -146,15 +148,13 @@ int		find_stack_for_number(t_data *data, int i);
 
 //indexate.c
 int		*indexate(t_list *stack);
-void	swap(int *a, int *b,  int *unsorted);
+void	swap(int *a, int *b, int *unsorted);
 
 //chunk_utils.c
 int		chunksize(int chunks[500][2], int index);
 int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data);
 int		find_chunk(t_data *data, int stack);
 int		find_stack_for_chunk(t_data *data, int chunk_index);
-//int		verify_chunk_in_stack(t_data *data, int chunk_index, int stack);
-
 
 //push_largest.c
 int		*index_chunks(t_data *data);
@@ -170,10 +170,10 @@ void	four_chunks(t_data *data, t_bench *bench);
 void	merge_sort(t_data *data, t_bench *bench);
 void	adaptive(t_data *data, t_bench *bench);
 
-
 void	benchmark(t_bench *bench);
 int		compute_disorder(t_list *stack);
 
 //check_args.c
-int	check_input(int argcount, char **args);
+int		check_input(int argcount, char **args);
+int		str_isnumber(char *s);
 #endif
