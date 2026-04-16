@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 16:16:00 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/16 13:54:23 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/16 15:07:09 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,23 @@ int	flag_exists(char *str)
 	return (0);
 }
 
+int	flags_cant_coexist(char **args)
+{
+	if (ft_strncmp(args[1], "--bench", 11 == 0))
+		if (ft_strncmp(args[2], "--bench", 11 == 0))
+			return (1);
+	if (ft_strncmp(args[1], "--simple", 11) == 0
+		|| ft_strncmp(args[1], "--medium", 11) == 0
+		|| ft_strncmp(args[1], "--complex", 11) == 0
+		|| ft_strncmp(args[1], "--adaptive", 11) == 0)
+		if (ft_strncmp(args[2], "--simple", 11) == 0
+			|| ft_strncmp(args[2], "--medium", 11) == 0
+			|| ft_strncmp(args[2], "--complex", 11) == 0
+			|| ft_strncmp(args[2], "--adaptive", 11) == 0)
+			return (1);
+	return (0);
+}
+
 int	check_flags(char **args)
 {
 	int		flag_count;
@@ -73,6 +90,9 @@ int	check_flags(char **args)
 	if (flag_count == 2)
 		if (ft_strncmp(args[2], args[1], 11) == 0)
 			return (-1);
+	if (flag_count == 2)
+		if (flags_cant_coexist(args))
+			return (-1);
 	return (flag_count);
 }
 
@@ -89,6 +109,9 @@ int	check_input(int argcount, char **args)
 	if (check_duplicates(argcount, args, flag_count))
 		return (1);
 	n = flag_count;
+	printf("flagcount>%d  argcount>%d", flag_count, argcount);
+	if (flag_count +1 >= argcount)
+		return (1);
 	while (++n < argcount)
 		if (!str_isnumber(args[n]))
 			return (1);
