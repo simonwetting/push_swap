@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 18:01:05 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/16 13:28:43 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,9 @@ int	main(int argcount, char **args)
 	t_list	*stack_b;
 	t_data	*data;
 	t_bench	*bench;
+	char	**input;
 
+	
 	if (argcount < 2)
 		return (0);
 	if (check_input(argcount, args))
@@ -87,12 +89,9 @@ int	main(int argcount, char **args)
 	stack_b = NULL;
 	data->stack_a = &stack_a;
 	data->stack_b = &stack_b;
-	data->stacks[A] = stack_a;
-	data->stacks[B] = stack_b;
-	data->p_stacks[A] = &stack_a;
-	data->p_stacks[B] = &stack_b;
+	update_data(data, 3);
 	data->count_ops = 0;
 	run(argcount, args, data, bench);
-	//free_everything(data);
+	free_everything(data);
 	return (0);
 }
