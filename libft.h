@@ -175,4 +175,5 @@ int		compute_disorder(t_list *stack);
 
 //check_args.c
 int		check_input(int argcount, char **args);
+int		str_isnumber(char *s);
 #endif

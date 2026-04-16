@@ -41,7 +41,7 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 		merge_sort(data, bench);
 	else if (ft_strncmp(args[1 + bench->bench_on], "--adaptive", 11) == 0)
 		adaptive(data, bench);
-	else if (args[1 + (index - ft_lstsize(data->stacks[A]) == 3)][0] > '0' && args[1 + (index - ft_lstsize(data->stacks[A]) == 3)][0] < '9')
+	else if (str_isnumber(args[1 + bench->bench_on]))
 		merge_sort(data, bench);
 	else
 		write(1, "invalid input\n", 14);
