@@ -23,7 +23,7 @@ void	swap_top_b(t_list *stack_b, t_bench *bench)
 {
 	swap_top(stack_b);
 	ft_putendl_fd("sb", 1);
-	bench->sb++; 
+	bench->sb++;
 }
 
 void	swap_top_ab(t_list *stack_a, t_list *stack_b, t_bench *bench)
@@ -33,5 +33,3 @@ void	swap_top_ab(t_list *stack_a, t_list *stack_b, t_bench *bench)
 	ft_putendl_fd("ss", 1);
 	bench->ss++;
 }
-
-

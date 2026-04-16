@@ -12,8 +12,6 @@
 
 #include "libft.h"
 
-
-
 void	turn_bench_on(int	*index, t_bench *bench)
 {
 	(*index)++;
@@ -24,7 +22,7 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 {
 	int		index;
 
-	index  = 1;
+	index = 1;
 	if (ft_isdigit(args[1][0]) == 0)
 		index++;
 	if (ft_strncmp(args[1], "--bench", 11) == 0)
@@ -74,7 +72,7 @@ char	**init_input(int *argcount, char **args)
 	char	*tmp;
 	char	*tmp2;
 	int		size;
-	
+
 	if (*argcount == 2)
 	{
 		tmp = ft_strjoin(args[0], " ");
@@ -102,7 +100,7 @@ int	main(int argcount, char **args)
 
 	input = init_input(&argcount, args);
 	if (check_input(argcount, input))
-		return(ft_putendl_fd("Error", 2), 0);
+		return (ft_putendl_fd("Error", 2), 0);
 	bench = malloc(sizeof(t_bench));
 	data = malloc(sizeof(t_data));
 	data->bench = bench;

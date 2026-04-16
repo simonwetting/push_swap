@@ -35,7 +35,7 @@ int	str_isnumber(char *s)
 
 	n = -1;
 	while (s[++n])
-		if(!ft_isdigit(s[n]))
+		if (!ft_isdigit(s[n]))
 			return (0);
 	return (1);
 }
