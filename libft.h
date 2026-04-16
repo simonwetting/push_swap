@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/16 13:25:45 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/16 13:35:53 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		ft_atoi(const char *nptr);
  int		ft_isdigit(int c);
 // int		ft_isprint(int c);
 // int		ft_isascii(int c);
-// void	*ft_memcpy(void *dest, const void *src, size_t n);
+ void	*ft_memcpy(void *dest, const void *src, size_t n);
 // void	*ft_memset(void *s, int c, size_t n);
 // void	*ft_memmove(void *dest, const void *src, size_t n);
 // void	*ft_memchr(const void *s, int c, size_t n);
