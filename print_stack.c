@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 //void	print_list(t_list *stack)
 //{
 //	while (stack)
@@ -35,12 +37,12 @@
 //	}
 //}
 
-//void	print_stack(t_list *stack, char c)
-//{
-//	printf("STACK %c:\n", c);
-//	while (stack)
-//	{
-//		printf("%d\n", (stack->content));
-//		stack = stack->next;
-//	}
-//}
+void	print_stack(t_list *stack, char c)
+{
+	printf("STACK %c:\n", c);
+	while (stack)
+	{
+		printf("%d\n", (stack->content));
+		stack = stack->next;
+	}
+}

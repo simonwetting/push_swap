@@ -177,4 +177,7 @@ int		compute_disorder(t_list *stack);
 int		check_input(int argcount, char **args);
 int		str_isnumber(char *s);
 int		check_flags(char **args);
+
+//print_stack.c
+void	print_stack(t_list *stack, char c);
 #endif
