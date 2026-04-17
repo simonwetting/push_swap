@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-static char	count_strings(char const *s, char c)
+static int	count_strings(char const *s, char c)
 {
-	char	n_strings;
+	int	n_strings;
 
 	if (s == 0)
 		return (0);
