@@ -109,7 +109,7 @@ int	check_input(int argcount, char **args)
 	if (check_duplicates(argcount, args, flag_count))
 		return (1);
 	n = flag_count;
-	printf("flagcount>%d  argcount>%d", flag_count, argcount);
+	//printf("flagcount>%d  argcount>%d", flag_count, argcount);
 	if (flag_count +1 >= argcount)
 		return (1);
 	while (++n < argcount)

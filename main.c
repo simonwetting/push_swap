@@ -102,6 +102,7 @@ int	main(int argcount, char **args)
 	if (check_input(argcount, input))
 		return (ft_putendl_fd("Error", 2), 0);
 	bench = malloc(sizeof(t_bench));
+	init_bench(bench);
 	data = malloc(sizeof(t_data));
 	data->bench = bench;
 	stack_a = NULL;
