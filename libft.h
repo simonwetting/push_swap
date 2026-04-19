@@ -153,7 +153,10 @@ void	swap(int *a, int *b, int *unsorted);
 //chunk_utils.c
 int		chunksize(int chunks[500][2], int index);
 int		divide_chunk(int chunks[500][2], int chunk_index, t_data *data);
-int		find_chunk(t_data *data, int stack);
+int		find_top_chunk(t_data *data, int stack);
+//int	find_chunk(t_data *data, int stack);
+//int		find_chunk(int i, int chunks[500][2], int *numbers);
+int		find_chunk(t_data *data, int i);
 int		find_stack_for_chunk(t_data *data, int chunk_index);
 
 //push_largest.c
@@ -180,4 +183,5 @@ int		check_flags(char **args);
 
 //print_stack.c
 void	print_stack(t_list *stack, char c);
+void	print_chunks(t_data *data);
 #endif

@@ -112,6 +112,7 @@ int	main(int argcount, char **args)
 	update_data(data, 3);
 	data->count_ops = 0;
 	run(argcount, input, data, bench);
+	printf("Chunk count>%d\n", data->chunk_count);
 	free_everything(data);
 	return (0);
 }
