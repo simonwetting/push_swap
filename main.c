@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/20 16:09:59 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 16:39:05 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ void	fill_stack(char **input, char **args, t_data *data, t_bench *bench)
 	int		index;
 
 	index = 1;
-	if (ft_isdigit(args[1][0]) == 0)
-		index++;
+	//if (ft_isdigit(args[1][0]) == 0)
+	//	index++;
 	if (ft_strncmp(args[1], "--bench", 11) == 0)
 		turn_bench_on(&index, bench);
+	index = data->flag_count + 1;
+	//printf("flagcount>%d\n", data->flag_count);
+	//printf("args[%d] %s\n", data->flag_count, args[data->flag_count]);
 	if (input == NULL)
 		while (index < data->argcount)
 			ft_lstadd_back(data->stack_a, ft_lstnew(ft_atoi(args[index++])));
@@ -50,7 +53,7 @@ void	run(char **input, char **args, t_data *data, t_bench *bench)
 		merge_sort(data, bench);
 	else if (ft_strncmp(args[1 + bench->bench_on], "--adaptive", 11) == 0)
 		adaptive(data, bench);
-	else if (str_isnumber(args[1 + bench->bench_on]))
+	else if (str_isnumb_or_space(args[1 + bench->bench_on]))
 		merge_sort(data, bench);
 	else if (input == NULL)
 		write(1, "invalid input\n", 14);
