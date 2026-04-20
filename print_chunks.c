@@ -14,11 +14,11 @@
 
 void	print_chunk(t_data *data, int chunk_id)
 {
-	printf("Chunk %d LOW: %d  HIGH: %d\n", chunk_id, 
+	printf("Chunk %d LOW: %d  HIGH: %d\n", chunk_id,
 		data->chunks[chunk_id][LOW], data->chunks[chunk_id][HIGH]);
 }
 
-int		verify_chunk_in_stack(t_data *data, int chunk_index, int stack)
+int	verify_chunk_in_stack(t_data *data, int chunk_index, int stack)
 {
 	int		numb_index;
 
@@ -28,7 +28,8 @@ int		verify_chunk_in_stack(t_data *data, int chunk_index, int stack)
 			return (data->numbers[--numb_index]);
 	return (900900900);
 }
-int		in_chunk(int i, int chunks[500][2], int chunk_index, int *numbers)
+
+int	in_chunk(int i, int chunks[500][2], int chunk_index, int *numbers)
 {
 	int		n;
 
