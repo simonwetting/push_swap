@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/15 16:16:00 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/20 13:08:33 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 13:57:14 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,14 @@ int	check_input(int argcount, char **args)
 		return (0);
 	flag_count = check_flags(args);
 	if (flag_count == -1)
-		return (1);
+		return (-1);
 	if (check_duplicates(argcount, args, flag_count))
-		return (1);
+		return (-1);
 	n = flag_count;
 	if (flag_count +1 >= argcount)
-		return (1);
+		return (-1);
 	while (++n < argcount)
 		if (!str_isnumber(args[n]))
-			return (1);
-	return (0);
+			return (-1);
+	return (flag_count);
 }
