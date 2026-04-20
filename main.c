@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/20 14:18:48 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 15:15:04 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	turn_bench_on(int	*index, t_bench *bench)
 	bench->bench_on = 1;
 }
 
-void	run(int argcount, char **args, t_data *data, t_bench *bench)
+void	fill_stack(char **input, char **args, t_data *data, t_bench *bench)
 {
 	int		index;
 
@@ -27,9 +27,20 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 		index++;
 	if (ft_strncmp(args[1], "--bench", 11) == 0)
 		turn_bench_on(&index, bench);
-	while (index < argcount)
-		ft_lstadd_back(data->stack_a, ft_lstnew(ft_atoi(args[index++])));
+	if (input == NULL)
+		while (index < data->argcount)
+			ft_lstadd_back(data->stack_a, ft_lstnew(ft_atoi(args[index++])));
+	index = 0;
+	if (input)
+		while (input[index])
+			ft_lstadd_back(data->stack_a, ft_lstnew(ft_atoi(input[index++])));
 	update_data(data, 3);
+}
+
+void	run(char **input, char **args, t_data *data, t_bench *bench)
+{
+	fill_stack(input, args, data, bench);
+	print_stacks(data->stacks[A], data->stacks[B]);
 	bench->disorder = compute_disorder(data->stacks[A]);
 	if (ft_strncmp(args[1 + bench->bench_on], "--simple", 9) == 0)
 		bubble (data->stack_a, bench);
@@ -66,27 +77,28 @@ void	init_bench(t_bench *bench)
 	bench->rrr = 0;
 }
 
-char	**init_input(int *argcount, char **args)
+char	**init_input(int argcount, char **args, t_data *data)
 {
 	char	**input;
 	char	*tmp;
 	char	*tmp2;
 	int		size;
 
-	if (*argcount == 2)
+	data->argcount = argcount;
+	if (argcount == data->flag_count + 2)
 	{
-		tmp = ft_strjoin(args[0], " ");
-		tmp2 = ft_strjoin(tmp, args[1]);
-		input = ft_split(tmp2, ' ');
-		free(tmp);
-		free(tmp2);
+		//tmp = ft_strjoin(args[0], " ");
+		//tmp2 = ft_strjoin(tmp, args[1]);
+		input = ft_split(args[data->flag_count + 1], ' ');
+		//free(tmp);
+		//free(tmp2);
 		size = 0;
 		while (input[size])
 			size++;
-		*argcount = size;
+		data->argcount = size;
 	}
 	else
-		input = args;
+		input = NULL;
 	return (input);
 }
 
@@ -101,10 +113,10 @@ int	main(int argcount, char **args)
 	bench = malloc(sizeof(t_bench));
 	data = malloc(sizeof(t_data));
 	init_bench(bench);
-	input = init_input(&argcount, args);
-	data->flag_count = check_input(argcount, input);
+	data->flag_count = check_input(argcount, args);
 	if (data->flag_count == -1)
 		return (ft_putendl_fd("Error", 2), 0);
+	input = init_input(argcount, args, data);
 	data->bench = bench;
 	stack_a = NULL;
 	stack_b = NULL;
@@ -112,7 +124,7 @@ int	main(int argcount, char **args)
 	data->stack_b = &stack_b;
 	update_data(data, 3);
 	data->count_ops = 0;
-	run(argcount, input, data, bench);
+	run(input, args, data, bench);
 	printf("Chunk count>%d\n", data->chunk_count);
 	free_everything(data);
 	return (0);

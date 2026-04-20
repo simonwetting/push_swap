@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/20 14:17:01 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 15:07:34 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_data
 	int			chunk_count;
 	int			count_ops;
 	int			flag_count;
+	int			argcount;
 }				t_data;
 
 int		ft_atoi(const char *nptr);
@@ -179,13 +180,19 @@ int		compute_disorder(t_list *stack);
 
 //check_args.c
 int		check_input(int argcount, char **args);
-int		str_isnumber(char *s);
 int		check_flags(char **args);
+
+//str_isnumber.c
+int		str_isnumber(char *s);
+int		str_isnumber_or_space(char *s);
 
 //print_chunks.c
 //void	print_stack(t_list *stack, char c);
 //void	print_chunks(t_data *data);
+void	print_stacks(t_list *stackA, t_list *stackB);
 
 //bench_arg.c
 int		bench_arg(char **args);
+
+
 #endif
