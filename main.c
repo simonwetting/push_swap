@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/20 13:13:59 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 14:18:48 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,13 @@ int	main(int argcount, char **args)
 	t_bench	*bench;
 	char	**input;
 
-	input = init_input(&argcount, args);
-	if (check_input(argcount, input))
-		return (ft_putendl_fd("Error", 2), 0);
 	bench = malloc(sizeof(t_bench));
-	init_bench(bench);
 	data = malloc(sizeof(t_data));
+	init_bench(bench);
+	input = init_input(&argcount, args);
+	data->flag_count = check_input(argcount, input);
+	if (data->flag_count == -1)
+		return (ft_putendl_fd("Error", 2), 0);
 	data->bench = bench;
 	stack_a = NULL;
 	stack_b = NULL;

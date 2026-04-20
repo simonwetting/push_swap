@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/20 13:17:13 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 14:17:01 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_data
 	int			chunks[500][2];
 	int			chunk_count;
 	int			count_ops;
+	int			flag_count;
 }				t_data;
 
 int		ft_atoi(const char *nptr);
