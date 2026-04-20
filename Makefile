@@ -49,7 +49,7 @@ SRC = 	adaptive.c \
 		simple.c \
 		str_isnumber.c \
 		swap.c \
-		utils.c
+		utils.c \
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -70,7 +70,7 @@ clean:
 	$(RM) $(NAME)
 	
 fclean: clean
-	$(RM) $(NAME) &
+	$(RM) $(NAME)
 
 re: fclean all
 
