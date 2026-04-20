@@ -60,7 +60,7 @@ void	print_chunks(t_data *data)
 		status = verify_chunk_in_stack(data, n, status);
 		if (status != 900900900)
 			printf("Though %d is not in this stack, and maybe more\n", status);
-		n_index =  data->chunks[n][LOW];
+		n_index = data->chunks[n][LOW];
 		while (n_index <= data->chunks[n][HIGH])
 			printf("%d\n", data->numbers[n_index++]);
 	}
