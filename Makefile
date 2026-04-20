@@ -12,9 +12,13 @@
 
 SRC = 	adaptive.c \
 		base_ops.c \
+		bench_arg.c \
 		benchmark.c \
+		check_flags.c \
+		check_input.c \
 		chunk_utils.c \
 		compute_disorder.c \
+		free.c \
 		ft_atoi.c \
 		ft_bzero.c \
 		ft_isdigit.c \
@@ -25,10 +29,13 @@ SRC = 	adaptive.c \
 		ft_lstnew.c \
 		ft_lstsecondlast.c \
 		ft_lstsize.c \
+		ft_memcpy.c \
 		ft_putchar_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 		ft_putstr_fd.c \
+		ft_split.c \
+		ft_strjoin.c \
 		ft_strlen.c \
 		ft_strncmp.c \
 		indexate.c \
@@ -41,10 +48,9 @@ SRC = 	adaptive.c \
 		shift_down.c \
 		shift_up.c \
 		simple.c \
+		str_isnumber.c \
 		swap.c \
 		utils.c \
-		check_input.c
-		check_flags.c
 
 OBJ = $(SRC:%.c=%.o)
 
@@ -65,7 +71,7 @@ clean:
 	$(RM) $(NAME)
 	
 fclean: clean
-	$(RM) $(NAME) &
+	$(RM) $(NAME)
 
 re: fclean all
 
