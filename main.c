@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/20 13:57:24 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 13:13:59 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 	else if (ft_strncmp(args[1 + bench->bench_on], "--adaptive", 11) == 0)
 		adaptive(data, bench);
 	else if (str_isnumber(args[1 + bench->bench_on]))
-		adaptive(data, bench);
+		merge_sort(data, bench);
 	else
 		write(1, "invalid input\n", 14);
 	if (bench_arg(args))
@@ -99,7 +99,7 @@ int	main(int argcount, char **args)
 	char	**input;
 
 	input = init_input(&argcount, args);
-	if (check_input(argcount, args) == -1)
+	if (check_input(argcount, input))
 		return (ft_putendl_fd("Error", 2), 0);
 	bench = malloc(sizeof(t_bench));
 	init_bench(bench);
@@ -112,6 +112,7 @@ int	main(int argcount, char **args)
 	update_data(data, 3);
 	data->count_ops = 0;
 	run(argcount, input, data, bench);
+	printf("Chunk count>%d\n", data->chunk_count);
 	free_everything(data);
 	return (0);
 }
