@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/16 14:52:38 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 13:13:59 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 		merge_sort(data, bench);
 	else
 		write(1, "invalid input\n", 14);
-	if (ft_strncmp(args[1], "--bench", 11) == 0 || ft_strncmp(args[2], "--bench", 11) == 0)
+	if (bench_arg(args))
 		benchmark(bench);
 }
 

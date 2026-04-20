@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/16 13:59:15 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 13:13:50 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,4 +184,7 @@ int		check_flags(char **args);
 //print_stack.c
 void	print_stack(t_list *stack, char c);
 void	print_chunks(t_data *data);
+
+//bench_arg.c
+int		bench_arg(char **args)
 #endif
