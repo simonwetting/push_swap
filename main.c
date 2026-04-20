@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/27 18:37:48 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/20 16:39:05 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 16:45:28 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,9 @@ void	fill_stack(char **input, char **args, t_data *data, t_bench *bench)
 	int		index;
 
 	index = 1;
-	//if (ft_isdigit(args[1][0]) == 0)
-	//	index++;
 	if (ft_strncmp(args[1], "--bench", 11) == 0)
 		turn_bench_on(&index, bench);
 	index = data->flag_count + 1;
-	//printf("flagcount>%d\n", data->flag_count);
-	//printf("args[%d] %s\n", data->flag_count, args[data->flag_count]);
 	if (input == NULL)
 		while (index < data->argcount)
 			ft_lstadd_back(data->stack_a, ft_lstnew(ft_atoi(args[index++])));
@@ -43,7 +39,6 @@ void	fill_stack(char **input, char **args, t_data *data, t_bench *bench)
 void	run(char **input, char **args, t_data *data, t_bench *bench)
 {
 	fill_stack(input, args, data, bench);
-	//print_stacks(data->stacks[A], data->stacks[B]);
 	bench->disorder = compute_disorder(data->stacks[A]);
 	if (ft_strncmp(args[1 + bench->bench_on], "--simple", 9) == 0)
 		bubble (data->stack_a, bench);
@@ -54,7 +49,7 @@ void	run(char **input, char **args, t_data *data, t_bench *bench)
 	else if (ft_strncmp(args[1 + bench->bench_on], "--adaptive", 11) == 0)
 		adaptive(data, bench);
 	else if (str_isnumb_or_space(args[1 + bench->bench_on]))
-		merge_sort(data, bench);
+		adaptive(data, bench);
 	else if (input == NULL)
 		write(1, "invalid input\n", 14);
 	if (bench_arg(args))
@@ -88,11 +83,7 @@ char	**init_input(int argcount, char **args, t_data *data)
 	data->argcount = argcount;
 	if (argcount == data->flag_count + 2)
 	{
-		//tmp = ft_strjoin(args[0], " ");
-		//tmp2 = ft_strjoin(tmp, args[1]);
 		input = ft_split(args[data->flag_count + 1], ' ');
-		//free(tmp);
-		//free(tmp2);
 		size = 0;
 		while (input[size])
 			size++;
@@ -126,7 +117,7 @@ int	main(int argcount, char **args)
 	update_data(data, 3);
 	data->count_ops = 0;
 	run(input, args, data, bench);
-	printf("Chunk count>%d\n", data->chunk_count);
+	//printf("Chunk count>%d\n", data->chunk_count);
 	free_everything(data);
 	return (0);
 }
