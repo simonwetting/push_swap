@@ -40,7 +40,7 @@ void	run(int argcount, char **args, t_data *data, t_bench *bench)
 	else if (ft_strncmp(args[1 + bench->bench_on], "--adaptive", 11) == 0)
 		adaptive(data, bench);
 	else if (str_isnumber(args[1 + bench->bench_on]))
-		merge_sort(data, bench);
+		adaptive(data, bench);
 	else
 		write(1, "invalid input\n", 14);
 	if (bench_arg(args))
