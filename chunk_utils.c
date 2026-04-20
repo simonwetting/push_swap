@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/09 16:28:21 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/15 17:41:50 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 13:09:02 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	find_top_chunk(t_data *data, int stack)
 		chunk_index++;
 	return (chunk_index);
 }
+
 int	find_chunk(t_data *data, int i)
 {
 	int		index;
@@ -65,25 +66,6 @@ int	find_chunk(t_data *data, int i)
 		chunk_index++;
 	return (chunk_index);
 }
-
-//int		find_chunk(int i, int chunks[500][2], int *numbers)
-//{
-//	int		index;
-//	int		chunk_index;
-
-//	index = 0;
-//	while (numbers[index] != i)
-//		index++;
-//	chunk_index = 0;
-//	//printf("Low: %d    High: %d   number: %d index: %d\n", chunks[chunk_index][LOW], chunks[chunk_index][HIGH], i, index);\
-//	//printf("%d  %d\n", chunks[chunk_index][LOW] <= index, chunks[chunk_index][HIGH] >= index);
-//	//printf("%d\n", (chunks[chunk_index][LOW] <= index && chunks[chunk_index][HIGH] >= index));
-//	//printf("%d <= %d\n", chunks[chunk_index][HIGH], index);
-//	while ((chunks[chunk_index][LOW] <= index && chunks[chunk_index][HIGH] >= index) == 0)
-//		chunk_index++;
-//	//printf("chunk index: %d\n", chunk_index);
-//	return (chunk_index);
-//}
 
 int	find_stack_for_chunk(t_data *data, int chunk_index)
 {
