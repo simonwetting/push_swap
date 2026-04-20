@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/03/10 16:49:31 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/20 15:07:34 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 16:04:00 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,11 +180,11 @@ int		compute_disorder(t_list *stack);
 
 //check_args.c
 int		check_input(int argcount, char **args);
-int		check_flags(char **args);
+int		check_flags(char **args, int argcount);
 
 //str_isnumber.c
 int		str_isnumber(char *s);
-int		str_isnumber_or_space(char *s);
+int		str_isnumb_or_space(char *s);
 
 //print_chunks.c
 //void	print_stack(t_list *stack, char c);

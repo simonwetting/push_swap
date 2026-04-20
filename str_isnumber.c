@@ -6,7 +6,7 @@
 /*   By: swetting <swetting@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/16 14:56:44 by swetting      #+#    #+#                 */
-/*   Updated: 2026/04/20 15:02:16 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 16:00:28 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	str_isnumber(char *s)
 	return (1);
 }
 
-int	str_isnumber_or_space(char *s)
+int	str_isnumb_or_space(char *s)
 {
 	int		n;
 
