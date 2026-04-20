@@ -6,7 +6,7 @@
 #    By: fluthra <marvin@42.fr>                       +#+                      #
 #                                                    +#+                       #
 #    Created: 2026/03/10 17:12:13 by fluthra       #+#    #+#                  #
-#    Updated: 2026/04/15 17:18:23 by swetting      ########   odam.nl          #
+#    Updated: 2026/04/20 13:31:43 by swetting      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,8 @@ SRC = 	adaptive.c \
 		main.c \
 		medium.c \
 		merge_sort.c \
-		print_chunks.c \
-		push_largest.c \
 		push.c \
+		push_largest.c \
 		shift_down.c \
 		shift_up.c \
 		simple.c \
@@ -64,7 +63,7 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC)
 	$(CC) $(CFlags) $(SRC) -o push_swap
 
 clean:
