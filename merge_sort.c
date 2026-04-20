@@ -6,7 +6,7 @@
 /*   By: anonymous <anonymous@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/04/07 13:00:05 by anonymous     #+#    #+#                 */
-/*   Updated: 2026/04/15 17:46:12 by swetting      ########   odam.nl         */
+/*   Updated: 2026/04/20 13:16:09 by swetting      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,4 @@ void	merge_sort(t_data *data, t_bench *bench)
 		push_to(data, B);
 	chunk_order = index_chunks(data);
 	push_largest(data, chunk_order);
-	//print_chunks(data);
 }
