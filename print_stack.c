@@ -16,7 +16,8 @@
 //{
 //	while (stack)
 //	{
-//		printf("%p contains:\ncontent>%d\nnext>%p\n\n", stack, (stack->content), stack->next);
+//		printf("%p contains:\ncontent>%d\nnext>%p\n\n", 
+// 		stack, (stack->content), stack->next);
 //		stack = stack->next;
 //	}
 //}

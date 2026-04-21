@@ -60,9 +60,9 @@ void	split(t_data *data)
 		c_size = chunksize(data->chunks, find_top_chunk(data, stack));
 		if (c_size > 35)
 		{
-			split_chunk[0] = find_top_chunk(data, stack);
+			split_chunk[0] = find_top_chunk(data, stack); //q
 			split_chunk[1] = divide_chunk(data->chunks, split_chunk[0], data);
-			splitter(data, stack, c_size, split_chunk);
+			splitter(data, stack, c_size, split_chunk); //q
 		}
 		else
 			repeat_rotate(shift_up_stack, c_size, data, stack);
