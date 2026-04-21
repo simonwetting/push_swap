@@ -54,7 +54,7 @@ void	run(char **input, char **args, t_data *data, t_bench *bench)
 	else if (ft_strncmp(args[1 + bench->bench_on], "--adaptive", 11) == 0)
 		adaptive(data, bench);
 	else if (str_isnumb_or_space(args[1 + bench->bench_on]))
-		merge_sort(data, bench);
+		adaptive(data, bench);
 	else if (input == NULL)
 		write(1, "invalid input\n", 14);
 	if (bench_arg(args))
